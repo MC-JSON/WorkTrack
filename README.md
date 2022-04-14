@@ -4,7 +4,7 @@
 
 ### By: Bryan Sanchez
 
-#### [Website]() | [GitHub] ()) | [LinkedIn](https://www.https://www.linkedin.com/in/bryvn1xx/)
+#### [Website]() | [GitHub] () | [LinkedIn](https://www.https://www.linkedin.com/in/bryvn1xx/)
 
 ### Frank Marra
 
