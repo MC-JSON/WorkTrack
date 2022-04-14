@@ -18,8 +18,6 @@
 
 [Trello](https://trello.com/b/R3ERjgEi/worktrackapp)
 
-[DrawIO]()
-
 ---
 
 ### Description
@@ -45,9 +43,9 @@ The projects are tracked on a full-stack PERN application.
 
 ## Screenshots
 
-![Landing]()
+![]()
 
-![About]()
+![]()
 
 ---
 
