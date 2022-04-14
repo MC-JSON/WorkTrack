@@ -8,7 +8,7 @@
 
 ### Frank Marra
 
-#### [GitHub]() | [LinkedIn](https://www.linkedin.com/in/frankrmarra/)
+#### [GitHub](https://github.com/frankmarra) | [LinkedIn](https://www.linkedin.com/in/frankrmarra/)
 
 ### Jason McCoy
 
