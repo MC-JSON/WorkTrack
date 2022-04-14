@@ -24,9 +24,9 @@
 
 ### Description
 
-Welcome to the WorkTrack application! The daily work log redefined.
+Welcome to the WorkTrackApp! The daily work log redefined.
 
-WorkTrack is here for your project management and tracking needs.
+WorkTrackApp is here for your project management and tracking needs.
 
 The projects are tracked on a full-stack PERN application.
 
@@ -64,8 +64,6 @@ The projects are tracked on a full-stack PERN application.
 ---
 
 ## **Future Plans**
-
--
 
 -
 
