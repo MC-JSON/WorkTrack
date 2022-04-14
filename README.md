@@ -4,15 +4,15 @@
 
 ### By: Bryan Sanchez
 
-#### [Website]() | [GitHub]() | [LinkedIn](https://www.https://www.linkedin.com/in/bryvn1xx/)
+#### [GitHub]() | [LinkedIn](https://www.https://www.linkedin.com/in/bryvn1xx/)
 
 ### Frank Marra
 
-#### [Website]() | [GitHub]() | [LinkedIn](https://www.linkedin.com/in/frankrmarra/)
+#### [GitHub]() | [LinkedIn](https://www.linkedin.com/in/frankrmarra/)
 
 ### Jason McCoy
 
-#### [Website]() | [GitHub](https://github.com/MC-JSON) | [LinkedIn](https://www.linkedin.com/in/jasonwmccoy/)
+#### [GitHub](https://github.com/MC-JSON) | [LinkedIn](https://www.linkedin.com/in/jasonwmccoy/)
 
 ---
 
@@ -35,10 +35,11 @@ The projects are tracked on a full-stack PERN application.
 ## Technologies Used
 
 1.  Express
-2.  Node
-3.  PSQL
-4.  React
-5.  Sequelize
+2.  JWT User Authentication
+3.  Node
+4.  PSQL
+5.  React
+6.  Sequelize
 
 ---
 
