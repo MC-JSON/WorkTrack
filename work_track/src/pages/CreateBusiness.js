@@ -26,7 +26,7 @@ const CreateBusiness = (props) => {
     navigate('/portal')
   }
 
-  const { name, address, city, state } = formValue
+  const { name, address, city, state, image } = formValue
 
   return (
     <div className="forms">
@@ -44,7 +44,7 @@ const CreateBusiness = (props) => {
             className="form"
             type="text"
             name="address"
-            placeholder="address"
+            placeholder="Address"
             value={address}
             onChange={handleChange}
           />
@@ -52,7 +52,7 @@ const CreateBusiness = (props) => {
             className="form"
             type="text"
             name="city"
-            placeholder="city"
+            placeholder="City"
             value={city}
             onChange={handleChange}
           />
@@ -60,7 +60,7 @@ const CreateBusiness = (props) => {
             className="form"
             type="text"
             name="state"
-            placeholder="state"
+            placeholder="State"
             value={state}
             onChange={handleChange}
           />
@@ -68,8 +68,8 @@ const CreateBusiness = (props) => {
             className="form"
             type="text"
             name="image"
-            placeholder="image"
-            value={'image'}
+            placeholder="Image"
+            value={image}
             onChange={handleChange}
           />
           <button
