@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const CreateEmployee = (props) => {
   const [formValue, setFormValue] = useState({
     name: '',
-    job: ''
+    email: ''
   })
 
   const handleChange = (event) => {

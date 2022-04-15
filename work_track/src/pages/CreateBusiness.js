@@ -8,7 +8,8 @@ const CreateBusiness = (props) => {
     name: '',
     address: '',
     city: '',
-    state: ''
+    state: '',
+    image: ''
   })
 
   const handleChange = (event) => {
