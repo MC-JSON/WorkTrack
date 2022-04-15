@@ -13,6 +13,7 @@ const BusinessView = ({ user, authenticated }) => {
     <div>
       <h1>Business Homepage</h1>
       <div>
+        {/* dropdown menu with modal pop-up?; logs; reports */}
         <Link to="/createemployee">Create Employee</Link>
       </div>
     </div>

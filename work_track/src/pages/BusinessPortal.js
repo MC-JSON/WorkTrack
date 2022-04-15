@@ -5,6 +5,7 @@ const BusinessPortal = (props) => {
     <div>
       <h1>Business Portal</h1>
       <div>
+        {/* business listings; logs; reports; modal? */}
         <Link to="/createbusiness">Create Business</Link>
         <Link to="/createemployee">Create Employee</Link>
       </div>
