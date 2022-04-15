@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 header {
   background-color: transparent;
   display: flex;
@@ -13,5 +9,5 @@ header {
 header nav a {
   margin: 0 1em;
   font-size: 20px;
-  color: whitesmoke;
+  color: black;
 }
