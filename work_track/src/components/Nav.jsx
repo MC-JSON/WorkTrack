@@ -6,9 +6,9 @@ const Nav = (props) => {
     <header>
       <nav className='navbar'>
         <div>
-          <Link to="/">Business Portal</Link>
+          <Link to="/portal">Business Portal</Link>
           <Link to="/signin">Login</Link>
-          <Link to="/account">Create Account</Link>
+          <Link to="/register">Create Account</Link>
         </div>
       </nav>
     </header>

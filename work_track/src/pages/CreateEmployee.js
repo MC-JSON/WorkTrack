@@ -20,7 +20,7 @@ const CreateEmployee = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/view')
+    navigate('/portal')
   }
 
   const { name, job } = formValue
@@ -47,10 +47,7 @@ const CreateEmployee = (props) => {
           />
           <button
             onClick={async () =>
-              await axios.post(
-                'http://localhost:3001/createemployee',
-                formValue
-              )
+              await axios.post('http://localhost:3001/:businessId', formValue)
             }
           >
             Create
