@@ -23,7 +23,7 @@ const CreateBusiness = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/view')
+    navigate('/portal')
   }
 
   const { name, address, city, state } = formValue
@@ -64,10 +64,18 @@ const CreateBusiness = (props) => {
             value={state}
             onChange={handleChange}
           />
+          <input
+            className="form"
+            type="text"
+            name="image"
+            placeholder="image"
+            value={'image'}
+            onChange={handleChange}
+          />
           <button
             onClick={async () =>
               await axios.post(
-                'http://localhost:3001/createbusiness',
+                'http://localhost:3001/:ownerId/create-business',
                 formValue
               )
             }
