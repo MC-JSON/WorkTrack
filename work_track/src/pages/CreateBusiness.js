@@ -69,7 +69,7 @@ const CreateBusiness = (props) => {
             type="text"
             name="image"
             placeholder="image"
-            value={image}
+            value={'image'}
             onChange={handleChange}
           />
           <button
