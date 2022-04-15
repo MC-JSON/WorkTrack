@@ -6,9 +6,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <button onClick={() => navigate('/signin')}>
-        Please click here to login
-      </button>
+      <button onClick={() => navigate('/signin')}>Click to login</button>
     </div>
   )
 }

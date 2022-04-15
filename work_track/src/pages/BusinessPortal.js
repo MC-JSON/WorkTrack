@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 
 const BusinessPortal = (props) => {
   return (
-    <div>
+    <div className="portal">
       <h1>Business Portal</h1>
-      <div>
+      <div className="links">
         {/* business listings; logs; reports; modal? */}
         <Link to="/createbusiness">Create Business</Link>
         <Link to="/createemployee">Create Employee</Link>
