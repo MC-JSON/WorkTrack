@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
 import './styles/App.css'
 import Nav from './components/Nav'
+import Home from './pages/Home'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -14,9 +15,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Nav/ > */}
+      <Nav />
       <main>
-        <Routes></Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </main>
     </div>
   )
