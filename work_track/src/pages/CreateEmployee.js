@@ -20,7 +20,7 @@ const CreateEmployee = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/view')
+    navigate('/portal')
   }
 
   const { name, job } = formValue

@@ -23,7 +23,7 @@ const CreateBusiness = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/view')
+    navigate('/portal')
   }
 
   const { name, address, city, state } = formValue
