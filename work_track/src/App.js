@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './styles/App.css'
 import { Route, Routes } from 'react-router-dom'
 import Nav from './components/Nav'
@@ -8,16 +7,9 @@ import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
 import CreateBusiness from './pages/CreateBusiness'
 import CreateEmployee from './pages/CreateEmployee'
+import BusinessPortal from './pages/BusinessPortal'
 
 function App() {
-  const [authenticated, toggleAuthenticated] = useState(false)
-  const [user, setUser] = useState(null)
-
-
-
-
-
-
   return (
     <div className="App">
       <Nav />
@@ -26,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/portal" element={<BusinessPortal />} />
           <Route path="/view" element={<BusinessView />} />
           <Route path="/createbusiness" element={<CreateBusiness />} />
           <Route path="/createemployee" element={<CreateEmployee />} />
