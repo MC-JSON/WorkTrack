@@ -6,8 +6,8 @@ const Nav = (props) => {
     <header>
       <nav className='navbar'>
         <div>
-          <Link to="/portal">Business Portal</Link>
-          <Link to="/signin">Login</Link>
+          {/* <Link to="/portal">Business Portal</Link> */}
+          {/* <Link to="/signin">Login</Link> */}
           <Link to="/register">Create Account</Link>
         </div>
       </nav>
