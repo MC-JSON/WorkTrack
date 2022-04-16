@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import CreateBusiness from '../components/CreateBusiness'
 
 const BusinessPortal = ({ user, authenticated }) => {
+  let { ownerId } = useParams()
   let navigate = useNavigate()
 
   return user && authenticated ? (
@@ -9,8 +10,7 @@ const BusinessPortal = ({ user, authenticated }) => {
       <h1>Business Portal</h1>
       <div className="links">
         {/* business listings; logs; reports; modal? */}
-        <Link to="/createbusiness">Create Business</Link>
-        <Link to="/createemployee">Create Employee</Link>
+        <CreateBusiness ownerId={ownerId} />
       </div>
     </div>
   ) : (

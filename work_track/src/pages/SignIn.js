@@ -1,14 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
+
+  useEffect(() => {
+    const getOwners = async () => {
+      const res = await axios.get('http://localhost:3001/api/owners/')
+      setOwnerList(res.data.owners)
+    }
+    getOwners()
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -16,7 +26,11 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
     setFormValues({ email: '', password: '' })
     setUser(payload)
     //toggleAuthenticated(true)
-    navigate('/view')
+    ownerList.forEach((owner) => {
+      if (payload.email === owner.ownerEmail) {
+        navigate(`/portal/${owner.id}`)
+      }
+    })
   }
 
   return (

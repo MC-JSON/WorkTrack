@@ -12,6 +12,13 @@ header nav a {
   color: black;
 }
 
+h1 {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  display: grid;
+}
+
 button {
   text-align: center;
   margin: auto;
