@@ -50,7 +50,7 @@ const CreatePosition = (props) => {
           <button
             onClick={async () =>
               await axios.post(
-                `http://localhost:3001/jobs/${businessId}`,
+                `http://localhost:3001/api/jobs/${businessId}`,
                 formValue
               )
             }

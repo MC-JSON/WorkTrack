@@ -6,7 +6,7 @@ const BusinessView = ({ user, authenticated }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, jobId } = useParams()
 
-  return user && authenticated ? (
+  return (
     <div>
       <h1>Business Homepage</h1>
       <div>
@@ -18,11 +18,11 @@ const BusinessView = ({ user, authenticated }) => {
         />
         <CreatePosition ownerId={ownerId} businessId={businessId} />
       </div>
-    </div>
+      {/* </div>
   ) : (
     <div className="protected">
       <h3> oops! you must be signed in to do that</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <button onClick={() => navigate('/signin')}>Sign In</button> */}
     </div>
   )
 }

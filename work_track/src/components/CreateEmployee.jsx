@@ -50,7 +50,7 @@ const CreateEmployee = (props) => {
           <button
             onClick={async () =>
               await axios.post(
-                `http://localhost:3001/employees/${businessId}/`,
+                `http://localhost:3001/api/employees/${businessId}/`,
                 formValue
               )
             }
