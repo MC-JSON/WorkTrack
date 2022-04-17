@@ -1,12 +1,15 @@
+import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import CreateEmployee from '../components/CreateEmployee'
 import CreatePosition from '../components/CreatePosition'
+import BusinessRend from '../components/BusinessRend'
+import axios from 'axios'
 
-const BusinessView = ({ user, authenticated }) => {
+const BusinessView = ({ props, user, authenticated }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, jobId } = useParams()
 
-  return (
+  return user && authenticated ? (
     <div>
       <h1>Business Homepage</h1>
       <div>
@@ -18,11 +21,11 @@ const BusinessView = ({ user, authenticated }) => {
         />
         <CreatePosition ownerId={ownerId} businessId={businessId} />
       </div>
-      {/* </div>
+    </div>
   ) : (
     <div className="protected">
       <h3> oops! you must be signed in to do that</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button> */}
+      <button onClick={() => navigate('/signin')}>Sign In</button>
     </div>
   )
 }
