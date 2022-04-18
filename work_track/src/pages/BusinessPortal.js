@@ -22,6 +22,9 @@ const BusinessPortal = ({ props, user, authenticated }) => {
     getBusinesses()
   }, [])
 
+  const showBusiness = (businessId) => {
+    navigate(`/users/${ownerId}/businesses/${businessId}`)
+  }
   return (
     <div className="portal">
       <h1>Business Portal</h1>
@@ -29,12 +32,14 @@ const BusinessPortal = ({ props, user, authenticated }) => {
       <div>
         {businesses.map((business) => (
           <BusinessRend
-            businessName={`${business.businessName}`}
-            onclick={() => navigate(business.businessName)}
+            key={business.id}
+            businessName={business.businessName}
             image={business.image}
             businessAddress={business.businessAddress}
             businessCity={business.businessCity}
             businessState={business.businessState}
+            id={business.businessId}
+            showBusiness={showBusiness}
           />
         ))}
       </div>
