@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 //navigation bar built
-const Nav = ( authenticated, user, handleLogOut) => {
+const Nav = (authenticated, user, handleLogOut) => {
   let authenticatedOptions
   if (user) {
     authenticatedOptions = (
@@ -12,13 +12,13 @@ const Nav = ( authenticated, user, handleLogOut) => {
         <Link to='/createemployee'> CreateEmployee | </Link>
         <Link to='/'>Sign Out |</Link>
         <Link to="/register">Create Account</Link>
-        
+
       </nav>
     )
   }
 
 
-    const publicOptions = (
+  const publicOptions = (
     <header>
       <nav className='navbar'>
         <div>
@@ -29,11 +29,11 @@ const Nav = ( authenticated, user, handleLogOut) => {
       </nav>
     </header>
   )
-return (
-  <div>
-    {authenticated && user ? authenticatedOptions : publicOptions}
-  </div>
-)
+  return (
+    <div>
+      {authenticated && user ? authenticatedOptions : publicOptions}
+    </div>
+  )
 }
 
 export default Nav
