@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import SignIn from './SignIn'
 
-const Home = ({ setUser, toggleAuthenticated, user }) => {
+const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
   let navigate = useNavigate()
 
   // const handleChange = (e) => {
@@ -42,7 +42,12 @@ const Home = ({ setUser, toggleAuthenticated, user }) => {
       </div>
 
       <div className="login-form-wrapper">
-        <SignIn setUser={setUser} user={user} />
+        <SignIn
+          setUser={setUser}
+          user={user}
+          toggleAuthenticated={toggleAuthenticated}
+          authenticated={authenticated}
+        />
       </div>
     </div>
   )
