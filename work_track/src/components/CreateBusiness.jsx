@@ -1,15 +1,17 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new business into database
 const CreateBusiness = (props) => {
+  let { ownerId } = useParams()
+
   const [formValue, setFormValue] = useState({
-    name: '',
-    address: '',
-    city: '',
-    state: '',
-    image: ''
+    businessName: '',
+    businessAddress: '',
+    businessCity: '',
+    businessState: '',
+    businessImage: ''
   })
 
   const handleChange = (event) => {
@@ -23,10 +25,16 @@ const CreateBusiness = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/portal')
+    navigate(`/portal/${ownerId}`)
   }
 
-  const { name, address, city, state } = formValue
+  const {
+    businessName,
+    businessAddress,
+    businessCity,
+    businessState,
+    businessImage
+  } = formValue
 
   return (
     <div className="forms">
@@ -35,52 +43,52 @@ const CreateBusiness = (props) => {
           <input
             className="form"
             type="text"
-            name="name"
+            name="businessName"
             placeholder="Name"
-            value={name}
+            value={businessName}
             onChange={handleChange}
           />
           <input
             className="form"
             type="text"
-            name="address"
-            placeholder="address"
-            value={address}
+            name="businessAddress"
+            placeholder="Address"
+            value={businessAddress}
             onChange={handleChange}
           />
           <input
             className="form"
             type="text"
-            name="city"
-            placeholder="city"
-            value={city}
+            name="businessCity"
+            placeholder="City"
+            value={businessCity}
             onChange={handleChange}
           />
           <input
             className="form"
             type="text"
-            name="state"
-            placeholder="state"
-            value={state}
+            name="businessState"
+            placeholder="State"
+            value={businessState}
             onChange={handleChange}
           />
           <input
             className="form"
             type="text"
-            name="image"
-            placeholder="image"
-            value={'image'}
+            name="businessImage"
+            placeholder="Image"
+            value={businessImage}
             onChange={handleChange}
           />
           <button
             onClick={async () =>
               await axios.post(
-                'http://localhost:3001/:ownerId/create-business',
+                `http://localhost:3001/api/businesses/${ownerId}`,
                 formValue
               )
             }
           >
-            Create
+            Create Business
           </button>
         </form>
       </section>

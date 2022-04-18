@@ -11,3 +11,45 @@ header nav a {
   font-size: 20px;
   color: black;
 }
+
+h1 {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  display: grid;
+}
+
+button {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  display: grid;
+  padding: 0.2em 1em;
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.portal {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  display: grid;
+}
+
+a:link {
+  text-decoration: none
+}
+
+form {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  display: grid;
+}
+
+input {
+  width: 375px;
+  height: 25px;
+ }

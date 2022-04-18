@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-//form for creating new employee into database
-const CreateEmployee = (props) => {
+//form for creating new positions into database
+const CreatePosition = (props) => {
+  let { businessId } = useParams()
+
   const [formValue, setFormValue] = useState({
-    name: '',
-    email: ''
+    jobTitle: '',
+    jobDescription: ''
   })
 
   const handleChange = (event) => {
@@ -20,10 +22,10 @@ const CreateEmployee = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate('/portal')
+    navigate(`/view/${businessId}`)
   }
 
-  const { name, job } = formValue
+  const { jobTitle, jobDescription } = formValue
 
   return (
     <div className="forms">
@@ -32,25 +34,28 @@ const CreateEmployee = (props) => {
           <input
             className="form"
             type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
+            name="jobTitle"
+            placeholder="Job Title"
+            value={jobTitle}
             onChange={handleChange}
           />
           <input
             className="form"
             type="text"
-            name="job"
-            placeholder="Job"
-            value={job}
+            name="jobDescription"
+            placeholder="Job Description"
+            value={jobDescription}
             onChange={handleChange}
           />
           <button
             onClick={async () =>
-              await axios.post('http://localhost:3001/:businessId', formValue)
+              await axios.post(
+                `http://localhost:3001/api/jobs/${businessId}`,
+                formValue
+              )
             }
           >
-            Create
+            Create Position
           </button>
         </form>
       </section>
@@ -58,4 +63,4 @@ const CreateEmployee = (props) => {
   )
 }
 
-export default CreateEmployee
+export default CreatePosition

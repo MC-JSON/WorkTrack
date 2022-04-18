@@ -7,10 +7,7 @@ import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
-import CreateBusiness from './pages/CreateBusiness'
-import CreateEmployee from './pages/CreateEmployee'
 import { CheckSession } from './services/Auth'
-
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -37,27 +34,34 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav 
-      authenticated={authenticated}
-      user={user}
-      handleLogOut={handleLogOut}/>
+      <Nav
+        authenticated={authenticated}
+        user={user}
+        handleLogOut={handleLogOut}
+      />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" 
-          element={<SignIn setUser={setUser} 
-          toggleAuthenticated={toggleAuthenticated} />} />
+          <Route
+            path="/signin"
+            element={
+              <SignIn
+                setUser={setUser}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route path="/register" element={<Register />} />
-          <Route path="/view" element={<BusinessView 
-          user={user} 
-          authenticated={authenticated}/>} />
-          <Route path="/createbusiness" element={<CreateBusiness
-          user={user}
-          authenticated={authenticated} />} />
-          <Route path="/createemployee" element={<CreateEmployee 
-          user={user}
-          authenticated={authenticated}/>} />
-          <Route path="/portal" element={<BusinessPortal />} />
+          <Route
+            path="/view/:businessId"
+            element={<BusinessView user={user} authenticated={authenticated} />}
+          />
+          <Route
+            path="/portal/:ownerId"
+            element={
+              <BusinessPortal user={user} authenticated={authenticated} />
+            }
+          />
         </Routes>
       </main>
     </div>
