@@ -1,11 +1,11 @@
-const BusinessRend = (props) => {
+const BusinessRend = ({ key, businessName, image, id, showBusiness }) => {
   return (
-    <div className="biz" onClick={() => props.showBusiness(props.businessId)}>
-      <div className="biz-wrapper">
-        <img src={props.image} alt="business" />
+    <div className="biz-wrapper" onClick={() => showBusiness(id)}>
+      <div className="biz-image-wrapper">
+        <img src={image} alt={businessName} />
       </div>
-      <div className="info-wrapper flex-col">
-        <h3>{props.businessName}</h3>
+      <div className="biz-info-wrapper flex-col">
+        <h3>{businessName}</h3>
       </div>
     </div>
   )

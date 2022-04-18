@@ -7,11 +7,9 @@ import { useNavigate } from 'react-router-dom'
 const InformationHolding = (props) => {
   
   const [formValue, setFormValue] = useState({
-    name: props.name,
-    types: props.types,
-    description: props.description,
-    price: props.price,
-    image: props.image
+    entryDate: props.entryDate,
+    employeeId: props.employeeId,
+    employeeHours: props.employeeHours,
   })
 
   const handleChange = (event) => {
@@ -21,21 +19,21 @@ const InformationHolding = (props) => {
     })
   }
 
-  const { name, types, description, price, image } = formValue
+  const { entryDate, employeeId, employeeHours } = formValue
 
   let navigate = useNavigate()
 
   //handles update submit and navigates back 
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await axios.put(`http://localhost:3001/update/${props.id}`, formValue)
+      await axios.put(`http://localhost:3001/api/entries/${entryId}`, formValue)
       navigate('/')
   }
 
 //handles delete submit and navigates back to types
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-      await axios.delete(`http://localhost:3001/delete/${props.id}`, formValue)
+      await axios.delete(`http://localhost:3001/api/entries/${entryId}`, formValue)
       navigate('/')
   }
 
@@ -47,11 +45,6 @@ const InformationHolding = (props) => {
       <img src={props.image} alt="types" />
     </div>
     <div className="info-wrapper">
-      <h3>{props.name}</h3>
-      <h4>{props.types}</h4>
-      <h4>{props.price}</h4>
-      <p>{props.description}</p>
-      {/* <button>Edit</button> */}
       <form onSubmit={handleSubmit}>
       <input
           className="form"
@@ -64,37 +57,21 @@ const InformationHolding = (props) => {
         <input
           className="form"
           type="text"
-          name="types"
-          placeholder="Type"
-          value={types}
+          name="entryDate"
+          placeholder="Date"
+          value={entryDate}
           onChange={handleChange}
         />
         <input
           className="form"
-          type="text"
-          name="description"
-          placeholder="Description"
-          value={description}
-          onChange={handleChange}
-        />
-        <input
-          className="form"
-          type="text"
-          name="price"
-          placeholder="Price"
-          value={price}
-          onChange={handleChange}
-        />
-        <input
-          className="form"
-          type="text"
-          name="image"
-          placeholder="Image"
-          value={image}
+          type="integer"
+          name="employeeId"
+          placeholder="Employee ID"
+          value={employeeId}
           onChange={handleChange}
         />
         <br />
-        <button type='submit'>Submit</button>
+        <button type='submit'>Update</button>
       <button onClick={handleSubmit2}>Delete</button>
       </form>
     </div>

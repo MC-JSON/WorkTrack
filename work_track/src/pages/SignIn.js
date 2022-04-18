@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
 const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   let navigate = useNavigate()
@@ -9,7 +8,6 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     ownerEmail: '',
     ownerPassword: ''
   })
-  const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -29,6 +27,9 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     setFormValues({ ownerEmail: '', ownerPassword: '' })
     setUser(payload)
     toggleAuthenticated(true)
+    // ownerList.forEach((owner) => {
+    //   if (owner.ownerEmail === owner.ownerEmail) {
+    //  navigate(`/portal/${user.id}`)
     navigate(`/portal/${user.id}`)
   }
 
@@ -42,7 +43,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
               onChange={handleChange}
               name="ownerEmail"
               type="email"
-              placeholder="youremail@example.com"
+              placeholder="your_email@example.com"
               value={formValues.ownerEmail}
               required
             />
