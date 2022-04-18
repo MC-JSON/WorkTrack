@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new entry into database
@@ -11,6 +11,8 @@ const CreateEntry = (props) => {
     employeeId: '',
     employeeHours: ''
   })
+
+  const [employees, setEmployees] = useState([])
 
   const handleChange = (event) => {
     setFormValue({
@@ -26,6 +28,16 @@ const CreateEntry = (props) => {
     navigate(`/view/${businessId}`)
   }
 
+  useEffect(() => {
+    const getEmployees = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/employees/${businessId}`
+      )
+      setEmployees(response.data)
+    }
+    getEmployees()
+  }, [])
+
   const {  entryDate, employeeId, employeeHours } = formValue
 
   return (
@@ -40,19 +52,16 @@ const CreateEntry = (props) => {
             value={entryDate}
             onChange={handleChange}
           />
-          <input
-            className="form"
-            type="integer"
-            name="employeeId"
-            placeholder="employeeId"
-            value={employeeId}
-            onChange={handleChange}
-          />
+          <select className="create-form-select" name="employeeId" onChange={handleChange}>
+            {employees.map((employee) => (
+            <option value={employee.id}>{employee.employeeName}</option>
+            ))}
+            </select>
           <input
             className="form"
             type="integer"
             name="employeeHours"
-            placeholder="Hours worked"
+            placeholder="Hours Worked"
             value={employeeHours}
             onChange={handleChange}
           />
