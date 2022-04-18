@@ -25,7 +25,7 @@ const BusinessPortal = ({ props, user, authenticated }) => {
   const showBusiness = (businessId) => {
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
-  return (
+  return user && authenticated ? (
     <div className="portal">
       <h1>Business Portal</h1>
 
@@ -48,11 +48,11 @@ const BusinessPortal = ({ props, user, authenticated }) => {
         <CreateBusiness ownerId={ownerId} />
       </div>
     </div>
-    // ) : (
-    //   <div className="protected">
-    //     <h3> oops! you must be signed in to do that</h3>
-    //     <button onClick={() => navigate('/signin')}>Sign In</button>
-    //   </div>
+  ) : (
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
   )
 }
 

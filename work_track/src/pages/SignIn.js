@@ -3,12 +3,9 @@ import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const SignIn = ({ setUser, toggleAuthenticated, user }) => {
+const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
-  const [formValues, setFormValues] = useState({
-    ownerEmail: '',
-    ownerPassword: ''
-  })
+  const [formValues, setFormValues] = useState({ email: '', password: '' })
   const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
@@ -18,7 +15,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   useEffect(() => {
     const getOwners = async () => {
       const res = await axios.get('http://localhost:3001/api/owners/')
-      setOwnerList(res.data)
+      setOwnerList(res.data.owners)
     }
     getOwners()
   }, [])
@@ -26,14 +23,13 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
+    setFormValues({ email: '', password: '' })
     setUser(payload)
-    setFormValues({ ownerEmail: '', ownerPassword: '' })
-    //toggleAuthenticated(true)
+    toggleAuthenticated(true)
     ownerList.forEach((owner) => {
-      if (owner.ownerEmail === owner.ownerEmail) {
+      if (payload.email === owner.ownerEmail) {
         navigate(`/portal/${owner.id}`)
       }
-      setFormValues({ ownerEmail: '', ownerPassword: '' })
     })
   }
 
@@ -45,10 +41,10 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
             <label>Email</label>
             <input
               onChange={handleChange}
-              name="ownerEmail"
+              name="email"
               type="email"
               placeholder="youremail@example.com"
-              value={formValues.ownerEmail}
+              value={formValues.email}
               required
             />
           </div>
@@ -57,14 +53,12 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
             <input
               onChange={handleChange}
               type="password"
-              name="ownerPassword"
-              value={formValues.ownerPassword}
+              name="password"
+              value={formValues.password}
               required
             />
           </div>
-          <button
-            disabled={!formValues.ownerEmail || !formValues.ownerPassword}
-          >
+          <button disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
         </form>
