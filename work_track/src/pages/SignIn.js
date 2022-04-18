@@ -3,7 +3,7 @@ import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const SignIn = ({ setUser, toggleAuthenticated }) => {
+const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     ownerEmail: '',
@@ -29,7 +29,7 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
     setFormValues({ ownerEmail: '', ownerPassword: '' })
     setUser(payload)
     toggleAuthenticated(true)
-    navigate(`/portal/${owner.id}`)
+    navigate(`/portal/${user.id}`)
   }
 
   return (
@@ -51,8 +51,8 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
             <label>Password</label>
             <input
               onChange={handleChange}
-              type="ownerPassword"
-              name="password"
+              type="password"
+              name="ownerPassword"
               value={formValues.ownerPassword}
               required
             />
