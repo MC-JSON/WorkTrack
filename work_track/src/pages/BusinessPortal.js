@@ -14,7 +14,6 @@ const BusinessPortal = ({ user, authenticated }) => {
     const response = await axios.get(
       `http://localhost:3001/api/owners/${ownerId}/businesses`
     )
-    console.log(response)
     setBusinesses(response.data)
   }
 

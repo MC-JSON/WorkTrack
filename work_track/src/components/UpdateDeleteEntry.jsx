@@ -1,13 +1,15 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
 //built for edits
 const InformationHolding = (props) => {
 
-  let { entryId } = useParams()
+  let { entryId, logId } = useParams()
   
+  const [entries, setEntries] = useState()
+
   const [formValue, setFormValue] = useState({
     entryDate: props.entryDate,
     employeeId: props.employeeId,
@@ -25,26 +27,35 @@ const InformationHolding = (props) => {
 
   let navigate = useNavigate()
 
-  //handles update submit and navigates back 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //     await axios.put(`http://localhost:3001/api/entries/${entryId}`, formValue)
-  //     navigate('/')
-  // }
+  // handles update submit and navigates back 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+      await axios.put(`http://localhost:3001/api/entries/${entryId}`, formValue)
+      navigate('/')
+  }
 
-//handles delete submit and navigates back to types
-  // const handleSubmit2 = async (e) => {
-  //   e.preventDefault()
-  //     await axios.delete(`http://localhost:3001/api/entries/${entryId}`, formValue)
-  //     navigate('/')
-  // }
+// handles delete submit and navigates back 
+  const handleSubmit2 = async (e) => {
+    e.preventDefault()
+      await axios.delete(`http://localhost:3001/api/entries/${entryId}`, formValue)
+      navigate('/')
+  }
+
+  useEffect(() => {
+    const getEntries = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/entries/${logId}}`
+      )
+      setEntries(response.data)
+    }
+    getEntries()
+  }, [])
 
 
-  //edit button left in for when user authentication is ready to deploy
   return (
     <div className="info-wrapper">
       <form onSubmit={handleSubmit}>
-        <input
+        {/* <input
           className="form"
           type="text"
           name="entryDate"
@@ -67,7 +78,7 @@ const InformationHolding = (props) => {
           placeholder="Employee Hours"
           value={employeeHours}
           onChange={handleChange}
-        />
+        /> */}
         <br />
         <button type='submit'>Update</button>
       <button onClick={handleSubmit2}>Delete</button>
