@@ -32,6 +32,16 @@ const App = () => {
     }
   }, [])
 
+  // <Route
+  //   path="/signin"
+  //   element={
+  //     <SignIn
+  //       setUser={setUser}
+  //       user={user}
+  //       toggleAuthenticated={toggleAuthenticated}
+  //     />
+  //   }
+  // />
   return (
     <div className="App">
       <Nav
@@ -41,19 +51,10 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/signin"
-            element={
-              <SignIn
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
+          <Route path="/" element={<Home setUser={setUser} user={user} />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/view/:businessId"
+            path="/users/:userId/businesses/:businessId"
             element={<BusinessView user={user} authenticated={authenticated} />}
           />
           <Route
