@@ -34,8 +34,8 @@ const BusinessPortal = ({ props, user, authenticated }) => {
           <BusinessRend
             key={business.id}
             businessName={business.businessName}
-            image={business.image}
-            id={business.businessId}
+            image={business.businessImage}
+            id={business.id}
             showBusiness={showBusiness}
           />
         ))}

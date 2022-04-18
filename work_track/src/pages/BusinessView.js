@@ -25,7 +25,7 @@ const BusinessView = ({ props, user, authenticated }) => {
   ) : (
     <div className="protected">
       <h3> oops! you must be signed in to do that</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <button onClick={() => navigate('/')}>Sign In</button>
     </div>
   )
 }
