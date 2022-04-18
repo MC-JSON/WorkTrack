@@ -1,4 +1,4 @@
-const BusinessRend = ({ key, businessName, image, id, showBusiness }) => {
+const BusinessRend = ({ businessName, image, id, showBusiness }) => {
   return (
     <div className="biz-wrapper" onClick={() => showBusiness(id)}>
       <div className="biz-image-wrapper">
