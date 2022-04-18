@@ -10,7 +10,7 @@ const Nav = ( authenticated, user, handleLogOut) => {
         <Link to='/portal'>| Home </Link>
         <Link to='/createbusiness'>| CreateBusiness | </Link>
         <Link to='/createemployee'> CreateEmployee | </Link>
-        <Link onClick={handleLogOut} to='/'>Sign Out |</Link>
+        <Link to='/'>Sign Out |</Link>
         <Link to="/register">Create Account</Link>
         
       </nav>
