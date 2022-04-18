@@ -1,8 +1,23 @@
 import { Link } from 'react-router-dom'
 
 //navigation bar built
-const Nav = (props) => {
-  return (
+const Nav = ( authenticated, user, handleLogOut) => {
+  let authenticatedOptions
+  if (user) {
+    authenticatedOptions = (
+      <nav>
+        <h3>welcome {user.name}!</h3>
+        <Link to='/portal'>| Home </Link>
+        <Link to='/createbusiness'>| CreateBusiness | </Link>
+        <Link to='/createemployee'> CreateEmployee | </Link>
+        <Link onClick={handleLogOut} to='/'>Sign Out |</Link>
+        
+      </nav>
+    )
+  }
+
+
+    const publicOptions = (
     <header>
       <nav className='navbar'>
         <div>
@@ -13,6 +28,11 @@ const Nav = (props) => {
       </nav>
     </header>
   )
+return (
+  <div>
+    {authenticated && user ? authenticatedOptions : publicOptions}
+  </div>
+)
 }
 
 export default Nav
