@@ -8,30 +8,33 @@ const BusinessPortal = ({ props, user, authenticated }) => {
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
-  const [business, setBusiness] = useState([])
+  const [businesses, setBusinesses] = useState([])
 
   const getBusinesses = async () => {
     const response = await axios.get(
       `http://localhost:3001/api/owners/${ownerId}/businesses`
     )
     console.log(response)
-    setBusiness(response.data.business.businessName)
+    setBusinesses(response.data)
   }
 
   useEffect(() => {
     getBusinesses()
-  }, [business])
+  }, [])
 
   return (
     <div className="portal">
       <h1>Business Portal</h1>
 
       <div>
-        {business.map((business) => (
+        {businesses.map((business) => (
           <BusinessRend
             businessName={`${business.businessName}`}
             onclick={() => navigate(business.businessName)}
             image={business.image}
+            businessAddress={business.businessAddress}
+            businessCity={business.businessCity}
+            businessState={business.businessState}
           />
         ))}
       </div>

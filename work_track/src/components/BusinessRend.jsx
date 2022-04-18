@@ -7,6 +7,7 @@ const BusinessRend = (props) => {
     </div>
     <div className="info-wrapper flex-col">
       <h3>{props.businessName}</h3>
+      <h4>{props.businessAddress}, {props.businessCity}, {props.businessState}</h4>
     </div>
     </div>
   )

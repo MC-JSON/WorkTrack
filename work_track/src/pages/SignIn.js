@@ -5,7 +5,10 @@ import axios from 'axios'
 
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
-  const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [formValues, setFormValues] = useState({
+    ownerEmail: '',
+    ownerPassword: ''
+  })
   const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
@@ -23,13 +26,13 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ email: '', password: '' })
     setUser(payload)
     //toggleAuthenticated(true)
     ownerList.forEach((owner) => {
       if (payload.email === owner.ownerEmail) {
         navigate(`/portal/${owner.id}`)
       }
+      setFormValues({ ownerEmail: '', ownerPassword: '' })
     })
   }
 
@@ -41,10 +44,10 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
             <label>Email</label>
             <input
               onChange={handleChange}
-              name="email"
+              name="ownerEmail"
               type="email"
               placeholder="youremail@example.com"
-              value={formValues.email}
+              value={formValues.ownerEmail}
               required
             />
           </div>
@@ -53,12 +56,14 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
             <input
               onChange={handleChange}
               type="password"
-              name="password"
-              value={formValues.password}
+              name="ownerPassword"
+              value={formValues.ownerPassword}
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <button
+            disabled={!formValues.ownerEmail || !formValues.ownerPassword}
+          >
             Sign In
           </button>
         </form>
