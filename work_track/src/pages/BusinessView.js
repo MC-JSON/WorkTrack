@@ -39,6 +39,9 @@ const BusinessView = ({ props, user, authenticated }) => {
   return user && authenticated ? (
     <div>
       <h1>Business Homepage</h1>
+
+      <div className="employee-list-headings">Employees & Position:</div>
+      <br />
       <div className="employee-list">
         {employees.map((employee) => (
           <EmployeeInfo
