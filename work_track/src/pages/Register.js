@@ -19,9 +19,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
-      name: formValues.name,
-      email: formValues.email,
-      password: formValues.password
+      ownerName: formValues.name,
+      ownerEmail: formValues.email,
+      ownerPassword: formValues.password
     })
     setFormValues({
       name: '',
@@ -29,7 +29,7 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/signin')
+    navigate('/')
   }
 
   return (

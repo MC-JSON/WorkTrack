@@ -4,10 +4,9 @@ export const SignInUser = async (data) => {
   try {
     const res = await Client.post('/auth/login', data)
     localStorage.setItem('token', res.data.token)
-    return res.data.user
+    return res.data.owner
   } catch (error) {
     throw error
-    
   }
 }
 
@@ -17,7 +16,6 @@ export const RegisterUser = async (data) => {
     return res.data
   } catch (error) {
     throw error
-    
   }
 }
 
@@ -27,6 +25,5 @@ export const CheckSession = async () => {
     return res.data
   } catch (error) {
     throw error
-    
   }
 }
