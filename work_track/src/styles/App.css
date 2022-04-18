@@ -83,6 +83,12 @@ form {
   justify-content: space-between;
 }
 
+/* Entries */
+.entry-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* 
 button {
