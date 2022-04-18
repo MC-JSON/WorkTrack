@@ -64,7 +64,7 @@ const CreateEntry = (props) => {
               )
             }
           >
-            Create Employee
+            Create Entry
           </button>
         </form>
       </section>
@@ -72,4 +72,4 @@ const CreateEntry = (props) => {
   )
 }
 
-export default CreateEmployee
+export default CreateEntry

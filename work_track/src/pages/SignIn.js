@@ -29,8 +29,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     toggleAuthenticated(true)
     // ownerList.forEach((owner) => {
     //   if (owner.ownerEmail === owner.ownerEmail) {
-    //  navigate(`/portal/${user.id}`)
-    navigate(`/portal/${user.id}`)
+    navigate(`/portal/${payload.id}`)
   }
 
   return (
