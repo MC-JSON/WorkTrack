@@ -4,7 +4,7 @@ import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
 import axios from 'axios'
 
-const BusinessPortal = ({ props, user, authenticated }) => {
+const BusinessPortal = ({ user, authenticated }) => {
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
