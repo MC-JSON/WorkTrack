@@ -4,7 +4,7 @@ import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
 import axios from 'axios'
 
-const BusinessPortal = ({ props, user, authenticated }) => {
+const BusinessPortal = ({ user, authenticated }) => {
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
@@ -45,11 +45,6 @@ const BusinessPortal = ({ props, user, authenticated }) => {
         <CreateBusiness ownerId={ownerId} />
       </div>
     </div>
-    // ) : (
-    //   <div className="protected">
-    //     <h3> oops! you must be signed in to do that</h3>
-    //     <button onClick={() => navigate('/signin')}>Sign In</button>
-    //   </div>
   )
 }
 

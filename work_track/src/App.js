@@ -31,16 +31,6 @@ const App = () => {
     }
   }, [])
 
-  // <Route
-  //   path="/signin"
-  //   element={
-  //     <SignIn
-  //       setUser={setUser}
-  //       user={user}
-  //       toggleAuthenticated={toggleAuthenticated}
-  //     />
-  //   }
-  // />
   return (
     <div className="App">
       <Nav

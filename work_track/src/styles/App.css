@@ -76,10 +76,7 @@ form {
 
 
 /* Employee Info */
-/* .employee-list {
-  display: flex;
-  flex-flow: column;
-} */
+
 .employee-info-wrapper {
   display: flex;
   width: 20vw;
