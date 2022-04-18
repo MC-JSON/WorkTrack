@@ -50,7 +50,17 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home setUser={setUser} user={user} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                setUser={setUser}
+                user={user}
+                authenticated={authenticated}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route
             path="/users/:userId/businesses/:businessId"

@@ -28,7 +28,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     const payload = await SignInUser(formValues)
     setUser(payload)
     setFormValues({ ownerEmail: '', ownerPassword: '' })
-    //toggleAuthenticated(true)
+    toggleAuthenticated(true)
     // ownerList.forEach((owner) => {
     //   if (owner.ownerEmail === owner.ownerEmail) {
     navigate(`/portal/${user.id}`)
