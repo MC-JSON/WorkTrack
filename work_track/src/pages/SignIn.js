@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
-  const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [formValues, setFormValues] = useState({ ownerEmail: '', ownerPassword: '' })
   const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
@@ -23,11 +23,11 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ email: '', password: '' })
+    setFormValues({ ownerEmail: '', ownerPassword: '' })
     setUser(payload)
     //toggleAuthenticated(true)
     ownerList.forEach((owner) => {
-      if (payload.email === owner.ownerEmail) {
+      if (payload.ownerEmail === owner.ownerEmail) {
         navigate(`/portal/${owner.id}`)
       }
     })

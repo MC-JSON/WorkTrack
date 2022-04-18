@@ -11,6 +11,7 @@ const Nav = ( authenticated, user, handleLogOut) => {
         <Link to='/createbusiness'>| CreateBusiness | </Link>
         <Link to='/createemployee'> CreateEmployee | </Link>
         <Link onClick={handleLogOut} to='/'>Sign Out |</Link>
+        <Link to="/register">Create Account</Link>
         
       </nav>
     )
@@ -23,7 +24,7 @@ const Nav = ( authenticated, user, handleLogOut) => {
         <div>
           {/* <Link to="/portal">Business Portal</Link> */}
           {/* <Link to="/signin">Login</Link> */}
-          <Link to="/register">Create Account</Link>
+          {/* <Link to="/register">Create Account</Link> */}
         </div>
       </nav>
     </header>
