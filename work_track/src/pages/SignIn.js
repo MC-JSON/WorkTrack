@@ -5,32 +5,31 @@ import axios from 'axios'
 
 const SignIn = ({ setUser, toggleAuthenticated }) => {
   let navigate = useNavigate()
-  const [formValues, setFormValues] = useState({ email: '', password: '' })
+  const [formValues, setFormValues] = useState({
+    ownerEmail: '',
+    ownerPassword: ''
+  })
   const [ownerList, setOwnerList] = useState([])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  useEffect(() => {
-    const getOwners = async () => {
-      const res = await axios.get('http://localhost:3001/api/owners/')
-      setOwnerList(res.data.owners)
-    }
-    getOwners()
-  }, [])
+  // useEffect(() => {
+  //   const getOwners = async () => {
+  //     const res = await axios.get('http://localhost:3001/api/owners/')
+  //     setOwnerList(res.data.owners)
+  //   }
+  //   getOwners()
+  // }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ email: '', password: '' })
+    setFormValues({ ownerEmail: '', ownerPassword: '' })
     setUser(payload)
     toggleAuthenticated(true)
-    ownerList.forEach((owner) => {
-      if (payload.email === owner.ownerEmail) {
-        navigate(`/portal/${owner.id}`)
-      }
-    })
+    navigate(`/portal/${owner.id}`)
   }
 
   return (
@@ -41,10 +40,10 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
             <label>Email</label>
             <input
               onChange={handleChange}
-              name="email"
+              name="ownerEmail"
               type="email"
               placeholder="youremail@example.com"
-              value={formValues.email}
+              value={formValues.ownerEmail}
               required
             />
           </div>
@@ -52,13 +51,15 @@ const SignIn = ({ setUser, toggleAuthenticated }) => {
             <label>Password</label>
             <input
               onChange={handleChange}
-              type="password"
+              type="ownerPassword"
               name="password"
-              value={formValues.password}
+              value={formValues.ownerPassword}
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <button
+            disabled={!formValues.ownerEmail || !formValues.ownerPassword}
+          >
             Sign In
           </button>
         </form>

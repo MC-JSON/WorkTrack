@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router'
 import './styles/App.css'
 import Nav from './components/Nav'
 import Home from './pages/Home'
-import SignIn from './pages/SignIn'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
 import { CheckSession } from './services/Auth'
@@ -51,7 +50,17 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home setUser={setUser} user={user} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                setUser={setUser}
+                user={user}
+                authenticated={authenticated}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route path="/register" element={<Register />} />
           <Route
             path="/users/:userId/businesses/:businessId"
