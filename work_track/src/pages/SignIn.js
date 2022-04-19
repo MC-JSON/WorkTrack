@@ -23,25 +23,24 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   }
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit} className="login-form">
         <div className="email-input">
-          <label>Email</label>
           <input
             onChange={handleChange}
             name="ownerEmail"
             type="email"
-            placeholder="your_email@example.com"
+            placeholder="Email Address"
             value={formValues.ownerEmail}
             required
           />
         </div>
         <div className="password-input">
-          <label>Password</label>
           <input
             onChange={handleChange}
             type="password"
             name="ownerPassword"
+            placeholder="Password"
             value={formValues.ownerPassword}
             required
           />

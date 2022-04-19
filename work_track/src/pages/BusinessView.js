@@ -7,12 +7,22 @@ import Entries from './Entries'
 import CreateEntry from '../components/CreateEntry'
 import axios from 'axios'
 
-const BusinessView = ({ props, user, authenticated }) => {
+const BusinessView = ({
+  user,
+  authenticated,
+  todayDay,
+  todayMonth,
+  todayYear
+}) => {
   let navigate = useNavigate()
   let { ownerId, businessId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
+  const [businessName, setBusinessName] = useState('')
+  const [firstMonth, setFirstMonth] = useState(todayMonth)
+  const [firstDay, setFirstDay] = useState(todayDay - 7)
+  const [firstYear, setFirstYear] = useState(todayYear)
 
   useEffect(() => {
     const getLog = async () => {
@@ -33,33 +43,82 @@ const BusinessView = ({ props, user, authenticated }) => {
       )
       setJobs(response.data)
     }
+    const getBusinessName = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/businesses/${businessId}`
+      )
+      setBusinessName(response.data.businessName)
+    }
     getLog()
     getEmployees()
     getJobs()
+    getBusinessName()
   }, [])
 
-  return user && authenticated && logId ? (
-    <div>
-      <h1>Business Homepage</h1>
+  const showLastMonth = (month, day, year) => {
+    setFirstMonth(month - 1)
+    setFirstDay(day)
+    setFirstYear(year)
+  }
 
-      <div className="employee-list-headings">Employees & Position:</div>
-      <br />
-      <div className="employee-list">
-        {employees.map((employee) => (
-          <EmployeeInfo
-            key={employee.id}
-            name={employee.employeeName}
-            job={employee.jobId}
-            jobList={jobs}
-          />
-        ))}
+  const showYesterday = (month, day, year) => {
+    setFirstMonth(month)
+    setFirstDay(day - 1)
+    setFirstYear(year)
+  }
+
+  const showLastWeek = (month, day, year) => {
+    setFirstMonth(month)
+    setFirstDay(day - 7)
+    setFirstYear(year)
+  }
+  return user && authenticated && logId ? (
+    <div className="business-page-wrapper">
+      <div className="business-info-wrapper">
+        <h1>{`${businessName}`} Homepage</h1>
       </div>
-      <Entries logId={logId} employees={employees} />
-      <div>
-        {/* dropdown menu with modal pop-up?; logs; reports */}
-        <CreateEmployee ownerId={ownerId} businessId={businessId} />
-        <CreatePosition ownerId={ownerId} businessId={businessId} />
-        <CreateEntry ownerId={ownerId} businessId={businessId} logId={logId} />
+
+      <div className="crud-wrapper">
+        <div className="crud-functions">
+          {/* dropdown menu with modal pop-up?; logs; reports */}
+          <CreateEmployee ownerId={ownerId} businessId={businessId} />
+          <CreatePosition ownerId={ownerId} businessId={businessId} />
+          <CreateEntry
+            ownerId={ownerId}
+            businessId={businessId}
+            logId={logId}
+          />
+        </div>
+      </div>
+
+      <Entries
+        logId={logId}
+        employees={employees}
+        lastMonth={todayMonth}
+        lastDay={todayDay}
+        lastYear={todayYear}
+        firstMonth={firstMonth}
+        firstDay={firstDay}
+        firstYear={firstYear}
+        showLastMonth={showLastMonth}
+        showYesterday={showYesterday}
+        showLastWeek={showLastWeek}
+      />
+
+      <div className="employee-wrapper">
+        <div className="employee-list-headings">Employees & Position:</div>
+        <br />
+        <div className="employee-list">
+          {employees.map((employee) => (
+            <EmployeeInfo
+              key={employee.id}
+              name={employee.employeeName}
+              job={employee.jobId}
+              jobList={jobs}
+              employeeId={employee.id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   ) : (

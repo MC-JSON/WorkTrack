@@ -14,6 +14,10 @@ const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [userName, setUserName] = useState('')
+  const [today, setToday] = useState(new Date())
+  const [todayDay, setTodayDay] = useState(today.getDate())
+  const [todayMonth, setTodayMonth] = useState(today.getMonth() + 1)
+  const [todayYear, setTodayYear] = useState(today.getFullYear())
 
   const handleLogOut = () => {
     setUser(null)
@@ -31,7 +35,6 @@ const App = () => {
     const userInfo = await axios.get(
       `http://localhost:3001/api/owners/${user.id}`
     )
-    console.log('userInfo: ', userInfo)
     setUserName(userInfo.data.ownerName)
   }
 
@@ -43,6 +46,7 @@ const App = () => {
     if (user) {
       getUserName()
     }
+    let today = new Date()
   }, [])
 
   return (
@@ -68,8 +72,16 @@ const App = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/users/:userId/businesses/:businessId"
-            element={<BusinessView user={user} authenticated={authenticated} />}
+            path="/users/:userId/businesses/:businessId/"
+            element={
+              <BusinessView
+                user={user}
+                authenticated={authenticated}
+                todayDay={todayDay}
+                todayMonth={todayMonth}
+                todayYear={todayYear}
+              />
+            }
           />
           <Route
             path="/portal/:ownerId"
