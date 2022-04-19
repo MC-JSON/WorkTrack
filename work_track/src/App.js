@@ -8,10 +8,12 @@ import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
 import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
+import axios from 'axios'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [userName, setUserName] = useState('')
 
   const handleLogOut = () => {
     setUser(null)
@@ -20,19 +22,26 @@ const App = () => {
   }
 
   const checkToken = async () => {
-    console.log('test')
     const user = await CheckSession()
-    console.log(user)
     setUser(user)
     toggleAuthenticated(true)
   }
 
+  const getUserName = async () => {
+    const userInfo = await axios.get(
+      `http://localhost:3001/api/owners/${user.id}`
+    )
+    console.log('userInfo: ', userInfo)
+    setUserName(userInfo.data.ownerName)
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
-    console.log(token)
-
     if (token) {
       checkToken()
+    }
+    if (user) {
+      getUserName()
     }
   }, [])
 
@@ -41,6 +50,7 @@ const App = () => {
       <Nav
         authenticated={authenticated}
         user={user}
+        userName={userName}
         handleLogOut={handleLogOut}
       />
       <main>
