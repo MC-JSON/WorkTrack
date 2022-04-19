@@ -5,6 +5,8 @@ import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
 import Entries from './Entries'
 import CreateEntry from '../components/CreateEntry'
+import UpdateEmployee from '../components/UpdateEmployee'
+import UpdatePosition from '../components/UpdatePosition'
 import axios from 'axios'
 
 const BusinessView = ({
@@ -15,7 +17,7 @@ const BusinessView = ({
   todayYear
 }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId } = useParams()
+  let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
@@ -90,7 +92,6 @@ const BusinessView = ({
           />
         </div>
       </div>
-
       <Entries
         logId={logId}
         employees={employees}

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new employee into database
 const CreateEmployee = (props) => {
-  let { businessId } = useParams()
+  let { businessId, userId } = useParams()
 
   const [jobs, setJobs] = useState([])
 
@@ -24,7 +24,7 @@ const CreateEmployee = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/view/${businessId}`)
+    navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const CreateEmployee = (props) => {
     getJobs()
   }, [])
 
-  const { employeeName, jobId } = formValue
+  const { employeeName } = formValue
 
   return (
     <div className="forms">
@@ -45,7 +45,7 @@ const CreateEmployee = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             className="form"
-            type="string"
+            type="text"
             name="employeeName"
             placeholder="Name"
             value={employeeName}

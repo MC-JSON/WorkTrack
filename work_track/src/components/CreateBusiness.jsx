@@ -6,6 +6,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 const CreateBusiness = (props) => {
   let { ownerId } = useParams()
 
+  const [businessId, setBusinessId] = useState()
+  const [disable, setDisable] = useState(true)
+  const [disabled, setDisabled] = useState(false)
+
   const [formValue, setFormValue] = useState({
     businessName: '',
     businessAddress: '',
@@ -80,15 +84,36 @@ const CreateBusiness = (props) => {
             value={businessImage}
             onChange={handleChange}
           />
-          <button
-            onClick={async () =>
+          <button disabled={disabled}
+            onClick={async () => {
+              const response =
               await axios.post(
                 `http://localhost:3001/api/businesses/${ownerId}`,
                 formValue
               )
+              setDisable(false)
+              setDisabled(true)
+              console.log("business", response.data.id)
+              setBusinessId(response.data.id)
             }
+          }
+              >
+              Create Business
+              </button>
+              <button disabled={disable}
+              onClick={async () => {
+                const log =
+              await axios.post(
+                `http://localhost:3001/api/logs/${businessId}`
+              )
+              setDisable(true)
+              setDisabled(false)
+              console.log("log", log.data)
+              
+            }
+          }
           >
-            Create Business
+            Create Log
           </button>
         </form>
       </section>

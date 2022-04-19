@@ -2,24 +2,36 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
+import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
-const BusinessPortal = ({ user, authenticated }) => {
+const BusinessPortal = ({ props, user, authenticated }) => {
+  console.log(user)
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
   const [businesses, setBusinesses] = useState([])
 
-  const getBusinesses = async () => {
-    const response = await axios.get(
-      `http://localhost:3001/api/owners/${ownerId}/businesses`
-    )
-    setBusinesses(response.data)
-  }
+//   const getBusinesses = async () => {
+//     const response = await axios.get(
+//       `http://localhost:3001/api/owners/${ownerId}/businesses`
+//     )
+//     // console.log(response)
+//     setBusinesses(response.data)
+//     // console.log(businesses)
+//   }
 
-  // useEffect(() => {
-  //   getBusinesses()
-  // }, [])
+  useEffect(() => {
+
+    const getBusinesses = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/owners/${ownerId}/businesses`
+      )
+      setBusinesses(response.data)
+    }
+    getBusinesses()
+
+  }, [])
 
   const showBusiness = (businessId) => {
     navigate(`/users/${ownerId}/businesses/${businessId}`)
@@ -43,6 +55,7 @@ const BusinessPortal = ({ user, authenticated }) => {
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
+        {/* <UpdateBusiness businessId={props.businessId} /> */}
       </div>
     </div>
   ) : (

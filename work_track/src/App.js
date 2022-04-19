@@ -20,7 +20,9 @@ const App = () => {
   const [todayYear, setTodayYear] = useState(today.getFullYear())
 
   const handleLogOut = () => {
+    console.log(user)
     setUser(null)
+    console.log('user', user)
     toggleAuthenticated(false)
     localStorage.clear()
   }
@@ -59,16 +61,13 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                setUser={setUser}
-                user={user}
-                authenticated={authenticated}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
+          <Route path="/" element={<Home
+            setUser={setUser}
+            user={user}
+            authenticated={authenticated}
+            toggleAuthenticated={toggleAuthenticated}
+          />
+          }
           />
           <Route path="/register" element={<Register />} />
           <Route
