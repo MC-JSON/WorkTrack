@@ -24,8 +24,8 @@ const BusinessPortal = ({ user, authenticated }) => {
   const showBusiness = (businessId) => {
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
-  return user && authenticated ? (
-    <div className="portal">
+  return (user && authenticated) ? (
+    < div className="portal" >
       <h1>Business Portal</h1>
 
       <div>
@@ -43,13 +43,13 @@ const BusinessPortal = ({ user, authenticated }) => {
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
       </div>
-    </div>
+    </div >
   ) : (
-    <div className="protected">
-      <h3> oops! you must be signed in to do that</h3>
-      <button onClick={() => navigate('/')}>Sign In</button>
-    </div>
-  )
+      <div className="protected">
+        <h3> oops! you must be signed in to do that</h3>
+        <button onClick={() => navigate('/')}>Sign In</button>
+      </div>
+    )
 }
 
 export default BusinessPortal
