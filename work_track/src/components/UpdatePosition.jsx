@@ -4,15 +4,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 
 //built for edits
-const UpdateEmployee = (props) => {
+const UpdatePosition = (props) => {
 
-  let { employeeId, businessId } = useParams()
+  let { businessId } = useParams()
   
-  const [employees, setEmployees] = useState()
+  const [positions, setPositions] = useState()
 
   const [formValue, setFormValue] = useState({
-    employeeName: props.employeeName,
-    jobId: props.jobId
+    jobTitle: props.jobTitle,
+    jobDescription: props.jobDescription
   })
 
   const handleChange = (event) => {
@@ -22,48 +22,56 @@ const UpdateEmployee = (props) => {
     })
   }
 
-  const { employeeName } = formValue
-
   let navigate = useNavigate()
 
   // handles update submit and navigates back 
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await axios.put(`http://localhost:3001/api/employees/${employeeId}`, formValue)
+      await axios.put(`http://localhost:3001/api/jobs/${props.jobId}`, formValue)
       navigate('/')
   }
 
 // handles delete submit and navigates back 
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-      await axios.delete(`http://localhost:3001/api/employees/${employeeId}`, formValue)
+      await axios.delete(`http://localhost:3001/api/jobs/${props.jobId}`, formValue)
       navigate('/')
   }
 
   useEffect(() => {
-    const getEmployees = async () => {
+    const getPositions = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/employees/${businessId}}`
+        `http://localhost:3001/api/jobs/${businessId}}`
       )
-      setEmployees(response.data)
+      setPositions(response.data)
     }
-    getEmployees()
+    getPositions()
   }, [])
+
+  const { jobTitle, jobDescription } = formValue
 
   return (
     <div className="info-wrapper">
       <form onSubmit={handleSubmit}>
-      <select className="create-form-select" name="employeeId" onChange={handleChange}>
-            {employees.map((employee) => (
-            <option value={employee.id}>{employee.employeeName}</option>
+      <select className="create-form-select" name="jobId" onChange={handleChange}>
+            {positions.map((job) => (
+            <option value={job.id}>{job.jobTitle}</option>
             ))}
             </select>
             <input
             className="form"
             type="text"
-            name="employeeName"
-            placeholder="Name"
-            value={employeeName}
+            name="jobTitle"
+            placeholder="Job Title"
+            value={jobTitle}
+            onChange={handleChange}
+          />
+          <input
+            className="form"
+            type="text"
+            name="jobDescription"
+            placeholder="Job Description"
+            value={jobDescription}
             onChange={handleChange}
           />
         <br />
@@ -74,4 +82,4 @@ const UpdateEmployee = (props) => {
   )
 }
 
-export default UpdateEmployee
+export default UpdatePosition
