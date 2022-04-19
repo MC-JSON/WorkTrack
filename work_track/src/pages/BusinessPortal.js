@@ -16,25 +16,11 @@ const BusinessPortal = ({ props, user, authenticated }) => {
     const response = await axios.get(
       `http://localhost:3001/api/owners/${ownerId}/businesses`
     )
-    // console.log(response)
     setBusinesses(response.data)
-    // console.log(businesses)
   }
 
   useEffect(() => {
-
-    // const getBusinesses = async () => {
-    //   const response = await axios.get(
-    //     `http://localhost:3001/api/owners/${ownerId}/businesses`
-    //   )
-    //   console.log(ownerId)
-    //   setBusinesses(response.data)
-    //   console.log(response.data)
-    // }
-
-
     getBusinesses()
-
   }, [])
 
   const showBusiness = (businessId) => {
@@ -62,11 +48,11 @@ const BusinessPortal = ({ props, user, authenticated }) => {
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessPortal
