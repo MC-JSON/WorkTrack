@@ -31,8 +31,8 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     // ownerList.forEach((owner) => {
     //   if (owner.ownerEmail === owner.ownerEmail) {
     //  navigate(`/portal/${user.id}`)
-    console.log(payload)
-    console.log(user.id)
+    // console.log(payload)
+    // console.log(user.id)
     navigate(`/portal/${payload.id}`)
   }
 

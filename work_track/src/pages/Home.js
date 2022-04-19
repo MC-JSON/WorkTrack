@@ -5,6 +5,8 @@ import axios from 'axios'
 import SignIn from './SignIn'
 
 const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
+  console.log(user)
+
   let navigate = useNavigate()
 
   // const handleChange = (e) => {
@@ -33,7 +35,7 @@ const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
   // }
 
   return (
-    <div>
+    < div >
       <div className="site-title-wrapper">
         <div className="site-title">
           W <i className="fa-solid fa-clock"></i> r k T r a c k
@@ -49,7 +51,7 @@ const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
           authenticated={authenticated}
         />
       </div>
-    </div>
+    </div >
   )
 }
 

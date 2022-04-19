@@ -5,6 +5,7 @@ import BusinessRend from '../components/BusinessRend'
 import axios from 'axios'
 
 const BusinessPortal = ({ props, user, authenticated }) => {
+  console.log(user)
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
@@ -14,12 +15,25 @@ const BusinessPortal = ({ props, user, authenticated }) => {
     const response = await axios.get(
       `http://localhost:3001/api/owners/${ownerId}/businesses`
     )
-    console.log(response)
+    // console.log(response)
     setBusinesses(response.data)
+    // console.log(businesses)
   }
 
   useEffect(() => {
+
+    // const getBusinesses = async () => {
+    //   const response = await axios.get(
+    //     `http://localhost:3001/api/owners/${ownerId}/businesses`
+    //   )
+    //   console.log(ownerId)
+    //   setBusinesses(response.data)
+    //   console.log(response.data)
+    // }
+
+
     getBusinesses()
+
   }, [])
 
   const showBusiness = (businessId) => {
