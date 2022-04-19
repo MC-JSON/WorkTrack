@@ -52,11 +52,15 @@ const CreateEmployee = (props) => {
             value={employeeName}
             onChange={handleChange}
           />
-            <select className="create-form-select" name="jobId" onChange={handleChange}>
+          <select
+            className="create-form-select"
+            name="jobId"
+            onChange={handleChange}
+          >
             {jobs.map((job) => (
-            <option value={job.id}>{job.jobTitle}</option>
+              <option value={job.id}>{job.jobTitle}</option>
             ))}
-            </select>
+          </select>
           <button
             onClick={async () =>
               await axios.post(

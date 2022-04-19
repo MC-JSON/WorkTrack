@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const EmployeeInfo = ({ name, job, jobList }) => {
+const EmployeeInfo = ({ employeeId, name, job, jobList }) => {
   const [jobTitle, setJobTitle] = useState('')
   useEffect(() => {
     const getJobName = () => {

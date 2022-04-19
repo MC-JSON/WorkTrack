@@ -12,14 +12,22 @@ const BusinessPortal = ({ props, user, authenticated }) => {
 
   const [businesses, setBusinesses] = useState([])
 
-  const getBusinesses = async () => {
-    const response = await axios.get(
-      `http://localhost:3001/api/owners/${ownerId}/businesses`
-    )
-    setBusinesses(response.data)
-  }
+  //   const getBusinesses = async () => {
+  //     const response = await axios.get(
+  //       `http://localhost:3001/api/owners/${ownerId}/businesses`
+  //     )
+  //     // console.log(response)
+  //     setBusinesses(response.data)
+  //     // console.log(businesses)
+  //   }
 
   useEffect(() => {
+    const getBusinesses = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/owners/${ownerId}/businesses`
+      )
+      setBusinesses(response.data)
+    }
     getBusinesses()
   }, [])
 

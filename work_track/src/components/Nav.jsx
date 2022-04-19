@@ -12,7 +12,6 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
         <Link to='/createemployee'> CreateEmployee | </Link> */}
         <Link onClick={handleLogOut} to='/'>Sign Out |</Link>
         {/* <Link to="/register">Create Account</Link> */}
-
       </nav>
     )
   }
