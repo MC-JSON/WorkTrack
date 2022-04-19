@@ -28,6 +28,7 @@ const Entries = (props) => {
             dateYear={entry.dateYear}
             employee={entry.employeeId}
             hours={entry.employeeHours}
+            employeeList={props.employees}
           />
         ))}
       </div>

@@ -19,12 +19,12 @@ body {
 }
 
 
-header {
+nav {
   background-color: transparent;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 3em;
+  height: 5vh;
 }
 
 header nav a {
@@ -46,6 +46,7 @@ header nav a {
   text-align: center;
   margin-top: 10vh;
   grid-column: 1/-1;
+  justify-content: space-around;
 }
 
 .site-title {

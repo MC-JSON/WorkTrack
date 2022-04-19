@@ -14,7 +14,6 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   }
 
   const handleSubmit = async (e) => {
-
     e.preventDefault()
     const payload = await SignInUser(formValues)
     setFormValues({ ownerEmail: '', ownerPassword: '' })
