@@ -37,7 +37,7 @@ const CreateEmployee = (props) => {
     getJobs()
   }, [])
 
-  const { employeeName, jobId } = formValue
+  const { employeeName } = formValue
 
   return (
     <div className="forms">
@@ -45,7 +45,7 @@ const CreateEmployee = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             className="form"
-            type="integer"
+            type="text"
             name="employeeName"
             placeholder="Name"
             value={employeeName}
