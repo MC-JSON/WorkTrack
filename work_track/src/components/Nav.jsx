@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom'
 const Nav = ({ authenticated, user, handleLogOut }) => {
   let authenticatedOptions
   if (user, authenticated) {
+    console.log('DFGHJKL', user)
     authenticatedOptions = (
       <nav>
-        <h3>welcome {user.email}!</h3>
-        <Link to='/portal/:employee_id'>| Home </Link>
+        <h3>Welcome {user.ownerEmail}!</h3>
+        <Link to={`/portal/${user.id}`}>Home</Link>
         {/* <Link to='/createbusiness'>| CreateBusiness | </Link>
         <Link to='/createemployee'> CreateEmployee | </Link> */}
-        <Link onClick={handleLogOut} to='/'>Sign Out |</Link>
+        <Link onClick={handleLogOut} to='/'>Sign Out</Link>
+        <Link to='/updatebusinesspage'>UpdateBusiness</Link>
+        <Link to='/updateemployeepage'>UpdateEmployee</Link>
+        <Link to='/updateentrypage'>UpdateEntry</Link>
+        <Link to='/updatepositionpage'>UpdatePosition</Link>
         {/* <Link to="/register">Create Account</Link> */}
 
       </nav>
@@ -22,7 +27,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
     <nav className='navbar'>
       <div>
         {/* <Link to="/portal">Business Portal</Link> */}
-        <Link to="/signin">Login</Link>
+        <Link to="/">Login</Link>
         <Link to="/register">Register</Link>
       </div>
     </nav>
@@ -32,11 +37,11 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   return (
     <header>
       <Link to='/'>
-        <Link to="/register">Register</Link>
+        <Link to="/register"></Link>
 
         <div>
-          div
-    </div>
+
+        </div>
       </Link>
       {authenticated && user ? authenticatedOptions : publicOptions}
     </header>
