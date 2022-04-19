@@ -87,16 +87,22 @@ header nav a {
   display: flex;
   flex-flow: column;
   height: 100%;
-  width: 70%;
+  /* width: 70%; */
   justify-content: center;
-
-}
-form {
   font-family: 'Fira Sans', sans-serif;
   padding-top: 15px;
-  
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
 }
 
+
+form input {
+  font-size: 1rem;
+  margin: 10px;
+
+}
 .right-side {
   width: 100%;
 }
@@ -111,7 +117,7 @@ form {
   display: flex;
   flex-flow: column;
   align-items: center;
-  padding: 15px;
+  padding: 55px;
   box-shadow: 2px 4px 4px 0 rgba(0,0,0,.5);
 }
 
@@ -132,6 +138,35 @@ form {
   border-radius: 6px;
   font-size: 1.1rem;
   cursor: pointer;
+}
+
+
+/* Business View Page */
+
+.business-page-wrapper {
+  display: grid;
+  grid-template-columns: 1fr, 4fr, 1fr;
+  width: 100vw;
+}
+
+.business-info-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  grid-column: 1 / 4;
+}
+
+.crud-wrapper {
+  grid-column: 1 / 2;
+}
+
+
+.log-wrapper {
+  grid-column: 2 / 3;
+}
+
+.employee-wrapper {
+  grid-column: 3 / 4;
 }
 
 /* Employee Info */

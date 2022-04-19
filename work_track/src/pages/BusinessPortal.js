@@ -12,27 +12,23 @@ const BusinessPortal = ({ props, user, authenticated }) => {
 
   const [businesses, setBusinesses] = useState([])
 
-  const getBusinesses = async () => {
-    const response = await axios.get(
-      `http://localhost:3001/api/owners/${ownerId}/businesses`
-    )
-    // console.log(response)
-    setBusinesses(response.data)
-    // console.log(businesses)
-  }
+//   const getBusinesses = async () => {
+//     const response = await axios.get(
+//       `http://localhost:3001/api/owners/${ownerId}/businesses`
+//     )
+//     // console.log(response)
+//     setBusinesses(response.data)
+//     // console.log(businesses)
+//   }
 
   useEffect(() => {
 
-    // const getBusinesses = async () => {
-    //   const response = await axios.get(
-    //     `http://localhost:3001/api/owners/${ownerId}/businesses`
-    //   )
-    //   console.log(ownerId)
-    //   setBusinesses(response.data)
-    //   console.log(response.data)
-    // }
-
-
+    const getBusinesses = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/owners/${ownerId}/businesses`
+      )
+      setBusinesses(response.data)
+    }
     getBusinesses()
 
   }, [])
@@ -45,6 +41,7 @@ const BusinessPortal = ({ props, user, authenticated }) => {
       <h1>Business Portal</h1>
 
       <div>
+        <button onClick={() => getBusinesses()}>Show Businesses</button>
         {businesses.map((business) => (
           <BusinessRend
             key={business.id}
@@ -62,11 +59,11 @@ const BusinessPortal = ({ props, user, authenticated }) => {
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessPortal
