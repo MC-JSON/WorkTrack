@@ -4,7 +4,9 @@
 * {
   box-sizing: border-box;
 }
-.body {
+
+
+body {
   margin: 0;
   padding: 0;
 }
@@ -33,11 +35,17 @@ header nav a {
 
 /* Home styling */
 
+.home-wrapper {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(2, 1fr);
+}
 .site-title-wrapper {
   display: flex;
   flex-flow: column;
   text-align: center;
   margin-top: 10vh;
+  grid-column: 1/-1;
 }
 
 .site-title {
@@ -58,22 +66,72 @@ header nav a {
 .fa-clock {
   font-size: 2.6rem;
 }
-
-
-form {
-  text-align: center;
-  margin-top: 5vh;
+.left-side {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.login-form-wrapper {
+  width: 60%;
+  /* border: 3px solid black; */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #8b8989;
   display: flex;
   flex-flow: column;
+  align-items: center;
+  box-shadow: 2px 4px 4px 0 rgba(0,0,0,.5);
+}
+.login-form {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 70%;
+  justify-content: center;
+
+}
+form {
   font-family: 'Fira Sans', sans-serif;
+  padding-top: 15px;
+  
 }
 
-.email-input, .email-input input, .password-input, .password-input input, .login-button {
-  font-size: 1.6rem;
+.right-side {
+  width: 100%;
+}
+
+.site-info-wrapper {
+  /* border: 3px solid #f2f2f2; */
+  background-color: #f2f2f2;
+  color: black;
+  width: 60%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 2px 4px 4px 0 rgba(0,0,0,.5);
+}
+
+.email-input, .password-input {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
   margin: 5px;
+  
 }
 
 
+.sign-in-button {
+  display: flex;
+  justify-content: center;
+  padding: 0.2em 1em;
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
 
 /* Employee Info */
 
@@ -91,17 +149,6 @@ form {
 
 
 /* 
-button {
-  text-align: center;
-  margin: auto;
-  display: flex;
-  display: grid;
-  padding: 0.2em 1em;
-  border: 0;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
 
 .portal {
   text-align: center;
