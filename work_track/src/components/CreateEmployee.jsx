@@ -1,10 +1,12 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new employee into database
 const CreateEmployee = (props) => {
-  let { businessId } = useParams()
+  let { businessId, userId } = useParams()
+
+  const [jobs, setJobs] = useState([])
 
   const [formValue, setFormValue] = useState({
     employeeName: '',
@@ -22,10 +24,20 @@ const CreateEmployee = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/view/${businessId}`)
+    navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
-  const { employeeName, jobId } = formValue
+  useEffect(() => {
+    const getJobs = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/jobs/${businessId}`
+      )
+      setJobs(response.data)
+    }
+    getJobs()
+  }, [])
+
+  const { employeeName } = formValue
 
   return (
     <div className="forms">
@@ -33,20 +45,17 @@ const CreateEmployee = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             className="form"
-            type="integer"
+            type="text"
             name="employeeName"
             placeholder="Name"
             value={employeeName}
             onChange={handleChange}
           />
-          <input
-            className="form"
-            type="integer"
-            name="jobId"
-            placeholder="Job"
-            value={jobId}
-            onChange={handleChange}
-          />
+            <select className="create-form-select" name="jobId" onChange={handleChange}>
+            {jobs.map((job) => (
+            <option value={job.id}>{job.jobTitle}</option>
+            ))}
+            </select>
           <button
             onClick={async () =>
               await axios.post(

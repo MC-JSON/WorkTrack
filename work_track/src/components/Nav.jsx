@@ -17,7 +17,6 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
     )
   }
 
-
   const publicOptions = (
 
     <nav className='navbar'>

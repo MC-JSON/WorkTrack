@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
+import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessPortal = ({ props, user, authenticated }) => {
@@ -39,8 +40,8 @@ const BusinessPortal = ({ props, user, authenticated }) => {
   const showBusiness = (businessId) => {
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
-  return (user && authenticated) ? (
-    < div className="portal" >
+  return user && authenticated ? (
+    <div className="portal">
       <h1>Business Portal</h1>
 
       <div>
@@ -57,8 +58,9 @@ const BusinessPortal = ({ props, user, authenticated }) => {
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
+        {/* <UpdateBusiness businessId={props.businessId} /> */}
       </div>
-    </div >
+    </div>
   ) : (
       <div className="protected">
         <h3> oops! you must be signed in to do that</h3>

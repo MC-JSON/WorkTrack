@@ -3,11 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import CreateEmployee from '../components/CreateEmployee'
 import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
+import Entries from './Entries'
+import CreateEntry from '../components/CreateEntry'
+import UpdateEmployee from '../components/UpdateEmployee'
+import UpdatePosition from '../components/UpdatePosition'
 import axios from 'axios'
 
 const BusinessView = ({ props, user, authenticated }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId } = useParams()
+  let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
@@ -36,7 +40,7 @@ const BusinessView = ({ props, user, authenticated }) => {
     getJobs()
   }, [])
 
-  return user && authenticated ? (
+  return user && authenticated && logId ? (
     <div>
       <h1>Business Homepage</h1>
 
@@ -52,18 +56,22 @@ const BusinessView = ({ props, user, authenticated }) => {
           />
         ))}
       </div>
+      <Entries logId={logId} employees={employees} />
       <div>
         {/* dropdown menu with modal pop-up?; logs; reports */}
         <CreateEmployee ownerId={ownerId} businessId={businessId} />
         <CreatePosition ownerId={ownerId} businessId={businessId} />
+        <CreateEntry ownerId={ownerId} businessId={businessId} logId={logId} />
+        {/* <UpdateEmployee employeeId={employeeId} businessId={businessId} /> */}
+        {/* <UpdatePosition jobId={jobId} businessId={businessId} />  */}
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessView
