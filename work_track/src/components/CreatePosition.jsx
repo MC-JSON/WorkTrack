@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new positions into database
 const CreatePosition = (props) => {
-  let { businessId } = useParams()
+  let { businessId, userId } = useParams()
 
   const [formValue, setFormValue] = useState({
     jobTitle: '',
@@ -22,7 +22,7 @@ const CreatePosition = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/view/${businessId}`)
+    navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
   const { jobTitle, jobDescription } = formValue

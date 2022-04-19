@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 //form for creating new entry into database
 const CreateEntry = (props) => {
-  let { businessId, logId } = useParams()
+  let { businessId, userId } = useParams()
 
   const [formValue, setFormValue] = useState({
     dateMonth: '',
@@ -27,7 +27,7 @@ const CreateEntry = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate(`/view/${businessId}`)
+    navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const CreateEntry = (props) => {
           <button
             onClick={async () =>
               await axios.post(
-                `http://localhost:3001/api/entries/${logId}/`,
+                `http://localhost:3001/api/entries/${props.logId}/`,
                 formValue
               )
             }
