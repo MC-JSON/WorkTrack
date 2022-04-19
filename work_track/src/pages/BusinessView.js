@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import CreateEmployee from '../components/CreateEmployee'
 import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
+import Entries from './Entries'
+import CreateEntry from '../components/CreateEntry'
 import axios from 'axios'
 
 const BusinessView = ({ props, user, authenticated }) => {
@@ -36,7 +38,7 @@ const BusinessView = ({ props, user, authenticated }) => {
     getJobs()
   }, [])
 
-  return user && authenticated ? (
+  return user && authenticated && logId ? (
     <div>
       <h1>Business Homepage</h1>
 
@@ -52,10 +54,12 @@ const BusinessView = ({ props, user, authenticated }) => {
           />
         ))}
       </div>
+      <Entries logId={logId} />
       <div>
         {/* dropdown menu with modal pop-up?; logs; reports */}
         <CreateEmployee ownerId={ownerId} businessId={businessId} />
         <CreatePosition ownerId={ownerId} businessId={businessId} />
+        <CreateEntry ownerId={ownerId} businessId={businessId} logId={logId} />
       </div>
     </div>
   ) : (

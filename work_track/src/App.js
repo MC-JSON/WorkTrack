@@ -6,6 +6,7 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
+import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
 
 const App = () => {
@@ -35,16 +36,6 @@ const App = () => {
     }
   }, [])
 
-  // <Route
-  //   path="/signin"
-  //   element={
-  //     <SignIn
-  //       setUser={setUser}
-  //       user={user}
-  //       toggleAuthenticated={toggleAuthenticated}
-  //     />
-  //   }
-  // />
   return (
     <div className="App">
       <Nav
@@ -75,6 +66,10 @@ const App = () => {
             element={
               <BusinessPortal user={user} authenticated={authenticated} />
             }
+          />
+          <Route
+            path="/users/:userId/businesses/:businessId/log"
+            element={<Entries user={user} authenticated={authenticated} />}
           />
         </Routes>
       </main>

@@ -76,13 +76,16 @@ form {
 
 
 /* Employee Info */
-/* .employee-list {
-  display: flex;
-  flex-flow: column;
-} */
+
 .employee-info-wrapper {
   display: flex;
   width: 20vw;
+  justify-content: space-between;
+}
+
+/* Entries */
+.entry-wrapper {
+  display: flex;
   justify-content: space-between;
 }
 

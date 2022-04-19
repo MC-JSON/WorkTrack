@@ -16,7 +16,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   // useEffect(() => {
   //   const getOwners = async () => {
   //     const res = await axios.get('http://localhost:3001/api/owners/')
-  //     setOwnerList(res.data)
+  //     setOwnerList(res.data.owners)
   //   }
   //   getOwners()
   // }, [])
@@ -25,14 +25,11 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
 
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setUser(payload)
     setFormValues({ ownerEmail: '', ownerPassword: '' })
+    setUser(payload)
     toggleAuthenticated(true)
     // ownerList.forEach((owner) => {
     //   if (owner.ownerEmail === owner.ownerEmail) {
-    //  navigate(`/portal/${user.id}`)
-    console.log(payload)
-    console.log(user.id)
     navigate(`/portal/${payload.id}`)
   }
 
