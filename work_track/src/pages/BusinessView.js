@@ -63,7 +63,7 @@ const BusinessView = ({ props, user, authenticated }) => {
         <CreatePosition ownerId={ownerId} businessId={businessId} />
         <CreateEntry ownerId={ownerId} businessId={businessId} logId={logId} />
         <UpdateEmployee employeeId={employeeId} businessId={businessId} />
-        <UpdatePosition />
+        <UpdatePosition jobId={jobId} businessId={businessId} />
       </div>
     </div>
   ) : (
