@@ -6,6 +6,10 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
+import UpdateBusinessPage from './pages/UpdateBusinessPage'
+import UpdateEmployeePage from './pages/UpdateEmployeePage'
+import UpdateEntryPage from './pages/UpdateEntryPage'
+import UpdatePositionPage from './pages/UpdatePositionPage'
 import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
 import axios from 'axios'
@@ -90,8 +94,33 @@ const App = () => {
           />
           <Route
             path="/users/:userId/businesses/:businessId/log"
-            element={<Entries user={user} authenticated={authenticated} />}
+            element={<Entries user={user} authenticated={authenticated} />
+            }
           />
+          <Route
+            path="/updatebusinesspage/:businessId"
+            element={<UpdateBusinessPage user={user} authenticated={authenticated} />
+            }
+          />
+          <Route
+            path="/updateemployeepage"
+            element={<UpdateEmployeePage user={user} authenticated={authenticated} />
+            }
+          />
+          <Route
+            path="/updateentrypage"
+            element={<UpdateEntryPage user={user} authenticated={authenticated} />
+            }
+          />
+          <Route
+            path="/updatepositionpage"
+            element={<UpdatePositionPage user={user} authenticated={authenticated} />
+            }
+          />
+
+
+
+
         </Routes>
       </main>
     </div>
