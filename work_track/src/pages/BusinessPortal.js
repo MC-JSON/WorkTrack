@@ -5,21 +5,16 @@ import BusinessRend from '../components/BusinessRend'
 import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
-const BusinessPortal = ({ props, user, authenticated }) => {
+const BusinessPortal = ({
+  props,
+  user,
+  authenticated,
+  setBusinesses,
+  businesses
+}) => {
   console.log(user)
   let { ownerId } = useParams()
   let navigate = useNavigate()
-
-  const [businesses, setBusinesses] = useState([])
-
-  //   const getBusinesses = async () => {
-  //     const response = await axios.get(
-  //       `http://localhost:3001/api/owners/${ownerId}/businesses`
-  //     )
-  //     // console.log(response)
-  //     setBusinesses(response.data)
-  //     // console.log(businesses)
-  //   }
 
   useEffect(() => {
     const getBusinesses = async () => {

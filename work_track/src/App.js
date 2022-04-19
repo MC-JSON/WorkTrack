@@ -22,6 +22,7 @@ const App = () => {
   const [todayDay, setTodayDay] = useState(today.getDate())
   const [todayMonth, setTodayMonth] = useState(today.getMonth() + 1)
   const [todayYear, setTodayYear] = useState(today.getFullYear())
+  const [businesses, setBusinesses] = useState([])
 
   const handleLogOut = () => {
     console.log(user)
@@ -52,7 +53,6 @@ const App = () => {
     if (user) {
       getUserName()
     }
-    let today = new Date()
   }, [])
 
   return (
@@ -65,13 +65,16 @@ const App = () => {
       />
       <main>
         <Routes>
-          <Route path="/" element={<Home
-            setUser={setUser}
-            user={user}
-            authenticated={authenticated}
-            toggleAuthenticated={toggleAuthenticated}
-          />
-          }
+          <Route
+            path="/"
+            element={
+              <Home
+                setUser={setUser}
+                user={user}
+                authenticated={authenticated}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
           />
           <Route path="/register" element={<Register />} />
           <Route
@@ -89,38 +92,42 @@ const App = () => {
           <Route
             path="/portal/:ownerId"
             element={
-              <BusinessPortal user={user} authenticated={authenticated} />
+              <BusinessPortal
+                user={user}
+                authenticated={authenticated}
+                setBusinesses={setBusinesses}
+                businesses={businesses}
+              />
             }
           />
           <Route
             path="/users/:userId/businesses/:businessId/log"
-            element={<Entries user={user} authenticated={authenticated} />
-            }
+            element={<Entries user={user} authenticated={authenticated} />}
           />
           <Route
             path="/updatebusinesspage/:businessId"
-            element={<UpdateBusinessPage user={user} authenticated={authenticated} />
+            element={
+              <UpdateBusinessPage user={user} authenticated={authenticated} />
             }
           />
           <Route
             path="/updateemployeepage"
-            element={<UpdateEmployeePage user={user} authenticated={authenticated} />
+            element={
+              <UpdateEmployeePage user={user} authenticated={authenticated} />
             }
           />
           <Route
             path="/updateentrypage"
-            element={<UpdateEntryPage user={user} authenticated={authenticated} />
+            element={
+              <UpdateEntryPage user={user} authenticated={authenticated} />
             }
           />
           <Route
             path="/updatepositionpage"
-            element={<UpdatePositionPage user={user} authenticated={authenticated} />
+            element={
+              <UpdatePositionPage user={user} authenticated={authenticated} />
             }
           />
-
-
-
-
         </Routes>
       </main>
     </div>
