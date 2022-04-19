@@ -22,6 +22,7 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
   // }, [])
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
     const payload = await SignInUser(formValues)
     setUser(payload)
@@ -30,7 +31,9 @@ const SignIn = ({ setUser, toggleAuthenticated, user }) => {
     // ownerList.forEach((owner) => {
     //   if (owner.ownerEmail === owner.ownerEmail) {
     //  navigate(`/portal/${user.id}`)
-    navigate(`/portal/${user.id}`)
+    console.log(payload)
+    console.log(user.id)
+    navigate(`/portal/${payload.id}`)
   }
 
   return (

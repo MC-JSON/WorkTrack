@@ -19,13 +19,17 @@ const App = () => {
   }
 
   const checkToken = async () => {
+    console.log('test')
     const user = await CheckSession()
+    console.log(user)
     setUser(user)
     toggleAuthenticated(true)
   }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
+    console.log(token)
+
     if (token) {
       checkToken()
     }
