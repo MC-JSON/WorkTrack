@@ -11,7 +11,7 @@ import axios from 'axios'
 
 const BusinessView = ({ props, user, authenticated }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId, employeeId } = useParams()
+  let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
