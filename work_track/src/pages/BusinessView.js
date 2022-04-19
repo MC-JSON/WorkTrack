@@ -5,11 +5,13 @@ import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
 import Entries from './Entries'
 import CreateEntry from '../components/CreateEntry'
+import UpdateEmployee from '../components/UpdateDeleteEmployee'
+import UpdatePosition from '../components/UpdateDeletePosition'
 import axios from 'axios'
 
 const BusinessView = ({ props, user, authenticated }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId } = useParams()
+  let { ownerId, businessId, employeeId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
@@ -60,14 +62,16 @@ const BusinessView = ({ props, user, authenticated }) => {
         <CreateEmployee ownerId={ownerId} businessId={businessId} />
         <CreatePosition ownerId={ownerId} businessId={businessId} />
         <CreateEntry ownerId={ownerId} businessId={businessId} logId={logId} />
+        <UpdateEmployee employeeId={employeeId} businessId={businessId} />
+        <UpdatePosition />
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessView

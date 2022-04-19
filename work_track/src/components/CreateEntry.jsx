@@ -7,7 +7,9 @@ const CreateEntry = (props) => {
   let { businessId, logId } = useParams()
 
   const [formValue, setFormValue] = useState({
-    entryDate: '',
+    dateMonth: '',
+    dateDay: '',
+    dateYear: '',
     employeeId: '',
     employeeHours: ''
   })
@@ -38,7 +40,7 @@ const CreateEntry = (props) => {
     getEmployees()
   }, [])
 
-  const {  entryDate, employeeId, employeeHours } = formValue
+  const {  dateMonth, dateDay, dateYear, employeeHours } = formValue
 
   return (
     <div className="forms">
@@ -46,10 +48,26 @@ const CreateEntry = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             className="form"
-            type="text"
-            name="entryDate"
-            placeholder="Date"
-            value={entryDate}
+            type="integer"
+            name="dateMonth"
+            placeholder="Month"
+            value={dateMonth}
+            onChange={handleChange}
+          />
+          <input
+            className="form"
+            type="integer"
+            name="dateDay"
+            placeholder="Day"
+            value={dateDay}
+            onChange={handleChange}
+          />
+          <input
+            className="form"
+            type="integer"
+            name="dateYear"
+            placeholder="Year"
+            value={dateYear}
             onChange={handleChange}
           />
           <select className="create-form-select" name="employeeId" onChange={handleChange}>
