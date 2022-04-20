@@ -12,8 +12,7 @@ const BusinessPortal = ({
   setBusinesses,
   businesses
 }) => {
-  console.log(user)
-  let { ownerId } = useParams()
+  let { ownerId, businessId } = useParams()
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const BusinessPortal = ({
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
-        {/* <UpdateBusiness businessId={props.businessId} /> */}
+        <UpdateBusiness businessId={businessId} />
       </div>
     </div>
   ) : (

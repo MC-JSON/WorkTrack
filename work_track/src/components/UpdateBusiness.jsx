@@ -8,7 +8,7 @@ const UpdateBusiness = (props) => {
 
   let { businessId } = useParams()
   
-  const [businesses, setBusinesses] = useState()
+  const [businessed, setBusinessed] = useState()
 
   const [formValue, setFormValue] = useState({
     businessName: props.businessName,
@@ -49,13 +49,15 @@ const UpdateBusiness = (props) => {
   }
 
   useEffect(() => {
-    const getBusinesses = async () => {
+    console.log("this",businessId)
+    const getBusinessed = async () => {
       const response = await axios.get(
         `http://localhost:3001/api/businesses/${businessId}}`
       )
-      setBusinesses(response.data)
+      setBusinessed(response.data)
     }
-    getBusinesses()
+    console.log("business", businessed)
+    getBusinessed()
   }, [])
 
 
@@ -63,7 +65,7 @@ const UpdateBusiness = (props) => {
     <div className="info-wrapper">
       <form onSubmit={handleSubmit}>
       <select className="create-form-select" name="businessId" onChange={handleChange}>
-            {businesses.map((business) => (
+            {businessed.map((business) => (
             <option value={business.id}>{business.businessTitle}</option>
             ))}
             </select>
