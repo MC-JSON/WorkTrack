@@ -15,6 +15,8 @@
 - [Presentation Slides](https://docs.google.com/presentation/d/1HbCL443_C0jDc6XwxrTpGcek0Dp72o-2r4YH5MGvJLE/edit?usp=sharing)
 
 ---
+## Getting Started
+npm i
 
 ## Description
 
