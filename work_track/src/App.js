@@ -23,9 +23,13 @@ const App = () => {
   const [todayMonth, setTodayMonth] = useState(todayDate.getMonth() + 1)
   const [todayYear, setTodayYear] = useState(todayDate.getFullYear())
   const [businesses, setBusinesses] = useState([])
+  const [businessName, setBusinessName] = useState()
+  const [businessId, setBusinessId] = useState()
   const [employees, setEmployees] = useState([])
-  const [positions, setPositions] = useState([])
-  // const [employees, setEmployees] = useState([])
+  const [employee, setEmployee] = useState()
+  const [entry, setEntry] = useState()
+  const [jobs, setJobs] = useState([])
+
 
   const handleLogOut = () => {
     setUser(null)
@@ -89,8 +93,14 @@ const App = () => {
                 todayMonth={todayMonth}
                 todayDay={todayDay}
                 todayYear={todayYear}
-                setEmployees={setEmployees}
+                businessName={businessName}
+                setEntry={setEntry}
                 employees={employees}
+                setEmployees={setEmployees}
+                setJobs={setJobs}
+                jobs={jobs}
+                setEmployee={setEmployee}
+                setBusinessId={setBusinessId}
               />
             }
           />
@@ -102,7 +112,7 @@ const App = () => {
                 authenticated={authenticated}
                 setBusinesses={setBusinesses}
                 businesses={businesses}
-                setEmployees={setEmployees}
+                setBusinessName={setBusinessName}
               />
             }
           />
@@ -123,25 +133,30 @@ const App = () => {
           <Route
             path="/update-employee-page/:employeeId"
             element={
-              <UpdateEmployeePage employees={employees} user={user} authenticated={authenticated} />
+              <UpdateEmployeePage businessId={businessId} employee={employee} jobs={jobs} user={user} authenticated={authenticated} />
             }
           />
           <Route
-            path="/update-entry-page"
+            path="/update-entry-page/:entryId"
             element={
-              <UpdateEntryPage user={user} authenticated={authenticated} />
+              <UpdateEntryPage
+                user={user}
+                authenticated={authenticated}
+                entry={entry}
+                employees={employees}
+              />
             }
           />
           <Route
             path="/update-position-page"
             element={
-              <UpdatePositionPage positions={positions} user={user} authenticated={authenticated} />
+              <UpdatePositionPage user={user} authenticated={authenticated} />
             }
           />
           <Route
             path="/update-landing-page"
             element={
-              <UpdatePositionPage positions={positions} user={user} authenticated={authenticated} />
+              <UpdatePositionPage user={user} authenticated={authenticated} />
             }
           />
         </Routes>

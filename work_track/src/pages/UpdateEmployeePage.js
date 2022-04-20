@@ -1,13 +1,13 @@
 import UpdateEmployee from '../components/UpdateEmployee'
 
-const UpdateEmployeePage = ({ props, user, authenticated, employees }) => {
+const UpdateEmployeePage = ({ props, user, authenticated, jobs, employee, businessId }) => {
 
   return (
 
     <div>
       <h1>Update Employee</h1>
       <div>
-        <UpdateEmployee user={user} employees={employees} />
+        <UpdateEmployee businessId={businessId} user={user} jobs={jobs} employee={employee} />
       </div>
     </div>
   )

@@ -4,20 +4,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 
 //built for edits
-const UpdateEmployee = ({ user, employees }) => {
-  // console.log(employees)
-  // console.log(props)
-
-  // let { businessId } = useParams()
-
-  // const [employees, setEmployees] = useState([])
-  console.log('77777', employees)
+const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
+  let { employeeId } = useParams()
+  // console.log('77777', employees)
 
   // const [user, setUser] = useState([])
 
   const [formValue, setFormValue] = useState({
-    employeeName: employees.employeeName,
-    jobId: employees.jobId
+    employeeName: employee.employeeName,
+    jobId: employee.jobId
   })
 
   const handleChange = (event) => {
@@ -34,39 +29,25 @@ const UpdateEmployee = ({ user, employees }) => {
   // handles update submit and navigates back 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.put(`http://localhost:3001/api/employees/${employees.id}`, formValue)
-    navigate('/')
+    await axios.put(`http://localhost:3001/api/employees/${employeeId}`, formValue)
+    navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
   // handles delete submit and navigates back 
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-    await axios.delete(`http://localhost:3001/api/employees/${employees.id}`, formValue)
+    await axios.delete(`http://localhost:3001/api/employees/${employeeId}`)
     navigate('/')
   }
-  // useEffect(() => {
-  //   console.log('00000', user)
-  //   const getEmployees = async () => {
-  //     const response = await axios.get(
-  //       `http://localhost:3001/api/employees/${user.id}}`
-
-  //     )
-  //     // console.log("employees: ", props.employeeId)
-  //     setEmployees(response.data)
-  //     // console.log('55555', user)
-  //     console.log('emp. 11111', employees)
-  //   }
-  //   getEmployees()
-  // }, [])
 
 
   return (
     // console.log('33333', employees) >
     < div className="info-wrapper" >
       <form onSubmit={handleSubmit}>
-        <select className="create-form-select" name="employeeId" onChange={handleChange}>
-          {employees.map((employee) => (
-            <option value={employee.id}>{employee.businessTitle}</option>
+        <select className="create-form-select" name="jobId" onChange={handleChange}>
+          {jobs.map((job) => (
+            <option value={job.id}>{job.jobTitle}</option>
           ))}
         </select>
         <input
@@ -74,7 +55,7 @@ const UpdateEmployee = ({ user, employees }) => {
           type="text"
           name="employeeName"
           placeholder="Name"
-          value={employees.employeeName}
+          value={employee.employeeName}
           onChange={handleChange}
         />
         <br />

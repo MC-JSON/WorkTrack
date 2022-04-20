@@ -15,21 +15,28 @@ const BusinessView = ({
   todayDay,
   todayMonth,
   todayYear,
+  businessName,
+  setEntry,
+  employees,
   setEmployees,
-  employees
+  setJobs,
+  jobs,
+  setEmployee,
+  setBusinessId
 }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
-  const [jobs, setJobs] = useState([])
+  // const [jobs, setJobs] = useState([])
   // const [employees, setEmployees] = useState([])
-  const [businessName, setBusinessName] = useState('')
+  const [thisBusinessName, setBusinessName] = useState(businessName)
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
   const [endDate, setEndDate] = useState(
     `${todayMonth}/${todayDay}/${todayYear}`
   )
+  setBusinessId(businessId)
 
   useEffect(() => {
     const getLog = async () => {
@@ -50,16 +57,10 @@ const BusinessView = ({
       )
       setJobs(response.data)
     }
-    const getBusinessName = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/businesses/${businessId}`
-      )
-      setBusinessName(response.data.businessName)
-    }
+
     getLog()
     getEmployees()
     getJobs()
-    getBusinessName()
   }, [])
 
   const showLastMonth = () => {
@@ -76,10 +77,14 @@ const BusinessView = ({
     setStartDate(`${todayMonth}/${todayDay - 7}/${todayYear}`)
     setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
+  const updateEmployee = (employeeId, employee) => {
+    setEmployee(employee)
+    navigate(`/update-employee-page/${employeeId}`)
+  }
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
       <div className="business-info-wrapper">
-        <h1>{`${businessName}`} Homepage</h1>
+        <h1>{`${thisBusinessName}`} Homepage</h1>
       </div>
 
       <div className="crud-wrapper">
@@ -102,6 +107,7 @@ const BusinessView = ({
         showLastMonth={showLastMonth}
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
+        setEntry={setEntry}
       />
 
       <div className="employee-wrapper">
@@ -115,6 +121,7 @@ const BusinessView = ({
               job={employee.jobId}
               jobList={jobs}
               employeeId={employee.id}
+              updateEmployee={updateEmployee}
             />
           ))}
 
