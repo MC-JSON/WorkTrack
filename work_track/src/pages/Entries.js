@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import EntryInfo from '../components/EntryInfo'
 
@@ -10,10 +10,11 @@ const Entries = ({
   employees,
   showLastMonth,
   showYesterday,
-  showLastWeek
+  showLastWeek,
+  setEntry
 }) => {
   const [entries, setEntries] = useState([])
-
+  let navigate = useNavigate()
   useEffect(() => {
     const getEntriesByDateRange = async () => {
       const response = await axios.get(
@@ -24,6 +25,11 @@ const Entries = ({
     }
     getEntriesByDateRange()
   }, [startDate, endDate])
+
+  const updateEntry = (entryId, entry) => {
+    setEntry(entry)
+    navigate(`/update-entry-page/${entryId}`)
+  }
 
   return (
     entries && (
@@ -47,6 +53,8 @@ const Entries = ({
               hours={entry.employeeHours}
               employee={entry.employeeId}
               employeeList={employees}
+              updateEntry={updateEntry}
+              entryId={entry.id}
             />
           ))}
         </div>
