@@ -9,7 +9,8 @@ const BusinessPortal = ({
   user,
   authenticated,
   setBusinesses,
-  businesses
+  businesses,
+  setBusinessName
 }) => {
   let { ownerId, businessId } = useParams()
   let navigate = useNavigate()
@@ -24,7 +25,8 @@ const BusinessPortal = ({
     getBusinesses()
   }, [])
 
-  const showBusiness = (businessId) => {
+  const showBusiness = (businessId, businessName) => {
+    setBusinessName(businessName)
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
   return user && authenticated ? (

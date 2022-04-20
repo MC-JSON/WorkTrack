@@ -27,8 +27,10 @@ const App = () => {
   const [todayMonth, setTodayMonth] = useState(todayDate.getMonth() + 1)
   const [todayYear, setTodayYear] = useState(todayDate.getFullYear())
   const [businesses, setBusinesses] = useState([])
-  const [jobs, setJobs] = useState([])
+  const [businessName, setBusinessName] = useState()
   const [employees, setEmployees] = useState([])
+  const [entry, setEntry] = useState()
+  const [jobs, setJobs] = useState([])
   const [logs, setLogs] = useState([])
 
   const handleLogOut = () => {
@@ -91,8 +93,10 @@ const App = () => {
                 todayMonth={todayMonth}
                 todayDay={todayDay}
                 todayYear={todayYear}
-                setEmployees={setEmployees}
+                businessName={businessName}
+                setEntry={setEntry}
                 employees={employees}
+                setEmployees={setEmployees}
               />
             }
           />
@@ -104,7 +108,7 @@ const App = () => {
                 authenticated={authenticated}
                 setBusinesses={setBusinesses}
                 businesses={businesses}
-                setEmployees={setEmployees}
+                setBusinessName={setBusinessName}
               />
             }
           />
@@ -145,9 +149,14 @@ const App = () => {
             }
           />
           <Route
-            path="/update-entry-page"
+            path="/update-entry-page/:entryId"
             element={
-              <UpdateEntryPage user={user} authenticated={authenticated} />
+              <UpdateEntryPage
+                user={user}
+                authenticated={authenticated}
+                entry={entry}
+                employees={employees}
+              />
             }
           />
           <Route

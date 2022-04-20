@@ -104,7 +104,7 @@ const UpdateBusiness = (props) => {
         />
         <br />
         <button type="submit">Update</button>
-        <button onClick={handleSubmit2}>Delete</button>
+        <button onClick={()=>handleSubmit2}>Delete</button>
       </form>
     </div>
   )

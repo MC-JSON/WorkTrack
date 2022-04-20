@@ -16,15 +16,26 @@ const BusinessView = ({
   todayDay,
   todayMonth,
   todayYear,
+<<<<<<< HEAD
   setEmployees,
   employees
+=======
+  businessName,
+  setEntry,
+  employees,
+  setEmployees
+>>>>>>> 34ffeb1927f946f46fdbdeb4d9e2649ac6b05907
 }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   // const [employees, setEmployees] = useState([])
+<<<<<<< HEAD
   const [businessName, setBusinessName] = useState('')
+=======
+  const [thisBusinessName, setBusinessName] = useState(businessName)
+>>>>>>> 34ffeb1927f946f46fdbdeb4d9e2649ac6b05907
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
@@ -51,16 +62,10 @@ const BusinessView = ({
       )
       setJobs(response.data)
     }
-    const getBusinessName = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/businesses/${businessId}`
-      )
-      setBusinessName(response.data.businessName)
-    }
+
     getLog()
     getEmployees()
     getJobs()
-    getBusinessName()
   }, [])
 
   const showLastMonth = () => {
@@ -80,7 +85,7 @@ const BusinessView = ({
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
       <div className="business-info-wrapper">
-        <h1>{`${businessName}`} Homepage</h1>
+        <h1>{`${thisBusinessName}`} Homepage</h1>
       </div>
 
       <div className="crud-wrapper">
@@ -107,6 +112,7 @@ const BusinessView = ({
         showLastMonth={showLastMonth}
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
+        setEntry={setEntry}
       />
 
       <div className="employee-wrapper">
