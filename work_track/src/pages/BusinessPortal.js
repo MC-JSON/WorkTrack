@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
-import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessPortal = ({
@@ -46,7 +45,6 @@ const BusinessPortal = ({
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
-        <UpdateBusiness businessId={businessId} />
       </div>
     </div>
   ) : (

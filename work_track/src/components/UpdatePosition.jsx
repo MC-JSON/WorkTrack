@@ -6,19 +6,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 //built for edits
 const UpdatePosition = (props) => {
 
-  let { businessId } = useParams()
-  
-  const [positions, setPositions] = useState()
-
   const [formValue, setFormValue] = useState({
     jobTitle: props.jobTitle,
     jobDescription: props.jobDescription
   })
 
   const handleChange = (event) => {
+    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value
+      [name]: value,
     })
   }
 
@@ -38,23 +35,13 @@ const UpdatePosition = (props) => {
       navigate('/')
   }
 
-  useEffect(() => {
-    const getPositions = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/jobs/${businessId}}`
-      )
-      setPositions(response.data)
-    }
-    getPositions()
-  }, [])
-
   const { jobTitle, jobDescription } = formValue
 
   return (
     <div className="info-wrapper">
       <form onSubmit={handleSubmit}>
       <select className="create-form-select" name="jobId" onChange={handleChange}>
-            {positions.map((job) => (
+            {props.jobs.map((job) => (
             <option value={job.id}>{job.jobTitle}</option>
             ))}
             </select>

@@ -4,21 +4,22 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 
 //built for edits
-const UpdateEmployee = (props) => {
+const UpdateEmployee = ({employees}) => {
 
-  let { businessId } = useParams()
+  let { employeeId } = useParams()
   
-  const [employees, setEmployees] = useState()
+  // const [employees, setEmployees] = useState()
 
   const [formValue, setFormValue] = useState({
-    employeeName: props.employeeName,
-    jobId: props.jobId
+    employeeName: employees.employeeName,
+    jobId: employees.jobId
   })
 
   const handleChange = (event) => {
+    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value
+      [name]: value,
     })
   }
 
@@ -29,27 +30,27 @@ const UpdateEmployee = (props) => {
   // handles update submit and navigates back 
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await axios.put(`http://localhost:3001/api/employees/${props.employeeId}`, formValue)
+      await axios.put(`http://localhost:3001/api/employees/${employeeId}`, formValue)
       navigate('/')
   }
 
 // handles delete submit and navigates back 
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-      await axios.delete(`http://localhost:3001/api/employees/${props.employeeId}`, formValue)
+      await axios.delete(`http://localhost:3001/api/employees/${employeeId}`, formValue)
       navigate('/')
   }
 
-  useEffect(() => {
-    const getEmployees = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/employees/${businessId}}`
-      )
-      console.log("employees: ", props.employeeId)
-      setEmployees(response.data)
-    }
-    getEmployees()
-  }, [])
+  // useEffect(() => {
+  //   const getEmployees = async () => {
+  //     const response = await axios.get(
+  //       `http://localhost:3001/api/employees/${businessId}}`
+  //     )
+  //     console.log("employees: ", props.employeeId)
+  //     setEmployees(response.data)
+  //   }
+  //   getEmployees()
+  // }, [])
 
   return (
     <div className="info-wrapper">

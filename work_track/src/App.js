@@ -7,9 +7,13 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
 import UpdateBusinessPage from './pages/UpdateBusinessPage'
+import UpdatedBusinessPage from './pages/UpdatedBusinessPage'
 import UpdateEmployeePage from './pages/UpdateEmployeePage'
 import UpdateEntryPage from './pages/UpdateEntryPage'
 import UpdatePositionPage from './pages/UpdatePositionPage'
+import CreateEmployee from './components/CreateEmployee'
+import CreatePosition from './components/CreatePosition'
+import CreateEntry from './components/CreateEntry'
 import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
 import axios from 'axios'
@@ -18,16 +22,17 @@ const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
   const [userName, setUserName] = useState('')
-  const [today, setToday] = useState(new Date())
-  const [todayDay, setTodayDay] = useState(today.getDate())
-  const [todayMonth, setTodayMonth] = useState(today.getMonth() + 1)
-  const [todayYear, setTodayYear] = useState(today.getFullYear())
+  const [todayDate, setTodayDate] = useState(new Date())
+  const [todayDay, setTodayDay] = useState(todayDate.getDate())
+  const [todayMonth, setTodayMonth] = useState(todayDate.getMonth() + 1)
+  const [todayYear, setTodayYear] = useState(todayDate.getFullYear())
   const [businesses, setBusinesses] = useState([])
+  const [jobs, setJobs] = useState([])
+  const [employees, setEmployees] = useState([])
+  const [logs, setLogs] = useState([])
 
   const handleLogOut = () => {
-    console.log(user)
     setUser(null)
-    console.log('user', user)
     toggleAuthenticated(false)
     localStorage.clear()
   }
@@ -83,9 +88,11 @@ const App = () => {
               <BusinessView
                 user={user}
                 authenticated={authenticated}
-                todayDay={todayDay}
                 todayMonth={todayMonth}
+                todayDay={todayDay}
                 todayYear={todayYear}
+                setEmployees={setEmployees}
+                employees={employees}
               />
             }
           />
@@ -97,6 +104,7 @@ const App = () => {
                 authenticated={authenticated}
                 setBusinesses={setBusinesses}
                 businesses={businesses}
+                setEmployees={setEmployees}
               />
             }
           />
@@ -105,27 +113,65 @@ const App = () => {
             element={<Entries user={user} authenticated={authenticated} />}
           />
           <Route
-            path="/updatebusinesspage/:businessId"
+            path="/update-businesses/"
             element={
-              <UpdateBusinessPage user={user} authenticated={authenticated} />
+              <UpdateBusinessPage
+                user={user}
+                authenticated={authenticated}
+                businesses={businesses}
+                setBusinesses={setBusinesses}
+              />
             }
           />
           <Route
-            path="/updateemployeepage"
+            path="/updated-business/:businessId"
             element={
-              <UpdateEmployeePage user={user} authenticated={authenticated} />
+              <UpdatedBusinessPage
+                user={user}
+                authenticated={authenticated}
+                businesses={businesses}
+                setBusinesses={setBusinesses}
+              />
             }
           />
           <Route
-            path="/updateentrypage"
+            path="/update-employee-page"
+            element={
+              <UpdateEmployeePage
+                user={user}
+                authenticated={authenticated}
+                employees={employees}
+              />
+            }
+          />
+          <Route
+            path="/update-entry-page"
             element={
               <UpdateEntryPage user={user} authenticated={authenticated} />
             }
           />
           <Route
-            path="/updatepositionpage"
+            path="/update-position-page"
             element={
-              <UpdatePositionPage user={user} authenticated={authenticated} />
+              <UpdatePositionPage
+                user={user}
+                authenticated={authenticated}
+                jobs={jobs}
+              />
+            }
+          />
+          <Route
+            path="/create-employee"
+            element={<CreateEmployee user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-job"
+            element={<CreatePosition user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-entry"
+            element={
+              <CreateEntry user={user} businesses={businesses} logs={logs} />
             }
           />
         </Routes>

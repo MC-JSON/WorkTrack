@@ -7,6 +7,7 @@ import Entries from './Entries'
 import CreateEntry from '../components/CreateEntry'
 import UpdateEmployee from '../components/UpdateEmployee'
 import UpdatePosition from '../components/UpdatePosition'
+import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessView = ({
@@ -14,17 +15,22 @@ const BusinessView = ({
   authenticated,
   todayDay,
   todayMonth,
-  todayYear
+  todayYear,
+  setEmployees,
+  employees
 }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
-  const [employees, setEmployees] = useState([])
+  // const [employees, setEmployees] = useState([])
   const [businessName, setBusinessName] = useState('')
-  const [firstMonth, setFirstMonth] = useState(todayMonth)
-  const [firstDay, setFirstDay] = useState(todayDay - 7)
-  const [firstYear, setFirstYear] = useState(todayYear)
+  const [startDate, setStartDate] = useState(
+    `${todayMonth}/${todayDay - 7}/${todayYear}`
+  )
+  const [endDate, setEndDate] = useState(
+    `${todayMonth}/${todayDay}/${todayYear}`
+  )
 
   useEffect(() => {
     const getLog = async () => {
@@ -57,22 +63,19 @@ const BusinessView = ({
     getBusinessName()
   }, [])
 
-  const showLastMonth = (month, day, year) => {
-    setFirstMonth(month - 1)
-    setFirstDay(day)
-    setFirstYear(year)
+  const showLastMonth = () => {
+    setStartDate(`${todayMonth - 1}/${todayDay}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
 
-  const showYesterday = (month, day, year) => {
-    setFirstMonth(month)
-    setFirstDay(day - 1)
-    setFirstYear(year)
+  const showYesterday = () => {
+    setStartDate(`${todayMonth}/${todayDay - 1}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay - 1}/${todayYear}`)
   }
 
-  const showLastWeek = (month, day, year) => {
-    setFirstMonth(month)
-    setFirstDay(day - 7)
-    setFirstYear(year)
+  const showLastWeek = () => {
+    setStartDate(`${todayMonth}/${todayDay - 7}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
@@ -82,25 +85,25 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          {/* dropdown menu with modal pop-up?; logs; reports */}
-          <CreateEmployee ownerId={ownerId} businessId={businessId} />
-          <CreatePosition ownerId={ownerId} businessId={businessId} />
-          <CreateEntry
-            ownerId={ownerId}
-            businessId={businessId}
-            logId={logId}
-          />
+          <button onClick={() => navigate('/update-employee-page')}>
+            Update Employees
+          </button>
+          <button onClick={() => navigate('/update-position-page')}>
+            Update Jobs
+          </button>
+          <button onClick={() => navigate('/update-entry-page')}>
+            Update Entries
+          </button>
+          <button onClick={() => navigate('/update-businesses')}>
+            Update Businesses
+          </button>
         </div>
       </div>
       <Entries
         logId={logId}
         employees={employees}
-        lastMonth={todayMonth}
-        lastDay={todayDay}
-        lastYear={todayYear}
-        firstMonth={firstMonth}
-        firstDay={firstDay}
-        firstYear={firstYear}
+        startDate={startDate}
+        endDate={endDate}
         showLastMonth={showLastMonth}
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
