@@ -1,24 +1,16 @@
 import UpdateBusiness from '../components/UpdateBusiness'
-import axios from 'axios'
-import { useNavigate, useParams } from 'react-router-dom'
 
 const UpdateBusinessPage = ({ props, user, authenticated }) => {
-
+  console.log('props: ', props)
   return (
-
     <div>
       <h1>Update Business</h1>
 
       <div>
-        <UpdateBusiness
-        />
+        <UpdateBusiness businesses={props.businesses} />
       </div>
     </div>
   )
-
-
-
-
 }
 
 export default UpdateBusinessPage

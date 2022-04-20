@@ -13,10 +13,10 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
         <Link onClick={handleLogOut} to="/">
           Sign Out
         </Link>
-        <Link to="/updatebusinesspage">UpdateBusiness</Link>
-        <Link to="/updateemployeepage">UpdateEmployee</Link>
-        <Link to="/updateentrypage">UpdateEntry</Link>
-        <Link to="/updatepositionpage">UpdatePosition</Link>
+        <Link to="/update-businesses">UpdateBusiness</Link>
+        <Link to="/update-employee-page">UpdateEmployee</Link>
+        <Link to="/update-entry-page">UpdateEntry</Link>
+        <Link to="/update-position-page">UpdatePosition</Link>
         {/* <Link to="/register">Create Account</Link> */}
       </nav>
     )

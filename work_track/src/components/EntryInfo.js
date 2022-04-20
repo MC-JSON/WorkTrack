@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react'
 
-const EntryInfo = ({
-  dateMonth,
-  dateDay,
-  dateYear,
-  employee,
-  hours,
-  employeeList
-}) => {
-  const [employeeName, setEmployeeName] = useState('')
+const EntryInfo = ({ date, employee, hours, employeeList }) => {
+  const [employeeName, setEmployeeName] = useState()
 
   useEffect(() => {
     const getEmployeeName = () => {
@@ -23,9 +16,7 @@ const EntryInfo = ({
 
   return (
     <div className="entry-wrapper">
-      <div className="entry-date">
-        {dateMonth}/{dateDay}/{dateYear}
-      </div>
+      <div className="entry-date">{date}</div>
       <div className="entry-employee">{employeeName}</div>
       <div className="employee-hours">{hours}</div>
     </div>
