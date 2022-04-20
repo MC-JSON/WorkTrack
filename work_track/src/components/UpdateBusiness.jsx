@@ -35,17 +35,15 @@ const UpdateBusiness = (props) => {
       `http://localhost:3001/api/businesses/${businessId}`,
       formValue
     )
-    navigate('/')
+    navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   // handles delete submit and navigates back
   const handleSubmit2 = async (e) => {
     e.preventDefault()
     await axios.delete(
-      `http://localhost:3001/api/businesses/${businessId}`,
-      formValue
-    )
-    navigate('/')
+      `http://localhost:3001/api/businesses/${businessId}`)
+    navigate(`/portal/${props.user.id}`)
   }
 
   // useEffect(() => {
@@ -104,7 +102,7 @@ const UpdateBusiness = (props) => {
         />
         <br />
         <button type="submit">Update</button>
-        <button onClick={()=>handleSubmit2}>Delete</button>
+        <button onClick={handleSubmit2}>Delete</button>
       </form>
     </div>
   )

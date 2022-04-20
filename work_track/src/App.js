@@ -14,6 +14,7 @@ import UpdatePositionPage from './pages/UpdatePositionPage'
 import CreateEmployee from './components/CreateEmployee'
 import CreatePosition from './components/CreatePosition'
 import CreateEntry from './components/CreateEntry'
+import CreateBusiness from './components/CreateBusiness'
 import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
 import axios from 'axios'
@@ -32,6 +33,10 @@ const App = () => {
   const [entry, setEntry] = useState()
   const [jobs, setJobs] = useState([])
   const [logs, setLogs] = useState([])
+  const [businessAddress, setBusinessAddress] = useState([])
+  const [businessCity, setBusinessCity] = useState([])
+  const [businessState, setBusinessState] = useState([])
+  const [businessImage, setBusinessImage] = useState([])
 
   const handleLogOut = () => {
     setUser(null)
@@ -117,24 +122,17 @@ const App = () => {
             element={<Entries user={user} authenticated={authenticated} />}
           />
           <Route
-            path="/update-businesses/"
+            path="/update-businesses/:businessId"
             element={
               <UpdateBusinessPage
                 user={user}
                 authenticated={authenticated}
                 businesses={businesses}
                 setBusinesses={setBusinesses}
-              />
-            }
-          />
-          <Route
-            path="/updated-business/:businessId"
-            element={
-              <UpdatedBusinessPage
-                user={user}
-                authenticated={authenticated}
-                businesses={businesses}
-                setBusinesses={setBusinesses}
+                businessAddress={businessAddress}
+                businessCity={businessCity}
+                businessState={businessState}
+                businessImage={businessImage}
               />
             }
           />
@@ -170,12 +168,16 @@ const App = () => {
             }
           />
           <Route
-            path="/create-employee"
+            path="/create-employee/:businessId"
             element={<CreateEmployee user={user} businesses={businesses} />}
           />
           <Route
-            path="/create-job"
+            path="/create-job/:businessId"
             element={<CreatePosition user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-business/:ownerId"
+            element={<CreateBusiness user={user} businesses={businesses} />}
           />
           <Route
             path="/create-entry"

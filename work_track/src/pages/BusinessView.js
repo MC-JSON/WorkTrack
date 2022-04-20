@@ -16,26 +16,17 @@ const BusinessView = ({
   todayDay,
   todayMonth,
   todayYear,
-<<<<<<< HEAD
-  setEmployees,
-  employees
-=======
   businessName,
   setEntry,
   employees,
   setEmployees
->>>>>>> 34ffeb1927f946f46fdbdeb4d9e2649ac6b05907
 }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   // const [employees, setEmployees] = useState([])
-<<<<<<< HEAD
-  const [businessName, setBusinessName] = useState('')
-=======
   const [thisBusinessName, setBusinessName] = useState(businessName)
->>>>>>> 34ffeb1927f946f46fdbdeb4d9e2649ac6b05907
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
@@ -99,8 +90,14 @@ const BusinessView = ({
           <button onClick={() => navigate('/update-entry-page')}>
             Update Entries
           </button>
-          <button onClick={() => navigate('/update-businesses')}>
-            Update Businesses
+          <button onClick={() => navigate(`/update-businesses/${businessId}`)}>
+            Update Business
+          </button>
+          <button onClick={() => navigate(`/create-employee/${businessId}`)}>
+            Create Employees
+          </button>
+          <button onClick={() => navigate(`/create-job/${businessId}`)}>
+            Create Jobs
           </button>
         </div>
       </div>
