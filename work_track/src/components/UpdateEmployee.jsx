@@ -16,9 +16,10 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
   })
 
   const handleChange = (event) => {
+    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value
+      [name]: value,
     })
   }
 

@@ -1,14 +1,21 @@
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import UpdateBusiness from '../components/UpdateBusiness'
 
-const UpdateBusinessPage = ({ props, user, authenticated }) => {
-  console.log('props: ', props)
+const UpdateBusinessPage = ({
+  setBusinesses,
+  businesses,
+  user,
+  authenticated
+}) => {
   return (
     <div>
-      <h1>Update Business</h1>
-
-      <div>
-        <UpdateBusiness businesses={props.businesses} />
-      </div>
+      <UpdateBusiness
+        businesses={businesses}
+        setBusinesses={setBusinesses}
+        user={user}
+      />
     </div>
   )
 }

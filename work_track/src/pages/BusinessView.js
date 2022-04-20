@@ -4,9 +4,10 @@ import CreateEmployee from '../components/CreateEmployee'
 import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
 import Entries from './Entries'
-// import CreateEntry from '../components/CreateEntry'
-// import UpdateEmployee from '../components/UpdateEmployee'
-// import UpdatePosition from '../components/UpdatePosition'
+import CreateEntry from '../components/CreateEntry'
+import UpdateEmployee from '../components/UpdateEmployee'
+import UpdatePosition from '../components/UpdatePosition'
+import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessView = ({
@@ -87,9 +88,24 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          {/* dropdown menu with modal pop-up?; logs; reports */}
-          <CreateEmployee ownerId={ownerId} businessId={businessId} />
-          <CreatePosition ownerId={ownerId} businessId={businessId} />
+          <button onClick={() => navigate('/update-employee-page')}>
+            Update Employees
+          </button>
+          <button onClick={() => navigate('/update-position-page')}>
+            Update Jobs
+          </button>
+          <button onClick={() => navigate('/update-entry-page')}>
+            Update Entries
+          </button>
+          <button onClick={() => navigate(`/update-businesses/${businessId}`)}>
+            Update Business
+          </button>
+          <button onClick={() => navigate(`/create-employee/${businessId}`)}>
+            Create Employees
+          </button>
+          <button onClick={() => navigate(`/create-job/${businessId}`)}>
+            Create Jobs
+          </button>
         </div>
       </div>
       <Entries

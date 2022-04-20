@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
-import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessPortal = ({
@@ -13,8 +12,7 @@ const BusinessPortal = ({
   businesses,
   setBusinessName
 }) => {
-  console.log(user)
-  let { ownerId } = useParams()
+  let { ownerId, businessId } = useParams()
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -49,10 +47,6 @@ const BusinessPortal = ({
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
-        <button onClick={() => navigate('/update-businesses')}>
-          update businesses
-        </button>
-        {/* <UpdateBusiness businessId={props.businessId} /> */}
       </div>
     </div>
   ) : (

@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 //built for edits
 const UpdateBusiness = (props) => {
-  console.log('props: ', props)
-  let { businessId } = useParams()
+
+  let {businessId} = useParams()
 
   const [formValue, setFormValue] = useState({
     businessName: props.businessName,
@@ -16,9 +16,10 @@ const UpdateBusiness = (props) => {
   })
 
   const handleChange = (event) => {
+    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value
+      [name]: value,
     })
   }
 
@@ -34,17 +35,15 @@ const UpdateBusiness = (props) => {
       `http://localhost:3001/api/businesses/${businessId}`,
       formValue
     )
-    navigate('/')
+    navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   // handles delete submit and navigates back
   const handleSubmit2 = async (e) => {
     e.preventDefault()
     await axios.delete(
-      `http://localhost:3001/api/businesses/${businessId}`,
-      formValue
-    )
-    navigate('/')
+      `http://localhost:3001/api/businesses/${businessId}`)
+    navigate(`/portal/${props.user.id}`)
   }
 
   // useEffect(() => {
@@ -66,7 +65,7 @@ const UpdateBusiness = (props) => {
           onChange={handleChange}
         >
           {props.businesses.map((business) => (
-            <option value={business.id}>{business.businessTitle}</option>
+            <option value={business.id}>{business.businessName}</option>
           ))}
         </select>
         <input

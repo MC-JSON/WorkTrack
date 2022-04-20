@@ -16,9 +16,10 @@ const UpdatePosition = (props) => {
   })
 
   const handleChange = (event) => {
+    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value
+      [name]: value,
     })
   }
 

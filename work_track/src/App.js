@@ -7,9 +7,14 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
 import UpdateBusinessPage from './pages/UpdateBusinessPage'
+import UpdatedBusinessPage from './pages/UpdatedBusinessPage'
 import UpdateEmployeePage from './pages/UpdateEmployeePage'
 import UpdateEntryPage from './pages/UpdateEntryPage'
 import UpdatePositionPage from './pages/UpdatePositionPage'
+import CreateEmployee from './components/CreateEmployee'
+import CreatePosition from './components/CreatePosition'
+import CreateEntry from './components/CreateEntry'
+import CreateBusiness from './components/CreateBusiness'
 import Entries from './pages/Entries'
 import { CheckSession } from './services/Auth'
 import axios from 'axios'
@@ -29,7 +34,15 @@ const App = () => {
   const [employee, setEmployee] = useState()
   const [entry, setEntry] = useState()
   const [jobs, setJobs] = useState([])
+<<<<<<< HEAD
+  const [logs, setLogs] = useState([])
+  const [businessAddress, setBusinessAddress] = useState([])
+  const [businessCity, setBusinessCity] = useState([])
+  const [businessState, setBusinessState] = useState([])
+  const [businessImage, setBusinessImage] = useState([])
+=======
 
+>>>>>>> 7f88cb7f04061a11323186b48626d5fe5009d0c8
 
   const handleLogOut = () => {
     setUser(null)
@@ -121,19 +134,32 @@ const App = () => {
             element={<Entries user={user} authenticated={authenticated} />}
           />
           <Route
-            path="/update-businesses/"
+            path="/update-businesses/:businessId"
             element={
               <UpdateBusinessPage
                 user={user}
                 authenticated={authenticated}
                 businesses={businesses}
+                setBusinesses={setBusinesses}
+                businessAddress={businessAddress}
+                businessCity={businessCity}
+                businessState={businessState}
+                businessImage={businessImage}
               />
             }
           />
           <Route
             path="/update-employee-page/:employeeId"
             element={
+<<<<<<< HEAD
+              <UpdateEmployeePage
+                user={user}
+                authenticated={authenticated}
+                employees={employees}
+              />
+=======
               <UpdateEmployeePage businessId={businessId} employee={employee} jobs={jobs} user={user} authenticated={authenticated} />
+>>>>>>> 7f88cb7f04061a11323186b48626d5fe5009d0c8
             }
           />
           <Route
@@ -151,7 +177,29 @@ const App = () => {
           <Route
             path="/update-position-page"
             element={
-              <UpdatePositionPage user={user} authenticated={authenticated} />
+              <UpdatePositionPage
+                user={user}
+                authenticated={authenticated}
+                jobs={jobs}
+              />
+            }
+          />
+          <Route
+            path="/create-employee/:businessId"
+            element={<CreateEmployee user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-job/:businessId"
+            element={<CreatePosition user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-business/:ownerId"
+            element={<CreateBusiness user={user} businesses={businesses} />}
+          />
+          <Route
+            path="/create-entry"
+            element={
+              <CreateEntry user={user} businesses={businesses} logs={logs} />
             }
           />
           <Route
