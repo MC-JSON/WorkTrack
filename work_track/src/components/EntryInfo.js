@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const EntryInfo = ({
   date,
@@ -6,7 +7,8 @@ const EntryInfo = ({
   hours,
   employeeList,
   updateEntry,
-  entryId
+  entryId,
+  deleteEntry
 }) => {
   const [employeeName, setEmployeeName] = useState()
 
@@ -37,6 +39,9 @@ const EntryInfo = ({
           }
         >
           Update
+        </button>
+        <button name="delete-entry-button" onClick={() => deleteEntry(entryId)}>
+          Delete
         </button>
       </div>
       <div className="entry-employee-info">
