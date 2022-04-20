@@ -4,9 +4,9 @@ import CreateEmployee from '../components/CreateEmployee'
 import CreatePosition from '../components/CreatePosition'
 import EmployeeInfo from '../components/EmployeeInfo'
 import Entries from './Entries'
-import CreateEntry from '../components/CreateEntry'
-import UpdateEmployee from '../components/UpdateEmployee'
-import UpdatePosition from '../components/UpdatePosition'
+// import CreateEntry from '../components/CreateEntry'
+// import UpdateEmployee from '../components/UpdateEmployee'
+// import UpdatePosition from '../components/UpdatePosition'
 import axios from 'axios'
 
 const BusinessView = ({
@@ -25,10 +25,8 @@ const BusinessView = ({
   setBusinessId
 }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId, employeeId, jobId } = useParams()
+  let { ownerId, businessId } = useParams()
   const [logId, setLogId] = useState()
-  // const [jobs, setJobs] = useState([])
-  // const [employees, setEmployees] = useState([])
   const [thisBusinessName, setBusinessName] = useState(businessName)
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
@@ -57,7 +55,7 @@ const BusinessView = ({
       )
       setJobs(response.data)
     }
-
+    setBusinessId(businessId)
     getLog()
     getEmployees()
     getJobs()
@@ -92,11 +90,6 @@ const BusinessView = ({
           {/* dropdown menu with modal pop-up?; logs; reports */}
           <CreateEmployee ownerId={ownerId} businessId={businessId} />
           <CreatePosition ownerId={ownerId} businessId={businessId} />
-          <CreateEntry
-            ownerId={ownerId}
-            businessId={businessId}
-            logId={logId}
-          />
         </div>
       </div>
       <Entries
@@ -108,6 +101,8 @@ const BusinessView = ({
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
         setEntry={setEntry}
+        ownerId={ownerId}
+        businessId={businessId}
       />
 
       <div className="employee-wrapper">

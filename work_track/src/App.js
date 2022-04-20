@@ -144,6 +144,7 @@ const App = () => {
                 authenticated={authenticated}
                 entry={entry}
                 employees={employees}
+                businessId={businessId}
               />
             }
           />
