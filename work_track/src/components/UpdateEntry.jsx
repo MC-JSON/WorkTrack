@@ -3,14 +3,16 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 //built for edits
-const UpdateEntry = ({ entry, employees }) => {
+const UpdateEntry = ({ entry, employees, user, businessId }) => {
   let { entryId } = useParams()
+  let navigate = useNavigate()
 
   const [formValue, setFormValue] = useState({
-    entryDate: entry.date,
+    date: entry.date,
     employeeId: entry.employeeId,
     employeeHours: entry.employeeHours
   })
+  const { date, employeeHours } = formValue
 
   const handleChange = (event) => {
     setFormValue({
@@ -19,25 +21,11 @@ const UpdateEntry = ({ entry, employees }) => {
     })
   }
 
-  const { entryDate, employeeHours } = formValue
-
-  let navigate = useNavigate()
-
   // handles update submit and navigates back
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.put(`http://localhost:3001/api/entries/${entryId}`, formValue)
-    navigate('/')
-  }
-
-  // handles delete submit and navigates back
-  const handleSubmit2 = async (e) => {
-    e.preventDefault()
-    await axios.delete(
-      `http://localhost:3001/api/entries/${entryId}`,
-      formValue
-    )
-    navigate('/')
+    navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
   return (
@@ -45,19 +33,21 @@ const UpdateEntry = ({ entry, employees }) => {
       <form className="update-entry-form" onSubmit={handleSubmit}>
         <input
           className="form"
-          type="text"
-          name="entryDate"
-          placeholder="MM/DD/YYYY"
-          value={entryDate}
+          type="date"
+          name="date"
+          value={date}
           onChange={handleChange}
         />
         <select
           className="employee-select"
-          name="employee"
+          name="employeeId"
+          type="number"
           onChange={handleChange}
         >
           {employees.map((employee) => (
-            <option value={employee.id}>{employee.employeeName}</option>
+            <option value={parseInt(employee.id)}>
+              {employee.employeeName}
+            </option>
           ))}
         </select>
         <input
@@ -70,7 +60,6 @@ const UpdateEntry = ({ entry, employees }) => {
         />{' '}
         <br />
         <button type="submit">Update</button>
-        <button onClick={() => handleSubmit2}>Delete</button>
       </form>
     </div>
   )

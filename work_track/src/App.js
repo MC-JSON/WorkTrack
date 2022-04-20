@@ -24,6 +24,7 @@ const App = () => {
   const [todayYear, setTodayYear] = useState(todayDate.getFullYear())
   const [businesses, setBusinesses] = useState([])
   const [businessName, setBusinessName] = useState()
+  const [businessId, setBusinessId] = useState()
   const [employees, setEmployees] = useState([])
   const [entry, setEntry] = useState()
 
@@ -91,6 +92,7 @@ const App = () => {
                 setEntry={setEntry}
                 employees={employees}
                 setEmployees={setEmployees}
+                setBusinessId={setBusinessId}
               />
             }
           />
@@ -134,6 +136,7 @@ const App = () => {
                 authenticated={authenticated}
                 entry={entry}
                 employees={employees}
+                businessId={businessId}
               />
             }
           />
