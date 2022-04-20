@@ -17,8 +17,10 @@ const EntryInfo = ({ date, employee, hours, employeeList }) => {
   return (
     <div className="entry-wrapper">
       <div className="entry-date">{date}</div>
-      <div className="entry-employee">{employeeName}</div>
-      <div className="employee-hours">{hours}</div>
+      <div className="entry-employee-info">
+        <div className="entry-employee">{employeeName}</div>
+        <div className="employee-hours">{hours}</div>
+      </div>
     </div>
   )
 }

@@ -21,7 +21,7 @@ const BusinessView = ({
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
-  const [businessName, setBusinessName] = useState('')
+  const [businessName, setBusinessName] = useState()
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
