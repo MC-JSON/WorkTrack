@@ -1,20 +1,24 @@
-const UpdateEmployeePage = ({ props, user, authenticated }) => {
-  //on-click navigate to that employee page -- page with form to update or delete employee--buttononclick
+import UpdateEmployee from '../components/UpdateEmployee'
 
+const UpdateEmployeePage = ({
+  props,
+  user,
+  authenticated,
+  jobs,
+  employee,
+  businessId
+}) => {
   return (
     <div>
-      <h1>Which employee would you like to update?</h1>
-      <form onSubmit={handleSubmit}>
-        <select
-          className="create-form-select"
-          name="employeeId"
-          onChange={handleChange}
-        >
-          {employees.map((employee) => (
-            <option value={employee.id}>{employee.employeeName}</option>
-          ))}
-        </select>
-      </form>
+      <h1>Update Employee</h1>
+      <div>
+        <UpdateEmployee
+          businessId={businessId}
+          user={user}
+          jobs={jobs}
+          employee={employee}
+        />
+      </div>
     </div>
   )
 }
