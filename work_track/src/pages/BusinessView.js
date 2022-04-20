@@ -19,14 +19,14 @@ const BusinessView = ({
   businessName,
   setEntry,
   employees,
-  setEmployees
+  setEmployees,
+  setBusinessId
 }) => {
   let navigate = useNavigate()
-  let { ownerId, businessId, employeeId, jobId } = useParams()
+  let { ownerId, businessId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
-  // const [employees, setEmployees] = useState([])
-  const [thisBusinessName, setBusinessName] = useState(businessName)
+  const [thisBusinessName, setThisBusinessName] = useState(businessName)
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
@@ -53,7 +53,7 @@ const BusinessView = ({
       )
       setJobs(response.data)
     }
-
+    setBusinessId(businessId)
     getLog()
     getEmployees()
     getJobs()
@@ -73,6 +73,7 @@ const BusinessView = ({
     setStartDate(`${todayMonth}/${todayDay - 7}/${todayYear}`)
     setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
+
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
       <div className="business-info-wrapper">
@@ -110,6 +111,8 @@ const BusinessView = ({
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
         setEntry={setEntry}
+        ownerId={ownerId}
+        businessId={businessId}
       />
 
       <div className="employee-wrapper">

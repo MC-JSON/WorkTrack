@@ -1,97 +1,58 @@
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react'
 
 //form for creating new entry into database
-const CreateEntry = (props) => {
-  let { businessId, userId } = useParams()
-
+const CreateEntry = ({ createNewEntry, employees }) => {
   const [formValue, setFormValue] = useState({
-    dateMonth: '',
-    dateDay: '',
-    dateYear: '',
+    date: '',
     employeeId: '',
     employeeHours: ''
   })
-
-  const [employees, setEmployees] = useState([])
+  const { date, employeeHours } = formValue
 
   const handleChange = (event) => {
-    const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [name]: value,
+      [event.target.name]: event.target.value
     })
   }
 
-  let navigate = useNavigate()
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    navigate(`/users/${userId}/businesses/${businessId}`)
-  }
-
-  useEffect(() => {
-    const getEmployees = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/employees/${businessId}`
-      )
-      setEmployees(response.data)
-    }
-    getEmployees()
-  }, [])
-
-  const {  dateMonth, dateDay, dateYear, employeeHours } = formValue
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   navigate(`/users/${userId}/businesses/${businessId}`)
+  // }
 
   return (
     <div className="forms">
       <section className="input-section">
-        <form onSubmit={handleSubmit}>
+        <form>
           <input
-            className="form"
-            type="integer"
-            name="dateMonth"
-            placeholder="Month"
-            value={dateMonth}
+            className="new-entry-date"
+            type="date"
+            name="date"
+            value={date}
             onChange={handleChange}
           />
-          <input
-            className="form"
-            type="integer"
-            name="dateDay"
-            placeholder="Day"
-            value={dateDay}
+          <select
+            className="new-entry-employee-select"
+            name="employeeId"
+            type="number"
             onChange={handleChange}
-          />
-          <input
-            className="form"
-            type="integer"
-            name="dateYear"
-            placeholder="Year"
-            value={dateYear}
-            onChange={handleChange}
-          />
-          <select className="create-form-select" name="employeeId" onChange={handleChange}>
+          >
             {employees.map((employee) => (
-            <option value={employee.id}>{employee.employeeName}</option>
+              <option value={parseInt(employee.id)}>
+                {employee.employeeName}
+              </option>
             ))}
-            </select>
+          </select>
           <input
             className="form"
-            type="integer"
+            type="number"
             name="employeeHours"
             placeholder="Hours Worked"
             value={employeeHours}
             onChange={handleChange}
           />
-          <button
-            onClick={async () =>
-              await axios.post(
-                `http://localhost:3001/api/entries/${props.logId}/`,
-                formValue
-              )
-            }
-          >
+          <button onClick={() => createNewEntry(formValue)}>
             Create Entry
           </button>
         </form>
