@@ -23,6 +23,9 @@ const App = () => {
   const [todayMonth, setTodayMonth] = useState(todayDate.getMonth() + 1)
   const [todayYear, setTodayYear] = useState(todayDate.getFullYear())
   const [businesses, setBusinesses] = useState([])
+  const [employees, setEmployees] = useState([])
+  const [positions, setPositions] = useState([])
+  // const [employees, setEmployees] = useState([])
 
   const handleLogOut = () => {
     setUser(null)
@@ -42,6 +45,8 @@ const App = () => {
     )
     setUserName(userInfo.data.ownerName)
   }
+
+
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -84,6 +89,8 @@ const App = () => {
                 todayMonth={todayMonth}
                 todayDay={todayDay}
                 todayYear={todayYear}
+                setEmployees={setEmployees}
+                employees={employees}
               />
             }
           />
@@ -95,6 +102,7 @@ const App = () => {
                 authenticated={authenticated}
                 setBusinesses={setBusinesses}
                 businesses={businesses}
+                setEmployees={setEmployees}
               />
             }
           />
@@ -113,9 +121,9 @@ const App = () => {
             }
           />
           <Route
-            path="/update-employee-page"
+            path="/update-employee-page/:employeeId"
             element={
-              <UpdateEmployeePage user={user} authenticated={authenticated} />
+              <UpdateEmployeePage employees={employees} user={user} authenticated={authenticated} />
             }
           />
           <Route
@@ -127,7 +135,13 @@ const App = () => {
           <Route
             path="/update-position-page"
             element={
-              <UpdatePositionPage user={user} authenticated={authenticated} />
+              <UpdatePositionPage positions={positions} user={user} authenticated={authenticated} />
+            }
+          />
+          <Route
+            path="/update-landing-page"
+            element={
+              <UpdatePositionPage positions={positions} user={user} authenticated={authenticated} />
             }
           />
         </Routes>

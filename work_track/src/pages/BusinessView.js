@@ -14,13 +14,15 @@ const BusinessView = ({
   authenticated,
   todayDay,
   todayMonth,
-  todayYear
+  todayYear,
+  setEmployees,
+  employees
 }) => {
   let navigate = useNavigate()
   let { ownerId, businessId, employeeId, jobId } = useParams()
   const [logId, setLogId] = useState()
   const [jobs, setJobs] = useState([])
-  const [employees, setEmployees] = useState([])
+  // const [employees, setEmployees] = useState([])
   const [businessName, setBusinessName] = useState('')
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
@@ -115,15 +117,16 @@ const BusinessView = ({
               employeeId={employee.id}
             />
           ))}
+
         </div>
       </div>
     </div>
   ) : (
-    <div className="protected">
-      <h3> oops! you must be signed in to do that</h3>
-      <button onClick={() => navigate('/')}>Sign In</button>
-    </div>
-  )
+      <div className="protected">
+        <h3> oops! you must be signed in to do that</h3>
+        <button onClick={() => navigate('/')}>Sign In</button>
+      </div>
+    )
 }
 
 export default BusinessView
