@@ -47,6 +47,9 @@ const BusinessPortal = ({
       <div className="links">
         {/* business listings; logs; reports; modal? */}
         <CreateBusiness ownerId={ownerId} />
+        <button onClick={() => navigate('/update-businesses')}>
+          update businesses
+        </button>
         {/* <UpdateBusiness businessId={props.businessId} /> */}
       </div>
     </div>

@@ -22,9 +22,12 @@ const BusinessView = ({
   const [jobs, setJobs] = useState([])
   const [employees, setEmployees] = useState([])
   const [businessName, setBusinessName] = useState('')
-  const [firstMonth, setFirstMonth] = useState(todayMonth)
-  const [firstDay, setFirstDay] = useState(todayDay - 7)
-  const [firstYear, setFirstYear] = useState(todayYear)
+  const [startDate, setStartDate] = useState(
+    `${todayMonth}/${todayDay - 7}/${todayYear}`
+  )
+  const [endDate, setEndDate] = useState(
+    `${todayMonth}/${todayDay}/${todayYear}`
+  )
 
   useEffect(() => {
     const getLog = async () => {
@@ -57,22 +60,19 @@ const BusinessView = ({
     getBusinessName()
   }, [])
 
-  const showLastMonth = (month, day, year) => {
-    setFirstMonth(month - 1)
-    setFirstDay(day)
-    setFirstYear(year)
+  const showLastMonth = () => {
+    setStartDate(`${todayMonth - 1}/${todayDay}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
 
-  const showYesterday = (month, day, year) => {
-    setFirstMonth(month)
-    setFirstDay(day - 1)
-    setFirstYear(year)
+  const showYesterday = () => {
+    setStartDate(`${todayMonth}/${todayDay - 1}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay - 1}/${todayYear}`)
   }
 
-  const showLastWeek = (month, day, year) => {
-    setFirstMonth(month)
-    setFirstDay(day - 7)
-    setFirstYear(year)
+  const showLastWeek = () => {
+    setStartDate(`${todayMonth}/${todayDay - 7}/${todayYear}`)
+    setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
@@ -95,12 +95,8 @@ const BusinessView = ({
       <Entries
         logId={logId}
         employees={employees}
-        lastMonth={todayMonth}
-        lastDay={todayDay}
-        lastYear={todayYear}
-        firstMonth={firstMonth}
-        firstDay={firstDay}
-        firstYear={firstYear}
+        startDate={startDate}
+        endDate={endDate}
         showLastMonth={showLastMonth}
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
