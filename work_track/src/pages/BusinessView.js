@@ -56,8 +56,13 @@ const BusinessView = ({
   }, [])
 
   const showLastMonth = () => {
-    setStartDate(`${todayMonth - 1}/${todayDay}/${todayYear}`)
-    setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
+    if (todayMonth === 0) {
+      setStartDate(`12/${todayDay}/${todayYear - 1}`)
+      setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
+    } else {
+      setStartDate(`${todayMonth - 1}/${todayDay}/${todayYear}`)
+      setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
+    }
   }
 
   const showYesterday = () => {
