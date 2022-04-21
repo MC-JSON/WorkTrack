@@ -239,7 +239,13 @@ margin:50px auto;
   border: 1px solid gray;
   margin: 5px;
   width: 60%;
+  transition: .3s;
+}
 
+.crud-functions a:hover, .quick-view-buttons button:hover {
+  background-color: rgb(47, 191, 47);
+  box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7);
+  transform: scale(1.1)
 }
 
 .log-wrapper {
@@ -250,22 +256,20 @@ margin:50px auto;
   grid-column: 3 / 4;
 }
 
-/* Employee Info */
-
-.employee-info-wrapper {
-  display: flex;
-  width: 20vw;
-  justify-content: space-between;
-}
 
 /* Entries */
-
+.log-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 .entries-list {
   overflow-y: scroll;
   height: 50vh;
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 100%;
 }
 
 .entry-wrapper {
@@ -281,23 +285,23 @@ margin:50px auto;
   box-shadow: 1px 3px 4px 0 rgba(0,0,0, .6);
   transition: 0.5s;
 }
-.entry-wrapper:hover {
+/* .entry-wrapper:hover {
   transform: scale(1.1);
   box-shadow: 6px 6px 4px 0 rgba(0,0,0,.6);
-}
+} */
 .entry-date-and-options {
   display: flex;
   justify-content: space-between;
 }
 
-.option-buttons button {
+.option-buttons button, .employee-update-buttons button {
   border: none;
   background: transparent;
-  transition: .3s;
+  transition: .5s;
 }
 
-.option-buttons button:hover {
-  transform: scale(1.2) 
+.option-buttons button:hover, .employee-update-buttons button:hover {
+  transform: scale(1.3) 
 }
 
 
@@ -316,6 +320,7 @@ margin:50px auto;
 .quick-view-buttons button {
   background: transparent;
   border: 1px solid gray;
+  transition: .5s;
 }
 
 .preset-searches {
@@ -323,6 +328,34 @@ margin:50px auto;
   justify-content: space-around;
   width: 80%;
 }
+
+.fa-trash-can, .fa-pen-to-square {
+  transition: 0.3s;
+}
+.fa-trash-can:hover {
+  color: rgb(216, 42, 42);
+}
+.fa-pen-to-square:hover {
+  color: rgb(28, 131, 28);
+}
+/* Employee Info */
+
+.employee-wrapper {
+  display: flex;
+  flex-flow: column;
+}
+.employee {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 10px;
+}
+
+
+
+
+
+
 /* 
 
 .portal {
