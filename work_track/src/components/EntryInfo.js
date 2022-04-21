@@ -43,7 +43,11 @@ const EntryInfo = ({
           </button>
           <button
             name="delete-entry-button"
-            onClick={() => deleteEntry(entryId)}
+            onClick={() => {
+              window.confirm('Are you sure you want to delete this entry?')
+                ? deleteEntry(entryId)
+                : console.log('cancel')
+            }}
           >
             <i className="fa-solid fa-trash-can"></i>
           </button>

@@ -109,7 +109,6 @@ const BusinessView = ({
 
       <div className="employee-wrapper">
         <div className="employee-list-headings">Employees & Position:</div>
-        <br />
         <div className="employee-list">
           {employees.map((employee) => (
             <EmployeeInfo
