@@ -160,8 +160,9 @@ form input {
   font-family: 'Jaldi';
   font-style: italic;
   font-size: 25px;
-  cursor: pointer;}
-
+  cursor: pointer;
+}
+  
   .card:hover {
     opacity: 0.9;
     transform: translateY(5px);
@@ -271,6 +272,9 @@ form input {
   align-items: center;
 }
 
+.create-new-entry-form {
+  border-bottom: 2px solid gray;
+}
 .create-new-entry-form input {
   font-size: 1.1rem;
 }
@@ -338,6 +342,8 @@ select.new-entry-employee-select {
 .quick-view-buttons button {
   margin: 5px 0;
   font-size: 1.1rem;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .quick-view-buttons button:focus {
@@ -354,9 +360,12 @@ select.new-entry-employee-select {
 .quick-view-buttons button, .create-new-entry-form button {
   background: transparent;
   border: 1px solid gray;
-  transition: .5s;
+  transition: .3s;
 }
 
+.date-range-search-form {
+  margin-top: 1.6vh;
+}
 
 .fa-trash-can, .fa-pen-to-square {
   transition: 0.3s;
@@ -367,6 +376,17 @@ select.new-entry-employee-select {
 .fa-pen-to-square:hover {
   color: rgb(28, 131, 28);
 }
+.empty-entries-wrapper {
+  text-align: center;
+}
+.empty-entries {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 50%;
+}
+
 /* Employee Info */
 
 .employee-wrapper {
