@@ -57,6 +57,7 @@ const CreateEmployee = (props) => {
             name="jobId"
             onChange={handleChange}
           >
+            <option value='' disabled selected hidden>Select Job</option>
             {jobs.map((job) => (
               <option value={job.id}>{job.jobTitle}</option>
             ))}

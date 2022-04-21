@@ -169,18 +169,21 @@ const App = () => {
             }
           />
           <Route
-            path="/update-position-page"
+            path="/update-position-page/:businessId"
             element={
               <UpdatePositionPage
                 user={user}
                 authenticated={authenticated}
                 jobs={jobs}
+                businessId={businessId}
               />
             }
           />
           <Route
             path="/create-employee/:businessId"
-            element={<CreateEmployee user={user} businesses={businesses} />}
+            element={
+              <CreateEmployee user={user} businesses={businesses} jobs={jobs} />
+            }
           />
           <Route
             path="/create-job/:businessId"
@@ -194,12 +197,6 @@ const App = () => {
             path="/create-entry"
             element={
               <CreateEntry user={user} businesses={businesses} logs={logs} />
-            }
-          />
-          <Route
-            path="/update-landing-page"
-            element={
-              <UpdatePositionPage user={user} authenticated={authenticated} />
             }
           />
         </Routes>

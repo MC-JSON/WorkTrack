@@ -65,7 +65,7 @@ const BusinessPortal = ({
       </div>
       <h3>Business & Log Creation Form</h3>
       <div className="links">
-        <CreateBusiness ownerId={ownerId} />
+        <CreateBusiness ownerId={ownerId} user={user} />
       </div>
     </div>
   ) : (
