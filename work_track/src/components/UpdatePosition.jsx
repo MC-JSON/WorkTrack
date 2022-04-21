@@ -41,7 +41,9 @@ const UpdatePosition = ({jobs, user}) => {
   const { jobId, jobDescription } = formValue
 
   return (
-      <div className="info-wrapper">
+      <div className="forms-wrapper">
+        <h1>Update Position</h1>
+        <div className="forms">
         <form onSubmit={handleSubmit}>
           <select
             className="create-form-select"
@@ -74,6 +76,7 @@ const UpdatePosition = ({jobs, user}) => {
           <button type="submit">Update</button>
           <button onClick={handleSubmit2}>Delete</button>
         </form>
+        </div>
       </div>
     )
 }
