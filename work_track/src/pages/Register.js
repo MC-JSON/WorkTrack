@@ -33,52 +33,42 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className="forms-wrapper">
+      <h1>Registration</h1>
+      <div className="register">
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name</label>
-            <input
-              onChange={handleChange}
-              name="name"
-              type="text"
-              placeholder="Your Name Here"
-              value={formValues.name}
-              required
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="youremail@example.com"
-              value={formValues.email}
-              required
-            />
-          </div>
-
-          <div>
-            <label>Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-          </div>
-          <div>
-            <label>Confirm Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="confirmPassword"
-              value={formValues.confirmPassword}
-              required
-            />
-          </div>
+          <input
+            onChange={handleChange}
+            name="name"
+            type="text"
+            placeholder="Your Name"
+            value={formValues.name}
+            required
+          />
+          <input
+            onChange={handleChange}
+            name="email"
+            type="email"
+            placeholder="Your Login Email"
+            value={formValues.email}
+            required
+          />
+          <input
+            onChange={handleChange}
+            type="password"
+            name="password"
+            placeholder="Your Password"
+            value={formValues.password}
+            required
+          />
+          <input
+            onChange={handleChange}
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formValues.confirmPassword}
+            required
+          />
           <button
             disabled={
               !formValues.email ||
@@ -86,7 +76,7 @@ const Register = () => {
                 formValues.confirmPassword === formValues.password)
             }
           >
-
+            Register
           </button>
         </form>
       </div>

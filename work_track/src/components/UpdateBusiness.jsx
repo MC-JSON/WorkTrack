@@ -52,8 +52,9 @@ const UpdateBusiness = ({
   }
 
   return (
-    <div className="info-wrapper">
-      <div className="update-business-name">{businessName}</div>
+    <div className="forms-wrapper">
+      <h1>{businessName}</h1>
+      <div className="forms">
       <form onSubmit={handleSubmit}>
         <input
           className="form"
@@ -91,6 +92,7 @@ const UpdateBusiness = ({
         <button type="submit">Update</button>
         <button onClick={handleSubmit2}>Delete</button>
       </form>
+    </div>
     </div>
   )
 }

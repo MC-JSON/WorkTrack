@@ -44,7 +44,9 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
 
   return (
     // console.log('33333', employees) >
-    < div className="info-wrapper" >
+    < div className="forms-wrapper" >
+      <h1>Update Employee</h1>
+      <div className="forms">
       <form onSubmit={handleSubmit}>
         <select className="create-form-select" name="jobId" onChange={handleChange}>
           {jobs.map((job) => (
@@ -64,6 +66,7 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
         <button onClick={handleSubmit2}>Delete</button>
       </form>
     </div >
+    </div>
   )
 }
 

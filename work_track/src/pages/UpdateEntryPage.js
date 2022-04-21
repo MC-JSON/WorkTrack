@@ -9,7 +9,6 @@ const UpdateEntryPage = ({
 }) => {
   return (
     <div>
-      <h1>Update Entry</h1>
       <div>
         <UpdateEntry
           entry={entry}

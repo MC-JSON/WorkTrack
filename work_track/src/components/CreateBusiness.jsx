@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 //form for creating new business into database
 const CreateBusiness = (props) => {
@@ -25,8 +25,6 @@ const CreateBusiness = (props) => {
     })
   }
 
-  let navigate = useNavigate()
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await axios.post(
@@ -45,7 +43,6 @@ const CreateBusiness = (props) => {
     setDisable(true)
     setDisabled(false)
     props.getBusinesses()
-    // navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   const {
