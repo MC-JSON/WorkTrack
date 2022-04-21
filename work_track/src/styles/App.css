@@ -177,7 +177,7 @@ form input {
   }
   
 
-  .business-map {
+.business-map {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -190,19 +190,29 @@ form input {
 .links button {
     justify-content: center;
     padding: 0.1em .1em;
-    border: 0;
+    border: .5px solid gray;
     border-radius: 6px;
-    font-size: 1.05rem;
-    background-color: whitesmoke;
+    font-size: 1rem;
+    background-color: #f2e205;
     cursor: pointer;
     margin-right: 5px;
   }
+
+.links button:hover {
+  background-color: rgb(47, 191, 47);
+  box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7);
+  transform: scale(1.1)
+}
 
 .links input {
     border: 0;
     width: 150px;
     margin-right: 5px;
     margin-top: 1px
+  }
+
+.links input::placeholder{
+    text-align: center
   }
 
 
@@ -383,27 +393,40 @@ select.new-entry-employee-select {
 
 .forms button {
     justify-content: center;
-    padding: 0.1em .3em;
-    border: 0;
+    padding: 0.1em .1em;
+    border: .5px solid gray;
     border-radius: 6px;
     font-size: 1.1rem;
     margin-left: 5px;
-    background-color: whitesmoke;
+    background-color: #f2e205;
     cursor: pointer;
   }
 
+.forms button:hover {
+  background-color: rgb(47, 191, 47);
+  box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7);
+  transform: scale(1.1)
+}
+
 .forms input {
+  background-color: whitesmoke;
   border: 0;
   border-radius: 6px;
   font-size: 1.1rem;
   width: 150px
   }
 
+.forms input::placeholder{
+  text-align: center
+}
+
 .forms select{
   justify-content: center;
+  background-color: whitesmoke;
   padding: 0.1em .3em;
   border-radius: 6px;
   font-size: 1.1rem;
+  text-align: center;
   width: 150px
 }
 
