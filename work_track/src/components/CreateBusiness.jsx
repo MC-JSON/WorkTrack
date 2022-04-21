@@ -29,27 +29,21 @@ const CreateBusiness = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response =
-    await axios.post(
+    const response = await axios.post(
       `http://localhost:3001/api/businesses/${ownerId}`,
       formValue
     )
     setDisable(false)
     setDisabled(true)
-    console.log("business", response.data.id)
+    console.log('business', response.data.id)
     setBusinessId(response.data.id)
   }
 
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-      const log =
-    await axios.post(
-      `http://localhost:3001/api/logs/${businessId}`
-    )
+    const log = await axios.post(`http://localhost:3001/api/logs/${businessId}`)
     setDisable(true)
     setDisabled(false)
-    console.log("log", log.data)
-    
     navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
@@ -105,14 +99,10 @@ const CreateBusiness = (props) => {
             value={businessImage}
             onChange={handleChange}
           />
-          <button disabled={disabled}
-          type="submit"
-              >
-              Create Business
-              </button>
-              <button disabled={disable}
-              onClick={handleSubmit2}
-          >
+          <button disabled={disabled} type="submit">
+            Create Business
+          </button>
+          <button disabled={disable} onClick={handleSubmit2}>
             Create Log
           </button>
         </form>

@@ -9,10 +9,6 @@
 body {
   margin: 0;
   padding: 0;
-}
-.App {
-  margin: 0;
-  padding: 0;
   height: 100vh;
   font-family: 'Fira Sans', sans-serif;
   background-color: #f2e205;
@@ -212,11 +208,12 @@ margin:50px auto;
 
 .business-page-wrapper {
   display: grid;
-  grid-template-columns: 1fr, 4fr, 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   width: 100vw;
 }
 
 .business-info-wrapper {
+  margin-top: 10vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -242,7 +239,7 @@ margin:50px auto;
   transition: .3s;
 }
 
-.crud-functions a:hover, .quick-view-buttons button:hover {
+.crud-functions a:hover, .quick-view-buttons button:hover, .create-new-entry-form button:hover {
   background-color: rgb(47, 191, 47);
   box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7);
   transform: scale(1.1)
@@ -263,9 +260,21 @@ margin:50px auto;
   flex-flow: column;
   align-items: center;
 }
+
+.create-new-entry-form input {
+  font-size: 1.1rem;
+}
+select.new-entry-employee-select {
+  
+  border: none;
+  font-size: 1.1rem;
+}
+
+
+
 .entries-list {
   overflow-y: scroll;
-  height: 50vh;
+  height: 40vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -285,10 +294,7 @@ margin:50px auto;
   box-shadow: 1px 3px 4px 0 rgba(0,0,0, .6);
   transition: 0.5s;
 }
-/* .entry-wrapper:hover {
-  transform: scale(1.1);
-  box-shadow: 6px 6px 4px 0 rgba(0,0,0,.6);
-} */
+
 .entry-date-and-options {
   display: flex;
   justify-content: space-between;
@@ -312,22 +318,29 @@ margin:50px auto;
   border-top: 1px solid gray;
 }
 
+
 .quick-view-buttons {
   display: flex;
-  flex-flow: column;
+  flex-flow: row-reverse;
   align-items: center;
 }
+
+.preset-searches{
+  display: flex;
+  flex-flow: column;
+  width: 20%;
+}
+
 .quick-view-buttons button {
+  margin: 5px 0;
+}
+
+.quick-view-buttons button, .create-new-entry-form button {
   background: transparent;
   border: 1px solid gray;
   transition: .5s;
 }
 
-.preset-searches {
-  display: flex;
-  justify-content: space-around;
-  width: 80%;
-}
 
 .fa-trash-can, .fa-pen-to-square {
   transition: 0.3s;
