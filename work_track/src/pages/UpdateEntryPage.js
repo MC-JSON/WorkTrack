@@ -9,14 +9,12 @@ const UpdateEntryPage = ({
 }) => {
   return (
     <div>
-      <div>
-        <UpdateEntry
-          entry={entry}
-          employees={employees}
-          user={user}
-          businessId={businessId}
-        />
-      </div>
+      <UpdateEntry
+        entry={entry}
+        employees={employees}
+        user={user}
+        businessId={businessId}
+      />
     </div>
   )
 }

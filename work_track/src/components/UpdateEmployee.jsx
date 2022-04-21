@@ -50,7 +50,7 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
       <form onSubmit={handleSubmit}>
         <select className="create-form-select" name="jobId" onChange={handleChange}>
           {jobs.map((job) => (
-            <option value={job.id}>{job.jobTitle}</option>
+            <option className='option1' value={job.id}>{job.jobTitle}</option>
           ))}
         </select>
         <input

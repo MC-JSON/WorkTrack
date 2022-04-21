@@ -1,25 +1,21 @@
 import { Link } from 'react-router-dom'
 
-//navigation bar built
 const Nav = ({ authenticated, user, handleLogOut }) => {
   let authenticatedOptions
+  //Navbar for Authenticated User
   if (user && authenticated) {
     authenticatedOptions = (
-      <nav>
+      <nav className='navbar'>
         <h3>Welcome {user.ownerEmail}!</h3>
-        <Link to={`/portal/${user.id}`}>Home</Link>
-        <Link onClick={handleLogOut} to="/">
-          Sign Out
-        </Link>
-        {/* <Link to="/register">Create Account</Link> */}
+        <Link className='click-login' to={`/portal/${user.id}`}>Home</Link>
+        <Link onClick={handleLogOut} to="/">Sign Out</Link>
       </nav>
     )
   }
-
+  //Navbar for Non-Authenticated User
   const publicOptions = (
     <nav className="navbar">
       <div>
-        {/* <Link to="/portal">Business Portal</Link> */}
         <Link to="/">Login</Link>
         <Link to="/register">Register</Link>
       </div>

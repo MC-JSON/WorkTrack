@@ -10,14 +10,12 @@ const UpdateEmployeePage = ({
 }) => {
   return (
     <div>
-      <div>
-        <UpdateEmployee
-          businessId={businessId}
-          user={user}
-          jobs={jobs}
-          employee={employee}
-        />
-      </div>
+      <UpdateEmployee
+        businessId={businessId}
+        user={user}
+        jobs={jobs}
+        employee={employee}
+      />
     </div>
   )
 }

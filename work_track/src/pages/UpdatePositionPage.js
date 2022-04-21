@@ -9,9 +9,7 @@ const UpdatePositionPage = ({
 }) => {
   return (
     <div>
-      <div>
-        <UpdatePosition jobs={jobs} user={user} businessId={businessId} />
-      </div>
+      <UpdatePosition jobs={jobs} user={user} businessId={businessId} />
     </div>
   )
 }
