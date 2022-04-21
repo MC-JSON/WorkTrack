@@ -19,13 +19,13 @@ const BusinessPortal = ({
   let { ownerId } = useParams()
   let navigate = useNavigate()
 
+  const getBusinesses = async () => {
+    const response = await axios.get(
+      `http://localhost:3001/api/owners/${ownerId}/businesses`
+    )
+    setBusinesses(response.data)
+  }
   useEffect(() => {
-    const getBusinesses = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/owners/${ownerId}/businesses`
-      )
-      setBusinesses(response.data)
-    }
     getBusinesses()
   }, [])
 
@@ -65,7 +65,11 @@ const BusinessPortal = ({
       </div>
       <h3>Business & Log Creation Form</h3>
       <div className="links">
-        <CreateBusiness ownerId={ownerId} user={user} />
+        <CreateBusiness
+          ownerId={ownerId}
+          user={user}
+          getBusinesses={getBusinesses}
+        />
       </div>
     </div>
   ) : (
