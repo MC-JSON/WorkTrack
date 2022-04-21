@@ -62,7 +62,6 @@ const Entries = ({
     entries && (
       <div className="log-wrapper">
         <div className="create-entry">
-          Create New Entry
           <CreateEntry
             logId={logId}
             createNewEntry={createNewEntry}
@@ -71,7 +70,6 @@ const Entries = ({
         </div>
         <div className="quick-view-buttons">
           <div className="preset-searches">
-            Quick Searches
             <button name="last-month" onClick={() => showLastMonth()}>
               Last 30 Days
             </button>
@@ -83,7 +81,6 @@ const Entries = ({
             </button>
           </div>
           <div className="custom-date-search">
-            Date Search
             <form className="date-range-search-form" onSubmit={handleSubmit}>
               <label>Start Date:</label>
               <input
@@ -101,12 +98,12 @@ const Entries = ({
                 value={searchEndDate}
                 onChange={handleChange}
               />
-              <button type="submit">Search</button>
+              <button type="submit">Search Entries</button>
             </form>
           </div>
         </div>
         <div className="total-hours-worked">
-          Total hours this period: {totalHoursWorked}
+          Total hours worked this period: {totalHoursWorked}
         </div>
         <div className="entries-list">
           {entries.map((entry) => (
