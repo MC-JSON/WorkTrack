@@ -16,6 +16,7 @@ const Entries = ({
   setEntry
 }) => {
   const [entries, setEntries] = useState([])
+  const [totalHoursWorked, setTotalHoursWorked] = useState()
   const [formValue, setFormValue] = useState({})
   const { searchStartDate, searchEndDate } = formValue
   let navigate = useNavigate()
@@ -24,7 +25,8 @@ const Entries = ({
     const response = await axios.get(
       `http://localhost:3001/api/Entries/${logId}/date-range-search/?startDate=${startDate}&endDate=${endDate}`
     )
-    setEntries(response.data)
+    setEntries(response.data.entries)
+    setTotalHoursWorked(response.data.sum)
   }
   useEffect(() => {
     getEntriesByDateRange()
@@ -99,6 +101,9 @@ const Entries = ({
               <button type="submit">Search</button>
             </form>
           </div>
+        </div>
+        <div className="total-hours-worked">
+          Total hours this period: {totalHoursWorked}
         </div>
         <div className="entries-list">
           {entries.map((entry) => (
