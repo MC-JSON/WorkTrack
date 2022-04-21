@@ -44,7 +44,8 @@ const CreateBusiness = (props) => {
     const log = await axios.post(`http://localhost:3001/api/logs/${businessId}`)
     setDisable(true)
     setDisabled(false)
-    navigate(`/users/${props.user.id}/businesses/${businessId}`)
+    props.getBusinesses()
+    // navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   const {
