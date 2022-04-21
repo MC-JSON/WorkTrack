@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100&family=Poiret+One&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -18,8 +18,12 @@ body {
   background-color: #f2e205;
 }
 
-
-nav {
+/* Nav Styling */
+.navbar {
+  margin: 0px;
+  padding: 10px;
+  font-family: 'MuseoModerno', cursive;  font-size: 20px;
+  color: black;
   background-color: transparent;
   display: flex;
   justify-content: flex-end;
