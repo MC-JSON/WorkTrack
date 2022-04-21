@@ -7,7 +7,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
     authenticatedOptions = (
       <nav className='navbar'>
         <h3>Welcome {user.ownerEmail}!</h3>
-        <Link to={`/portal/${user.id}`}>Home</Link>
+        <Link className='click-login' to={`/portal/${user.id}`}>Home</Link>
         <Link onClick={handleLogOut} to="/">Sign Out</Link>
       </nav>
     )

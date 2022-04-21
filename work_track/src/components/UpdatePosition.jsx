@@ -42,16 +42,18 @@ const UpdatePosition = (props) => {
 
   useEffect(() => {
     const getPositions = async () => {
-      const response = await axios.get(`http://localhost:3001/api/jobs/1}`)
+      const response = await axios.get(`http://localhost:3001/api/jobs/${businessId}}`)
       setPosition(response.data)
+      console.log('POSITIPON', response.data)
     }
     getPositions()
   }, [])
+  console.log('876543', position)
 
   const { jobTitle, jobDescription } = formValue
 
   return (
-    console.log('999999', position) >
+    // console.log('999999', position)
     (
       <div className="info-wrapper">
         <form onSubmit={handleSubmit}>

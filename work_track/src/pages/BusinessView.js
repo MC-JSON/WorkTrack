@@ -91,7 +91,7 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          <Link to={'/update-position-page'}>Update Jobs</Link>
+          <Link to={`/update-position-page`}>Update Jobs</Link>
           <Link to={`/update-businesses/${businessId}`}>Update Business</Link>
           <Link to={`/create-employee/${businessId}`}>Create Employees</Link>
           <Link to={`/create-job/${businessId}`}>Create Jobs</Link>

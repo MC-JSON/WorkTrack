@@ -28,7 +28,8 @@ const CreatePosition = (props) => {
   const { jobTitle, jobDescription } = formValue
 
   return (
-    <div className="forms">
+    <div className="create-position-page">
+      <h1>Create Position</h1>
       <section className="input-section">
         <form onSubmit={handleSubmit}>
           <input

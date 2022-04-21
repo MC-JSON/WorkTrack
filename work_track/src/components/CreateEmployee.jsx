@@ -41,7 +41,8 @@ const CreateEmployee = (props) => {
   const { employeeName } = formValue
 
   return (
-    <div className="forms">
+    <div className="create-employee-page">
+      <h1>Create Employee</h1>
       <section className="input-section">
         <form onSubmit={handleSubmit}>
           <input

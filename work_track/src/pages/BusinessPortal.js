@@ -47,7 +47,7 @@ const BusinessPortal = ({
   return user && authenticated ? (
     <div className="portal">
       <h1>Business Portal</h1>
-      <div>
+      <div className='business-portal-create-business'>
         {businesses.map((business) => (
           <BusinessRend
             key={business.id}

@@ -8,7 +8,7 @@ const UpdateEntryPage = ({
   businessId
 }) => {
   return (
-    <div>
+    <div className='update-entry-page'>
       <h1>Update Entry</h1>
       <div>
         <UpdateEntry

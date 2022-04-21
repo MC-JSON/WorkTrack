@@ -9,7 +9,7 @@ const UpdateEmployeePage = ({
   businessId
 }) => {
   return (
-    <div>
+    <div className='update-employee-page'>
       <h1>Update Employee</h1>
       <div>
         <UpdateEmployee
