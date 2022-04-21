@@ -3,7 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import UpdateEmployee from './UpdateEmployee'
 import axios from 'axios'
 // let navigate = useNavigate
-const EmployeeInfo = ({ employeeId, name, job, jobList, updateEmployee }) => {
+const EmployeeInfo = ({
+  employeeId,
+  name,
+  job,
+  jobList,
+  updateEmployee,
+  deleteEmployee
+}) => {
   const [jobTitle, setJobTitle] = useState('')
   useEffect(() => {
     const getJobName = () => {
@@ -16,9 +23,8 @@ const EmployeeInfo = ({ employeeId, name, job, jobList, updateEmployee }) => {
     getJobName()
   })
 
-  const handleSubmit2 = async (e) => {
-    e.preventDefault()
-    await axios.delete(`http://localhost:3001/api/employees/${employeeId}`)
+  const handleSubmit2 = () => {
+    deleteEmployee(employeeId)
   }
 
   return (

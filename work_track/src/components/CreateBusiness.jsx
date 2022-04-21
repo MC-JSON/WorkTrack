@@ -45,7 +45,6 @@ const CreateBusiness = (props) => {
     setDisable(true)
     setDisabled(false)
     props.getBusinesses()
-    // navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   const {
