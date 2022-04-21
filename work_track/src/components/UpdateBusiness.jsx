@@ -60,7 +60,7 @@ const UpdateBusiness = ({
           className="form"
           type="text"
           name="businessAddress"
-          placeholder={businessAddress}
+          placeholder="Address"
           value={businessAddress}
           onChange={handleChange}
         />
@@ -68,7 +68,7 @@ const UpdateBusiness = ({
           className="form"
           type="text"
           name="businessCity"
-          placeholder={businessCity}
+          placeholder="City"
           value={businessCity}
           onChange={handleChange}
         />
@@ -76,7 +76,7 @@ const UpdateBusiness = ({
           className="form"
           type="text"
           name="businessState"
-          placeholder={businessState}
+          placeholder="State"
           value={businessState}
           onChange={handleChange}
         />
@@ -84,7 +84,7 @@ const UpdateBusiness = ({
           className="form"
           type="text"
           name="businessImage"
-          placeholder={businessImage}
+          placeholder="Image"
           value={businessImage}
           onChange={handleChange}
         />

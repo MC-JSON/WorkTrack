@@ -17,14 +17,18 @@ const CreateEmployee = (props) => {
     const { name, value } = event.target
     setFormValue({
       ...formValue,
-      [name]: value,
+      [name]: value
     })
   }
 
   let navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    await axios.post(
+      `http://localhost:3001/api/employees/${businessId}/`,
+      formValue
+    )
     navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
@@ -58,20 +62,14 @@ const CreateEmployee = (props) => {
             name="jobId"
             onChange={handleChange}
           >
+            <option value="" disabled selected hidden>
+              Select Job
+            </option>
             {jobs.map((job) => (
               <option value={job.id}>{job.jobTitle}</option>
             ))}
           </select>
-          <button
-            onClick={async () =>
-              await axios.post(
-                `http://localhost:3001/api/employees/${businessId}/`,
-                formValue
-              )
-            }
-          >
-            Create Employee
-          </button>
+          <button type="submit">Create Employee</button>
         </form>
       </section>
     </div>

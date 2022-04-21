@@ -30,18 +30,18 @@ const BusinessView = ({
     `${todayMonth}/${todayDay}/${todayYear}`
   )
 
+  const getEmployees = async () => {
+    const response = await axios.get(
+      `http://localhost:3001/api/employees/${businessId}`
+    )
+    setEmployees(response.data)
+  }
   useEffect(() => {
     const getLog = async () => {
       const response = await axios.get(
         `http://localhost:3001/api/logs/${businessId}`
       )
       setLogId(response.data[0].id)
-    }
-    const getEmployees = async () => {
-      const response = await axios.get(
-        `http://localhost:3001/api/employees/${businessId}`
-      )
-      setEmployees(response.data)
     }
     const getJobs = async () => {
       const response = await axios.get(
@@ -83,6 +83,11 @@ const BusinessView = ({
     setEmployee(employee)
     navigate(`/update-employee-page/${employeeId}`)
   }
+
+  const deleteEmployee = async (employeeId) => {
+    await axios.delete(`http://localhost:3001/api/employees/${employeeId}`)
+    getEmployees()
+  }
   return user && authenticated && logId ? (
     <div className="business-page-wrapper">
       <div className="business-info-wrapper">
@@ -91,10 +96,10 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          <Link to={`/update-position-page`}>Update Jobs</Link>
-          <Link to={`/update-businesses/${businessId}`}>Update Business</Link>
-          <Link to={`/create-employee/${businessId}`}>Create Employees</Link>
           <Link to={`/create-job/${businessId}`}>Create Jobs</Link>
+          <Link to={`/update-position-page/${businessId}`}>Update Jobs</Link>
+          <Link to={`/create-employee/${businessId}`}>Create Employees</Link>
+          <Link to={`/update-businesses/${businessId}`}>Update Business</Link>
         </div>
       </div>
 
@@ -114,6 +119,7 @@ const BusinessView = ({
 
       <div className="employee-wrapper">
         <div className="employee-list-headings">Employees & Position:</div>
+
         <div className="employee-list">
           {employees.map((employee) => (
             <EmployeeInfo
@@ -123,6 +129,7 @@ const BusinessView = ({
               jobList={jobs}
               employeeId={employee.id}
               updateEmployee={updateEmployee}
+              deleteEmployee={deleteEmployee}
             />
           ))}
         </div>
