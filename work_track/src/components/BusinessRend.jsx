@@ -8,26 +8,14 @@ const BusinessRend = ({
   showBusiness
 }) => {
   return (
-    <div
-      className="biz-wrapper"
-      onClick={() =>
-        showBusiness(
-          id,
-          businessName,
-          businessAddress,
-          businessCity,
-          businessState,
-          businessImage
-        )
-      }
-    >
-      <div className="biz-image-wrapper">
+    <div className="card" onClick={() => showBusiness(id, businessName)}>
+      <div className="img-wrapper">
         <img src={businessImage} alt={businessName} />
+        </div>
+        <div className="info-wrapper">
+        {/* <h4>{businessName}</h4> */}
       </div>
-      <div className="biz-info-wrapper flex-col">
-        <h3>{businessName}</h3>
       </div>
-    </div>
   )
 }
 

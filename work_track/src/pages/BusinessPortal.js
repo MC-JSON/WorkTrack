@@ -45,9 +45,11 @@ const BusinessPortal = ({
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
   return user && authenticated ? (
-    <div className="portal">
-      <h1>Business Portal</h1>
-      <div>
+    <div className="business-portal-wrapper">
+      <div className="business-portal-info-wrapper">
+        <h1>Business Portal</h1>
+      </div>
+      <div className="business-map">
         {businesses.map((business) => (
           <BusinessRend
             key={business.id}
@@ -61,9 +63,9 @@ const BusinessPortal = ({
           />
         ))}
       </div>
+      <h3>Business & Log Creation Form</h3>
       <div className="links">
-        {/* business listings; logs; reports; modal? */}
-        <CreateBusiness ownerId={ownerId} />
+        <CreateBusiness ownerId={ownerId} user={user} />
       </div>
     </div>
   ) : (

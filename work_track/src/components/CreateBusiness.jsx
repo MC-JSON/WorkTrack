@@ -27,9 +27,30 @@ const CreateBusiness = (props) => {
 
   let navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    navigate(`/portal/${ownerId}`)
+    const response =
+    await axios.post(
+      `http://localhost:3001/api/businesses/${ownerId}`,
+      formValue
+    )
+    setDisable(false)
+    setDisabled(true)
+    console.log("business", response.data.id)
+    setBusinessId(response.data.id)
+  }
+
+  const handleSubmit2 = async (e) => {
+    e.preventDefault()
+      const log =
+    await axios.post(
+      `http://localhost:3001/api/logs/${businessId}`
+    )
+    setDisable(true)
+    setDisabled(false)
+    console.log("log", log.data)
+    
+    navigate(`/users/${props.user.id}/businesses/${businessId}`)
   }
 
   const {
@@ -41,7 +62,7 @@ const CreateBusiness = (props) => {
   } = formValue
 
   return (
-    <div className="forms">
+    <div className="business-form">
       <section className="input-section">
         <form onSubmit={handleSubmit}>
           <input
@@ -85,33 +106,12 @@ const CreateBusiness = (props) => {
             onChange={handleChange}
           />
           <button disabled={disabled}
-            onClick={async () => {
-              const response =
-              await axios.post(
-                `http://localhost:3001/api/businesses/${ownerId}`,
-                formValue
-              )
-              setDisable(false)
-              setDisabled(true)
-              console.log("business", response.data.id)
-              setBusinessId(response.data.id)
-            }
-          }
+          type="submit"
               >
               Create Business
               </button>
               <button disabled={disable}
-              onClick={async () => {
-                const log =
-              await axios.post(
-                `http://localhost:3001/api/logs/${businessId}`
-              )
-              setDisable(true)
-              setDisabled(false)
-              console.log("log", log.data)
-              
-            }
-          }
+              onClick={handleSubmit2}
           >
             Create Log
           </button>
