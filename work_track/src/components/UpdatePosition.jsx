@@ -4,12 +4,13 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 //built for edits
 const UpdatePosition = ({jobs, user}) => {
-  let { jobId, businessId } = useParams()
+  let { businessId } = useParams()
 
   const [formValue, setFormValue] = useState({
     jobTitle: jobs.jobTitle,
-    jobDescription: jobs.jobDescription
-  })
+    jobDescription: jobs.jobDescription,
+    jobId: ''
+    })
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -37,7 +38,7 @@ const UpdatePosition = ({jobs, user}) => {
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
-  const { jobTitle, jobDescription } = formValue
+  const { jobId, jobDescription } = formValue
 
   return (
       <div className="info-wrapper">
@@ -48,7 +49,7 @@ const UpdatePosition = ({jobs, user}) => {
             type="number"
             onChange={handleChange}
           >
-            <option value='' disabled selected hidden>Select Job</option>
+            <option value={0} disabled selected hidden>Select Job</option>
             {jobs.map((job) => (
             <option value={parseInt(job.id)}>{job.jobTitle}</option>
           ))}
