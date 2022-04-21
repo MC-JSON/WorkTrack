@@ -88,15 +88,6 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          <button onClick={() => navigate('/update-employee-page')}>
-            Update Employees
-          </button>
-          <button onClick={() => navigate('/update-position-page')}>
-            Update Jobs
-          </button>
-          <button onClick={() => navigate('/update-entry-page')}>
-            Update Entries
-          </button>
           <button onClick={() => navigate(`/update-businesses/${businessId}`)}>
             Update Business
           </button>
@@ -135,16 +126,15 @@ const BusinessView = ({
               updateEmployee={updateEmployee}
             />
           ))}
-
         </div>
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessView

@@ -34,15 +34,11 @@ const App = () => {
   const [employee, setEmployee] = useState()
   const [entry, setEntry] = useState()
   const [jobs, setJobs] = useState([])
-<<<<<<< HEAD
   const [logs, setLogs] = useState([])
   const [businessAddress, setBusinessAddress] = useState([])
   const [businessCity, setBusinessCity] = useState([])
   const [businessState, setBusinessState] = useState([])
   const [businessImage, setBusinessImage] = useState([])
-=======
-
->>>>>>> 7f88cb7f04061a11323186b48626d5fe5009d0c8
 
   const handleLogOut = () => {
     setUser(null)
@@ -62,8 +58,6 @@ const App = () => {
     )
     setUserName(userInfo.data.ownerName)
   }
-
-
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -151,15 +145,13 @@ const App = () => {
           <Route
             path="/update-employee-page/:employeeId"
             element={
-<<<<<<< HEAD
               <UpdateEmployeePage
+                businessId={businessId}
+                employee={employee}
+                jobs={jobs}
                 user={user}
                 authenticated={authenticated}
-                employees={employees}
               />
-=======
-              <UpdateEmployeePage businessId={businessId} employee={employee} jobs={jobs} user={user} authenticated={authenticated} />
->>>>>>> 7f88cb7f04061a11323186b48626d5fe5009d0c8
             }
           />
           <Route
