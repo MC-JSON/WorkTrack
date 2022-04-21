@@ -6,8 +6,7 @@ import Nav from './components/Nav'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import BusinessView from './pages/BusinessView'
-import UpdateBusinessPage from './pages/UpdateBusinessPage'
-import UpdatedBusinessPage from './pages/UpdatedBusinessPage'
+import UpdateBusiness from './components/UpdateBusiness'
 import UpdateEmployeePage from './pages/UpdateEmployeePage'
 import UpdateEntryPage from './pages/UpdateEntryPage'
 import UpdatePositionPage from './pages/UpdatePositionPage'
@@ -120,6 +119,10 @@ const App = () => {
                 setBusinesses={setBusinesses}
                 businesses={businesses}
                 setBusinessName={setBusinessName}
+                setBusinessAddress={setBusinessAddress}
+                setBusinessCity={setBusinessCity}
+                setBusinessState={setBusinessState}
+                setBusinessImage={setBusinessImage}
               />
             }
           />
@@ -130,11 +133,10 @@ const App = () => {
           <Route
             path="/update-businesses/:businessId"
             element={
-              <UpdateBusinessPage
+              <UpdateBusiness
                 user={user}
                 authenticated={authenticated}
-                businesses={businesses}
-                setBusinesses={setBusinesses}
+                businessName={businessName}
                 businessAddress={businessAddress}
                 businessCity={businessCity}
                 businessState={businessState}

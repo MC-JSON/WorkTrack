@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import CreateEmployee from '../components/CreateEmployee'
-import CreatePosition from '../components/CreatePosition'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import EmployeeInfo from '../components/EmployeeInfo'
 import Entries from './Entries'
-import CreateEntry from '../components/CreateEntry'
-import UpdateEmployee from '../components/UpdateEmployee'
-import UpdatePosition from '../components/UpdatePosition'
-import UpdateBusiness from '../components/UpdateBusiness'
 import axios from 'axios'
 
 const BusinessView = ({
@@ -35,7 +29,6 @@ const BusinessView = ({
   const [endDate, setEndDate] = useState(
     `${todayMonth}/${todayDay}/${todayYear}`
   )
-  setBusinessId(businessId)
 
   useEffect(() => {
     const getLog = async () => {
@@ -76,6 +69,11 @@ const BusinessView = ({
     setStartDate(`${todayMonth}/${todayDay - 7}/${todayYear}`)
     setEndDate(`${todayMonth}/${todayDay}/${todayYear}`)
   }
+
+  const showCustomDateSearch = (searchStartDate, searchEndDate) => {
+    setStartDate(searchStartDate)
+    setEndDate(searchEndDate)
+  }
   const updateEmployee = (employeeId, employee) => {
     setEmployee(employee)
     navigate(`/update-employee-page/${employeeId}`)
@@ -88,17 +86,13 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          <button onClick={() => navigate(`/update-businesses/${businessId}`)}>
-            Update Business
-          </button>
-          <button onClick={() => navigate(`/create-employee/${businessId}`)}>
-            Create Employees
-          </button>
-          <button onClick={() => navigate(`/create-job/${businessId}`)}>
-            Create Jobs
-          </button>
+          <Link to={'/update-position-page'}>Update Jobs</Link>
+          <Link to={`/update-businesses/${businessId}`}>Update Business</Link>
+          <Link to={`/create-employee/${businessId}`}>Create Employees</Link>
+          <Link to={`/create-job/${businessId}`}>Create Jobs</Link>
         </div>
       </div>
+
       <Entries
         logId={logId}
         employees={employees}
@@ -107,6 +101,7 @@ const BusinessView = ({
         showLastMonth={showLastMonth}
         showYesterday={showYesterday}
         showLastWeek={showLastWeek}
+        showCustomDateSearch={showCustomDateSearch}
         setEntry={setEntry}
         ownerId={ownerId}
         businessId={businessId}

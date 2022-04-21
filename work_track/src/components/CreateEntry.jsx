@@ -15,16 +15,14 @@ const CreateEntry = ({ createNewEntry, employees }) => {
       [event.target.name]: event.target.value
     })
   }
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   navigate(`/users/${userId}/businesses/${businessId}`)
-  // }
-
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    createNewEntry(formValue)
+  }
   return (
     <div className="forms">
       <section className="input-section">
-        <form>
+        <form className="create-new-entry-form" onSubmit={handleSubmit}>
           <input
             className="new-entry-date"
             type="date"
@@ -52,9 +50,7 @@ const CreateEntry = ({ createNewEntry, employees }) => {
             value={employeeHours}
             onChange={handleChange}
           />
-          <button onClick={() => createNewEntry(formValue)}>
-            Create Entry
-          </button>
+          <button type="submit">Create Entry</button>
         </form>
       </section>
     </div>
