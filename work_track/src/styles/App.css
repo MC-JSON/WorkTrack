@@ -160,6 +160,20 @@ form input {
   grid-column: 1 / 2;
 }
 
+.crud-functions {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.crud-functions a {
+  text-decoration: none;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid gray;
+  margin: 5px;
+  width: 60%;
+
+}
 
 .log-wrapper {
   grid-column: 2 / 3;
@@ -182,18 +196,43 @@ form input {
 .entries-list {
   overflow-y: scroll;
   height: 50vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .entry-wrapper {
   margin: 15px 0;
   padding: 5px;
+  width: 80%;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   border: 3px solid gray;
   border-radius: 10px;
   background-color: rgb(231, 218, 244);
+  box-shadow: 1px 3px 4px 0 rgba(0,0,0, .6);
+  transition: 0.5s;
 }
+.entry-wrapper:hover {
+  transform: scale(1.1);
+  box-shadow: 6px 6px 4px 0 rgba(0,0,0,.6);
+}
+.entry-date-and-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.option-buttons button {
+  border: none;
+  background: transparent;
+  transition: .3s;
+}
+
+.option-buttons button:hover {
+  transform: scale(1.2) 
+}
+
 
 .entry-employee-info {
   display: flex;
@@ -202,6 +241,21 @@ form input {
   border-top: 1px solid gray;
 }
 
+.quick-view-buttons {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.quick-view-buttons button {
+  background: transparent;
+  border: 1px solid gray;
+}
+
+.preset-searches {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
 /* 
 
 .portal {

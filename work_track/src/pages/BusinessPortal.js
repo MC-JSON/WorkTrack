@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import CreateBusiness from '../components/CreateBusiness'
 import BusinessRend from '../components/BusinessRend'
 import axios from 'axios'
@@ -10,9 +10,13 @@ const BusinessPortal = ({
   authenticated,
   setBusinesses,
   businesses,
-  setBusinessName
+  setBusinessName,
+  setBusinessAddress,
+  setBusinessCity,
+  setBusinessState,
+  setBusinessImage
 }) => {
-  let { ownerId, businessId } = useParams()
+  let { ownerId } = useParams()
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -25,20 +29,33 @@ const BusinessPortal = ({
     getBusinesses()
   }, [])
 
-  const showBusiness = (businessId, businessName) => {
+  const showBusiness = (
+    businessId,
+    businessName,
+    businessAddress,
+    businessCity,
+    businessState,
+    businessImage
+  ) => {
     setBusinessName(businessName)
+    setBusinessAddress(businessAddress)
+    setBusinessCity(businessCity)
+    setBusinessState(businessState)
+    setBusinessImage(businessImage)
     navigate(`/users/${ownerId}/businesses/${businessId}`)
   }
   return user && authenticated ? (
     <div className="portal">
       <h1>Business Portal</h1>
-
       <div>
         {businesses.map((business) => (
           <BusinessRend
             key={business.id}
             businessName={business.businessName}
-            image={business.businessImage}
+            businessAddress={business.businessAddress}
+            businessCity={business.businessCity}
+            businessState={business.businessState}
+            businessImage={business.businessImage}
             id={business.id}
             showBusiness={showBusiness}
           />
@@ -50,11 +67,11 @@ const BusinessPortal = ({
       </div>
     </div>
   ) : (
-      <div className="protected">
-        <h3> oops! you must be signed in to do that</h3>
-        <button onClick={() => navigate('/')}>Sign In</button>
-      </div>
-    )
+    <div className="protected">
+      <h3> oops! you must be signed in to do that</h3>
+      <button onClick={() => navigate('/')}>Sign In</button>
+    </div>
+  )
 }
 
 export default BusinessPortal

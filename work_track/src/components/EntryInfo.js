@@ -27,26 +27,31 @@ const EntryInfo = ({
     <div className="entry-wrapper">
       <div className="entry-date-and-options">
         <div className="entry-date">{date}</div>
-        <button
-          name="update-entry-button"
-          onClick={() =>
-            updateEntry(entryId, {
-              date: date,
-              employeeId: employee,
-              employeeHours: hours,
-              employeeName: employeeName
-            })
-          }
-        >
-          Update
-        </button>
-        <button name="delete-entry-button" onClick={() => deleteEntry(entryId)}>
-          Delete
-        </button>
+        <div className="option-buttons">
+          <button
+            name="update-entry-button"
+            onClick={() =>
+              updateEntry(entryId, {
+                date: date,
+                employeeId: employee,
+                employeeHours: hours,
+                employeeName: employeeName
+              })
+            }
+          >
+            <i className="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button
+            name="delete-entry-button"
+            onClick={() => deleteEntry(entryId)}
+          >
+            <i className="fa-solid fa-trash-can"></i>
+          </button>
+        </div>
       </div>
       <div className="entry-employee-info">
-        <div className="entry-employee">{employeeName}</div>
-        <div className="employee-hours">{hours}</div>
+        <div className="entry-employee">Employee: {employeeName}</div>
+        <div className="employee-hours">Hours: {hours}</div>
       </div>
     </div>
   )
