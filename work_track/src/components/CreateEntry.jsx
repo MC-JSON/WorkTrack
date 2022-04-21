@@ -20,7 +20,7 @@ const CreateEntry = ({ createNewEntry, employees }) => {
     createNewEntry(formValue)
   }
   return (
-    <div className="forms">
+    <div className="create-entry-form">
       <section className="input-section">
         <form className="create-new-entry-form" onSubmit={handleSubmit}>
           <input
@@ -36,6 +36,9 @@ const CreateEntry = ({ createNewEntry, employees }) => {
             type="number"
             onChange={handleChange}
           >
+            <option value={0} disabled selected hidden>
+              Select Employee
+            </option>
             {employees.map((employee) => (
               <option value={parseInt(employee.id)}>
                 {employee.employeeName}
@@ -47,6 +50,7 @@ const CreateEntry = ({ createNewEntry, employees }) => {
             type="number"
             name="employeeHours"
             placeholder="Hours Worked"
+            min="0"
             value={employeeHours}
             onChange={handleChange}
           />
