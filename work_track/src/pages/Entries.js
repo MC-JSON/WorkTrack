@@ -12,10 +12,14 @@ const Entries = ({
   showLastMonth,
   showYesterday,
   showLastWeek,
+  showCustomDateSearch,
   setEntry
 }) => {
   const [entries, setEntries] = useState([])
+  const [formValue, setFormValue] = useState({})
+  const { searchStartDate, searchEndDate } = formValue
   let navigate = useNavigate()
+
   const getEntriesByDateRange = async () => {
     const response = await axios.get(
       `http://localhost:3001/api/Entries/${logId}/date-range-search/?startDate=${startDate}&endDate=${endDate}`
@@ -40,6 +44,18 @@ const Entries = ({
     await axios.delete(`http://localhost:3001/api/entries/${entryId}`)
     getEntriesByDateRange()
   }
+
+  const handleChange = (event) => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    showCustomDateSearch(formValue.searchStartDate, formValue.searchEndDate)
+  }
   return (
     entries && (
       <div className="log-wrapper">
@@ -51,15 +67,38 @@ const Entries = ({
           />
         </div>
         <div className="quick-view-buttons">
-          <button name="last-month" onClick={() => showLastMonth()}>
-            Last Month
-          </button>
-          <button name="last-week" onClick={() => showLastWeek()}>
-            Last week
-          </button>
-          <button name="yesterday" onClick={() => showYesterday()}>
-            Yesterday
-          </button>
+          <div className="preset-searches">
+            <button name="last-month" onClick={() => showLastMonth()}>
+              Last 30 Days
+            </button>
+            <button name="last-week" onClick={() => showLastWeek()}>
+              Last 7 Days
+            </button>
+            <button name="yesterday" onClick={() => showYesterday()}>
+              Yesterday
+            </button>
+          </div>
+          <div className="custom-date-search">
+            <form className="date-range-search-form" onSubmit={handleSubmit}>
+              <label>Start Date:</label>
+              <input
+                className="start-date-range-search"
+                type="date"
+                name="searchStartDate"
+                value={searchStartDate}
+                onChange={handleChange}
+              />
+              <label>End Date:</label>
+              <input
+                className="end-date-range-search"
+                type="date"
+                name="searchEndDate"
+                value={searchEndDate}
+                onChange={handleChange}
+              />
+              <button type="submit">Search</button>
+            </form>
+          </div>
         </div>
         <div className="entries-list">
           {entries.map((entry) => (

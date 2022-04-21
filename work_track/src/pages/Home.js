@@ -25,7 +25,7 @@ const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
           <p>A simple time management app</p>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
