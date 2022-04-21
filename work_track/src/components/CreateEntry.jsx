@@ -20,7 +20,7 @@ const CreateEntry = ({ createNewEntry, employees }) => {
     createNewEntry(formValue)
   }
   return (
-    <div className="forms">
+    <div className="entry-forms">
       <section className="input-section">
         <form className="create-new-entry-form" onSubmit={handleSubmit}>
           <input

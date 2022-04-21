@@ -180,9 +180,6 @@ form input {
     height: 200px;
   }
   
-.info-wrapper {
-    padding: -5px;
-  }
 
   .business-map {
     display: flex;
@@ -191,20 +188,25 @@ form input {
   }
 
 .business-form{
-max-width:420px; 
-margin:50px auto;  
+    margin:2px auto;  
   }
 
- form button {
-    padding: 0.1em .5em;
+.links button {
+    justify-content: center;
+    padding: 0.1em .1em;
     border: 0;
     border-radius: 6px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    background-color: whitesmoke;
     cursor: pointer;
+    margin-right: 5px;
   }
 
-  input {
+.links input {
     border: 0;
+    width: 150px;
+    margin-right: 5px;
+    margin-top: 1px
   }
 
 
@@ -352,8 +354,45 @@ margin:50px auto;
 }
 
 
+/* Create Employee & Position */
 
+.forms-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 
+/* .forms-header{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+.forms button {
+    justify-content: center;
+    padding: 0.1em .3em;
+    border: 0;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin-left: 5px;
+    background-color: whitesmoke;
+    cursor: pointer;
+  }
+
+.forms input {
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  width: 150px
+  }
+
+.forms select{
+  justify-content: center;
+  padding: 0.1em .3em;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  width: 150px
+}
 
 
 /* 

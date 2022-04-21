@@ -28,6 +28,8 @@ const CreatePosition = (props) => {
   const { jobTitle, jobDescription } = formValue
 
   return (
+    <div className="forms-wrapper">
+      <h1>Create Position</h1>
     <div className="forms">
       <section className="input-section">
         <form onSubmit={handleSubmit}>
@@ -59,6 +61,7 @@ const CreatePosition = (props) => {
           </button>
         </form>
       </section>
+    </div>
     </div>
   )
 }
