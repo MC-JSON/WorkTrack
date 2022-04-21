@@ -56,7 +56,7 @@ const CreateBusiness = (props) => {
   } = formValue
 
   return (
-    <div className="business-form">
+    <div className="create-business-form">
       <section className="input-section">
         <form onSubmit={handleSubmit}>
           <input

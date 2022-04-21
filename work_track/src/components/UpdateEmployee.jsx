@@ -44,11 +44,11 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
 
   return (
     // console.log('33333', employees) >
-    < div className="info-wrapper" >
-      <form onSubmit={handleSubmit}>
+    < div className="update-employee-info-wrapper" >
+      <form className='update-employee-info-form' onSubmit={handleSubmit}>
         <select className="create-form-select" name="jobId" onChange={handleChange}>
           {jobs.map((job) => (
-            <option value={job.id}>{job.jobTitle}</option>
+            <option className='option1' value={job.id}>{job.jobTitle}</option>
           ))}
         </select>
         <input

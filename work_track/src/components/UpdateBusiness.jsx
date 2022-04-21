@@ -52,7 +52,8 @@ const UpdateBusiness = ({
   }
 
   return (
-    <div className="info-wrapper">
+    <div className="update-business-info-wrapper">
+      <h1>Update Business</h1>
       <div className="update-business-name">{businessName}</div>
       <form onSubmit={handleSubmit}>
         <input
