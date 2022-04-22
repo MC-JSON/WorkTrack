@@ -529,8 +529,50 @@ select.new-entry-employee-select {
     display: flex;
     flex-flow: column;
   }
-}
 
+  input.new-entry-date, select.new-entry-employee-select, input.new-entry-hours-worked, button.create-entry-button, form.date-range-search-form, input.start-date-range-search, input.end-date-range-search, button.last-month, button.last-week, button.yesterday, button.search-entries-button {
+    font-size: 14px;
+  }
+  
+  form.create-new-entry-form, .custom-date-search {
+    text-align: center;
+  }
+  input.new-entry-hours-worked {
+    width: 24%;
+  }
+  
+  .entries-list {
+    margin-top: 3vh;
+    height: 43vh;
+    font-size: 11px;
+  }
+  
+  .entry-wrapper {
+    display: flex;
+    font-size: 13px;
+  }
+  
+  .entry-employee-info {
+    display: flex;
+    flex-flow: column;
+    padding: 2px;
+    
+  }
+  
+  .employee-wrapper {
+    display: none;
+  }
+  
+  .navbar {
+    font-size: 13px;
+    justify-content: space-between;
+  }
+  
+  header nav a {
+    font-size: 13px;
+    color: black;
+  }
+}
 /* Create Employee & Position */
 
 .forms-wrapper {
@@ -607,48 +649,6 @@ select.new-entry-employee-select {
   text-align: center
 }
 
-  input.new-entry-date, select.new-entry-employee-select, input.new-entry-hours-worked, button.create-entry-button, form.date-range-search-form, input.start-date-range-search, input.end-date-range-search, button.last-month, button.last-week, button.yesterday, button.search-entries-button {
-    font-size: 14px;
-  }
-
-  form.create-new-entry-form, .custom-date-search {
-    text-align: center;
-  }
-  input.new-entry-hours-worked {
-    width: 24%;
-  }
-
-  .entries-list {
-    margin-top: 3vh;
-    height: 43vh;
-    font-size: 11px;
-  }
-
-  .entry-wrapper {
-    display: flex;
-    font-size: 13px;
-  }
-
-  .entry-employee-info {
-    display: flex;
-    flex-flow: column;
-    padding: 2px;
-    
-  }
-
-  .employee-wrapper {
-    display: none;
-  }
-
-  .navbar {
-    font-size: 13px;
-    justify-content: space-between;
-  }
-
-  header nav a {
-    font-size: 13px;
-    color: black;
-  }
 
 .protected {
   display: flex;
