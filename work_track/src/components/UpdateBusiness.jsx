@@ -48,11 +48,15 @@ const UpdateBusiness = ({
     navigate(`/portal/${user.id}`)
   }
 
+  const handleSumbit3 = (e) => {
+    e.preventDefault()
+    navigate(`/users/${user.id}/businesses/${businessId}`)
+  }
   return (
     <div className="forms-wrapper">
       <h1>{businessName}</h1>
       <div className="forms">
-        <form onSubmit={handleSubmit}>
+        <form className="update-business-form" onSubmit={handleSubmit}>
           <input
             className="form"
             type="text"
@@ -88,6 +92,7 @@ const UpdateBusiness = ({
           <br />
           <button type="submit">Update</button>
           <button onClick={handleSubmit2}>Delete</button>
+          <button onClick={handleSumbit3}>Cancel</button>
         </form>
       </div>
     </div>
