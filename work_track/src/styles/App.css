@@ -697,13 +697,13 @@ button.search-entries-button, button.create-entry-button {
   .forms-wrapper {
     margin-top: 5vh;
   }
-  .create-position-form, .update-position-form, .create-employee-form, .update-business-form {
+  .create-position-form, .update-position-form, .create-employee-form, .update-business-form, .update-entry-form {
     margin-top: 5vh;
     display: flex;
     flex-flow: column;
   }
 
- .create-position-form button, .update-position-form button, .create-employee-form button, .update-business-form button {
+ .create-position-form button, .update-position-form button, .create-employee-form button, .update-business-form button, .update-entry-form button {
   margin-top: 10px;
   margin-bottom: 10px;
  }
