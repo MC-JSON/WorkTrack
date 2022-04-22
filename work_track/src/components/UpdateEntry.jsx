@@ -24,7 +24,7 @@ const UpdateEntry = ({ entry, employees, user, businessId }) => {
   // handles update submit and navigates back
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.put(`http://localhost:3001/api/entries/${entryId}`, formValue)
+    await axios.put(`https://worktrack-backend.herokuapp.com/api/entries/${entryId}`, formValue)
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 

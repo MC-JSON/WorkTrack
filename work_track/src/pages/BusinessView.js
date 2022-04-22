@@ -32,26 +32,26 @@ const BusinessView = ({
 
   const getEmployees = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/employees/${businessId}`
+      `https://worktrack-backend.herokuapp.com/api/employees/${businessId}`
     )
     setEmployees(response.data)
   }
   useEffect(() => {
     const getLog = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/logs/${businessId}`
+        `https://worktrack-backend.herokuapp.com/api/logs/${businessId}`
       )
       setLogId(response.data[0].id)
     }
     const getJobs = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/jobs/${businessId}`
+        `https://worktrack-backend.herokuapp.com/api/jobs/${businessId}`
       )
       setJobs(response.data)
     }
     const getBusinessName = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/businesses/${businessId}`
+        `https://worktrack-backend.herokuapp.com/api/businesses/${businessId}`
       )
       setThisBusinessName(response.data[0].businessName)
     }
@@ -92,7 +92,9 @@ const BusinessView = ({
   }
 
   const deleteEmployee = async (employeeId) => {
-    await axios.delete(`http://localhost:3001/api/employees/${employeeId}`)
+    await axios.delete(
+      `https://worktrack-backend.herokuapp.com/api/employees/${employeeId}`
+    )
     getEmployees()
   }
   return user && authenticated && logId ? (

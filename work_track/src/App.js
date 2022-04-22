@@ -53,7 +53,7 @@ const App = () => {
 
   const getUserName = async () => {
     const userInfo = await axios.get(
-      `http://localhost:3001/api/owners/${user.id}`
+      `https://worktrack-backend.herokuapp.com/api/owners/${user.id}`
     )
     setUserName(userInfo.data.ownerName)
   }

@@ -25,14 +25,14 @@ const UpdatePosition = ({ jobs, user }) => {
   // handles update submit and navigates back
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.put(`http://localhost:3001/api/jobs/${jobId}`, formValue)
+    await axios.put(`https://worktrack-backend.herokuapp.com/api/jobs/${jobId}`, formValue)
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
   // handles delete submit and navigates back
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-    await axios.delete(`http://localhost:3001/api/jobs/${jobId}`)
+    await axios.delete(`https://worktrack-backend.herokuapp.com/api/jobs/${jobId}`)
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
