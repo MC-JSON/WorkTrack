@@ -36,15 +36,19 @@ const UpdatePosition = ({ jobs, user }) => {
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
+  const handleSubmit3 = (e) => {
+    e.preventDefault()
+    navigate(`/users/${user.id}/businesses/${businessId}`)
+  }
   const { jobId, jobDescription } = formValue
 
   return (
     <div className="forms-wrapper">
       <h1>Update Position</h1>
-      <div className="forms">
-        <form onSubmit={handleSubmit}>
+      <div className="update-position-form-wrapper">
+        <form className="update-position-form" onSubmit={handleSubmit}>
           <select
-            className="create-form-select"
+            className="update-job-select"
             name="jobId"
             type="number"
             onChange={handleChange}
@@ -57,7 +61,7 @@ const UpdatePosition = ({ jobs, user }) => {
             ))}
           </select>
           <input
-            className="form"
+            className="update-job-description"
             type="text"
             name="jobDescription"
             placeholder="Job Description"
@@ -65,8 +69,18 @@ const UpdatePosition = ({ jobs, user }) => {
             onChange={handleChange}
           />
           <br />
-          <button type="submit">Update</button>
-          <button onClick={handleSubmit2}>Delete</button>
+          <button className="update-position-button" type="submit">
+            Update
+          </button>
+          <button className="delete-position-button" onClick={handleSubmit2}>
+            Delete
+          </button>
+          <button
+            className="cancel-update-position-button"
+            onClick={handleSubmit3}
+          >
+            Cancel
+          </button>
         </form>
       </div>
     </div>

@@ -220,7 +220,7 @@ form input {
     margin:2px auto;  
   }
 
-.links button {
+.links button, .update-position-form button {
     justify-content: center;
     padding: 0.1em .1em;
     border: .5px solid gray;
@@ -232,7 +232,7 @@ form input {
     margin-left: 5px
   }
 
-.links button:hover {
+.links button:hover, .update-positon-form button:hover{
   background-color: rgb(231, 218, 244);
   transform: scale(1.015)
 }
@@ -519,6 +519,7 @@ button.search-entries-button, button.create-entry-button {
   .site-slogan {
     font-family: 'Fira Sans', sans-serif;
     font-size: 1rem;
+    transform: translateY(-10px);
   }
   
   .fa-clock {
@@ -612,8 +613,6 @@ button.search-entries-button, button.create-entry-button {
   .business-page-wrapper {
     display: flex;
     flex-flow: column;
-    /* grid-template-columns: 1fr 3fr 1fr; */
-    /* width: 100vw; */
   }
   
   .business-info-wrapper {
@@ -623,10 +622,6 @@ button.search-entries-button, button.create-entry-button {
     flex-flow: column;
     align-items: center;
   }
-
-  /* .crud-wrapper {
-    width: 80%;
-  } */
   
   .crud-functions {
     display: flex;
@@ -698,6 +693,23 @@ button.search-entries-button, button.create-entry-button {
     font-size: 13px;
     color: black;
   }
+
+  .forms-wrapper {
+    margin-top: 5vh;
+  }
+  .create-position-form, .update-position-form, .create-employee-form, .update-business-form {
+    margin-top: 5vh;
+    display: flex;
+    flex-flow: column;
+  }
+
+ .create-position-form button, .update-position-form button, .create-employee-form button, .update-business-form button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+ }
+
+
+
 }
 
 /* Update Entry */

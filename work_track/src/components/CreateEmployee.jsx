@@ -31,6 +31,10 @@ const CreateEmployee = (props) => {
     navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
+  const handleSubmit2 = (e) => {
+    e.preventDefault()
+    navigate(`/users/${userId}/businesses/${businessId}`)
+  }
   useEffect(() => {
     const getJobs = async () => {
       const response = await axios.get(
@@ -48,7 +52,7 @@ const CreateEmployee = (props) => {
       <h1>Create Employee</h1>
       <div className="forms">
         <section className="input-section">
-          <form onSubmit={handleSubmit}>
+          <form className="create-employee-form" onSubmit={handleSubmit}>
             <input
               className="form"
               type="text"
@@ -70,6 +74,12 @@ const CreateEmployee = (props) => {
               ))}
             </select>
             <button type="submit">Create Employee</button>
+            <button
+              className="cancel-create-employee-button"
+              onClick={handleSubmit2}
+            >
+              Cancel
+            </button>
           </form>
         </section>
       </div>
