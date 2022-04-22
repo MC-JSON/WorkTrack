@@ -28,42 +28,53 @@ const UpdateEntry = ({ entry, employees, user, businessId }) => {
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
+  const handleSubmit2 = (e) => {
+    e.preventDefault()
+    navigate(`/users/${user.id}/businesses/${businessId}`)
+  }
+
   return (
-    <div className="update-entry-wrapper" >
+    <div className="update-entry-wrapper">
       <h1>Update Entry</h1>
       <div className="forms">
-      <form onSubmit={handleSubmit}>
-        <input
-          className="form"
-          type="date"
-          name="date"
-          value={date}
-          onChange={handleChange}
-        />
-        <select
-          className="employee-select"
-          name="employeeId"
-          type="number"
-          onChange={handleChange}
-        >
-          {employees.map((employee) => (
-            <option value={parseInt(employee.id)}>
-              {employee.employeeName}
-            </option>
-          ))}
-        </select>
-        <input
-          className="form"
-          type="number"
-          name="employeeHours"
-          placeholder="Employee Hours"
-          value={employeeHours}
-          onChange={handleChange}
-        />{' '}
-        <br />
-        <button type="submit">Update</button>
-      </form>
-    </div>
+        <form className="update-entry-form" onSubmit={handleSubmit}>
+          <input
+            className="form"
+            type="date"
+            name="date"
+            value={date}
+            onChange={handleChange}
+          />
+          <select
+            className="employee-select"
+            name="employeeId"
+            type="number"
+            onChange={handleChange}
+          >
+            {employees.map((employee) => (
+              <option value={parseInt(employee.id)}>
+                {employee.employeeName}
+              </option>
+            ))}
+          </select>
+          <input
+            className="form"
+            type="number"
+            name="employeeHours"
+            placeholder="Employee Hours"
+            value={employeeHours}
+            onChange={handleChange}
+          />{' '}
+          <br />
+          <button type="submit">Update</button>
+          <button
+            className="cancel-update-entry-button"
+            onClick={handleSubmit2}
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
