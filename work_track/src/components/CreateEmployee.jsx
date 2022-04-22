@@ -25,7 +25,7 @@ const CreateEmployee = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.post(
-      `http://localhost:3001/api/employees/${businessId}/`,
+      `https://worktrack-backend.herokuapp.com/api/employees/${businessId}/`,
       formValue
     )
     navigate(`/users/${userId}/businesses/${businessId}`)
@@ -38,7 +38,7 @@ const CreateEmployee = (props) => {
   useEffect(() => {
     const getJobs = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/jobs/${businessId}`
+        `https://worktrack-backend.herokuapp.com/api/jobs/${businessId}`
       )
       setJobs(response.data)
     }

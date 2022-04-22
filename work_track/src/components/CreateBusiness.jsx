@@ -28,7 +28,7 @@ const CreateBusiness = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await axios.post(
-      `http://localhost:3001/api/businesses/${ownerId}`,
+      `https://worktrack-backend.herokuapp.com/api/businesses/${ownerId}`,
       formValue
     )
     setDisable(false)
@@ -38,7 +38,7 @@ const CreateBusiness = (props) => {
 
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-    const log = await axios.post(`http://localhost:3001/api/logs/${businessId}`)
+    const log = await axios.post(`https://worktrack-backend.herokuapp.com/api/logs/${businessId}`)
     setDisable(true)
     setDisabled(false)
     props.getBusinesses()

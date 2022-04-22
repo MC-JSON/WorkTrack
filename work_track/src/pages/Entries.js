@@ -23,7 +23,7 @@ const Entries = ({
 
   const getEntriesByDateRange = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/Entries/${logId}/date-range-search/?startDate=${startDate}&endDate=${endDate}`
+      `https://worktrack-backend.herokuapp.com/api/Entries/${logId}/date-range-search/?startDate=${startDate}&endDate=${endDate}`
     )
     setEntries(response.data.entries)
     setTotalHoursWorked(response.data.sum)
@@ -33,7 +33,10 @@ const Entries = ({
   }, [startDate, endDate, employees])
 
   const createNewEntry = async (data) => {
-    await axios.post(`http://localhost:3001/api/entries/${logId}`, data)
+    await axios.post(
+      `https://worktrack-backend.herokuapp.com/api/entries/${logId}`,
+      data
+    )
     getEntriesByDateRange()
   }
 
@@ -43,7 +46,9 @@ const Entries = ({
   }
 
   const deleteEntry = async (entryId) => {
-    await axios.delete(`http://localhost:3001/api/entries/${entryId}`)
+    await axios.delete(
+      `https://worktrack-backend.herokuapp.com/api/entries/${entryId}`
+    )
     getEntriesByDateRange()
   }
 

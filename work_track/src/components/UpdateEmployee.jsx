@@ -24,7 +24,7 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.put(
-      `http://localhost:3001/api/employees/${employeeId}`,
+      `https://worktrack-backend.herokuapp.com/api/employees/${employeeId}`,
       formValue
     )
     navigate(`/users/${user.id}/businesses/${businessId}`)
@@ -33,7 +33,7 @@ const UpdateEmployee = ({ employee, jobs, user, businessId }) => {
   // handles delete submit and navigates back
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-    await axios.delete(`http://localhost:3001/api/employees/${employeeId}`)
+    await axios.delete(`https://worktrack-backend.herokuapp.com/api/employees/${employeeId}`)
     navigate('/')
   }
 
