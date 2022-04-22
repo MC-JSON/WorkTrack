@@ -67,7 +67,7 @@
 - [x] Associations
 - [x] JWT User Authentication
 - [x] Style
-- [] Deployed on Heroku
+- [x] Deployed on Heroku
 
 ---
 
