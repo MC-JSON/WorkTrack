@@ -30,38 +30,42 @@ const CreatePosition = (props) => {
   return (
     <div className="forms-wrapper">
       <h1>Create Position</h1>
-    <div className="forms">
-      <section className="input-section">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form"
-            type="text"
-            name="jobTitle"
-            placeholder="Job Title"
-            value={jobTitle}
-            onChange={handleChange}
-          />
-          <input
-            className="form"
-            type="text"
-            name="jobDescription"
-            placeholder="Job Description"
-            value={jobDescription}
-            onChange={handleChange}
-          />
-          <button
-            onClick={async () =>
-              await axios.post(
-                `http://localhost:3001/api/jobs/${businessId}`,
-                formValue
-              )
-            }
-          >
-            Create Position
-          </button>
-        </form>
-      </section>
-    </div>
+      <div className="forms">
+        <section className="input-section">
+          <form className="create-position-form" onSubmit={handleSubmit}>
+            <input
+              className="create-position-form-job-title"
+              type="text"
+              name="jobTitle"
+              placeholder="Job Title"
+              value={jobTitle}
+              onChange={handleChange}
+            />
+            <input
+              className="create-position-form-job-description"
+              type="text"
+              name="jobDescription"
+              placeholder="Job Description"
+              value={jobDescription}
+              onChange={handleChange}
+            />
+            <button
+              className="create-employee-button"
+              onClick={async () =>
+                await axios.post(
+                  `http://localhost:3001/api/jobs/${businessId}`,
+                  formValue
+                )
+              }
+            >
+              Create Position
+            </button>
+            <button className="cancel-create-employee" type="submit">
+              Cancel
+            </button>
+          </form>
+        </section>
+      </div>
     </div>
   )
 }
