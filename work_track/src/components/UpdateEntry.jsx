@@ -29,7 +29,8 @@ const UpdateEntry = ({ entry, employees, user, businessId }) => {
   }
 
   return (
-    <div className="update-entry-wrapper">
+    <div className="update-entry-wrapper" >
+      <h1>Update Entry</h1>
       <form className="update-entry-form" onSubmit={handleSubmit}>
         <input
           className="form"

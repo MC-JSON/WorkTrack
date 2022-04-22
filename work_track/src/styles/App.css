@@ -209,40 +209,49 @@ button {
     transform: translateY(5px);
   }
   
-  img {
-    border-radius: 50%;
-  }
-  
   .card img {
     width: 100%;
     height: 200px;
+    border-radius: 50%;
   }
   
-.info-wrapper {
-    padding: -5px;
-  }
 
-  .business-map {
+.business-map {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
 .business-form{
-max-width:420px; 
-margin:50px auto;  
+    margin:2px auto;  
   }
 
- form button {
-    padding: 0.1em .5em;
-    border: 0;
+.links button {
+    justify-content: center;
+    padding: 0.1em .1em;
+    border: .5px solid gray;
     border-radius: 6px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    background-color: #f2e205;
     cursor: pointer;
+    margin-right: 5px;
   }
 
-  input {
+.links button:hover {
+  background-color: rgb(231, 218, 244);
+  /* box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7); */
+  transform: scale(1.015)
+}
+
+.links input {
     border: 0;
+    width: 150px;
+    margin-right: 5px;
+    margin-top: 1px
+  }
+
+.links input::placeholder{
+    text-align: center
   }
 
 
@@ -255,7 +264,7 @@ margin:50px auto;
 }
 
 .business-info-wrapper {
-  margin-top: 10vh;
+  margin-top: 3vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -327,7 +336,7 @@ select.new-entry-employee-select {
 
 .entries-list {
   overflow-y: scroll;
-  height: 40vh;
+  height: 60vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -530,6 +539,84 @@ select.new-entry-employee-select {
     flex-flow: column;
   }
 
+/* Create Employee & Position */
+
+.forms-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.forms button {
+    justify-content: center;
+    padding: 0.1em .1em;
+    border: .5px solid gray;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin-left: 5px;
+    background-color: #f2e205;
+    cursor: pointer;
+  }
+
+.forms button:hover {
+  background-color: rgb(231, 218, 244);
+  /* box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7); */
+  transform: scale(1.015)
+}
+
+.forms input {
+  background-color: whitesmoke;
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  width: 150px
+  }
+
+.forms input::placeholder{
+  text-align: center
+}
+
+.forms select{
+  justify-content: center;
+  background-color: whitesmoke;
+  padding: 0.1em .3em;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  text-align: center;
+  width: 150px
+}
+
+/* Registration */
+
+.register button {
+    justify-content: center;
+    padding: 0.1em .1em;
+    border: .5px solid gray;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    margin-left: 5px;
+    background-color: #f2e205;
+    cursor: pointer;
+  }
+
+.register button:hover {
+  background-color: rgb(231, 218, 244);
+  /* box-shadow: 0 0 2px 2px rgba(36, 137, 36, 0.7); */
+  transform: scale(1.015)
+}
+
+.register input {
+  background-color: whitesmoke;
+  border: 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  width: 150px
+  }
+
+.register input::placeholder{
+  text-align: center
+}
+
   input.new-entry-date, select.new-entry-employee-select, input.new-entry-hours-worked, button.create-entry-button, form.date-range-search-form, input.start-date-range-search, input.end-date-range-search, button.last-month, button.last-week, button.yesterday, button.search-entries-button {
     font-size: 14px;
   }
@@ -573,4 +660,8 @@ select.new-entry-employee-select {
     color: black;
   }
 
+.protected {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }

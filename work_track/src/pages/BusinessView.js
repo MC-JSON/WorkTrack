@@ -161,7 +161,7 @@ const BusinessView = ({
     </div>
   ) : (
     <div className="protected">
-      <h3> oops! you must be signed in to do that</h3>
+      <h3>Oops! You must be signed in to do that!</h3>
       <button onClick={() => navigate('/')}>Sign In</button>
     </div>
   )

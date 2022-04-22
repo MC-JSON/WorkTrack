@@ -8,11 +8,8 @@ const UpdatePositionPage = ({
   businessId
 }) => {
   return (
-    <div className='update-position-page'>
-      <h1>Update Position</h1>
-      <div>
-        <UpdatePosition jobs={jobs} user={user} businessId={businessId} />
-      </div>
+    <div>
+      <UpdatePosition jobs={jobs} user={user} businessId={businessId} />
     </div>
   )
 }

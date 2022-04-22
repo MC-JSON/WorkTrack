@@ -9,16 +9,13 @@ const UpdateEmployeePage = ({
   businessId
 }) => {
   return (
-    <div className='update-employee-page'>
-      <h1>Update Employee</h1>
-      <div>
-        <UpdateEmployee
-          businessId={businessId}
-          user={user}
-          jobs={jobs}
-          employee={employee}
-        />
-      </div>
+    <div>
+      <UpdateEmployee
+        businessId={businessId}
+        user={user}
+        jobs={jobs}
+        employee={employee}
+      />
     </div>
   )
 }

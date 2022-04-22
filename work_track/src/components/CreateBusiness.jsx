@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 //form for creating new business into database
 const CreateBusiness = (props) => {
@@ -24,8 +24,6 @@ const CreateBusiness = (props) => {
       [event.target.name]: event.target.value
     })
   }
-
-  let navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()

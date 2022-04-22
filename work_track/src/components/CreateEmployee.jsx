@@ -32,6 +32,7 @@ const CreateEmployee = (props) => {
     navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
+  
   useEffect(() => {
     const getJobs = async () => {
       const response = await axios.get(
@@ -45,8 +46,9 @@ const CreateEmployee = (props) => {
   const { employeeName } = formValue
 
   return (
-    <div className="create-employee-page">
+    <div className="forms-wrapper">
       <h1>Create Employee</h1>
+    <div className="forms">
       <section className="input-section">
         <form onSubmit={handleSubmit}>
           <input
@@ -72,6 +74,7 @@ const CreateEmployee = (props) => {
           <button type="submit">Create Employee</button>
         </form>
       </section>
+    </div>
     </div>
   )
 }
