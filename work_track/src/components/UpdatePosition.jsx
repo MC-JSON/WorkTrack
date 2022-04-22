@@ -1,16 +1,16 @@
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 //built for edits
-const UpdatePosition = ({jobs, user}) => {
+const UpdatePosition = ({ jobs, user }) => {
   let { businessId } = useParams()
 
   const [formValue, setFormValue] = useState({
     jobTitle: jobs.jobTitle,
     jobDescription: jobs.jobDescription,
     jobId: ''
-    })
+  })
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -32,18 +32,16 @@ const UpdatePosition = ({jobs, user}) => {
   // handles delete submit and navigates back
   const handleSubmit2 = async (e) => {
     e.preventDefault()
-    await axios.delete(
-      `http://localhost:3001/api/jobs/${jobId}`
-    )
+    await axios.delete(`http://localhost:3001/api/jobs/${jobId}`)
     navigate(`/users/${user.id}/businesses/${businessId}`)
   }
 
   const { jobId, jobDescription } = formValue
 
   return (
-      <div className="forms-wrapper">
-        <h1>Update Position</h1>
-        <div className="forms">
+    <div className="forms-wrapper">
+      <h1>Update Position</h1>
+      <div className="forms">
         <form onSubmit={handleSubmit}>
           <select
             className="create-form-select"
@@ -51,19 +49,13 @@ const UpdatePosition = ({jobs, user}) => {
             type="number"
             onChange={handleChange}
           >
-            <option value={0} disabled selected hidden>Select Job</option>
+            <option value={0} disabled selected hidden>
+              Select Job
+            </option>
             {jobs.map((job) => (
-            <option value={parseInt(job.id)}>{job.jobTitle}</option>
-          ))}
+              <option value={parseInt(job.id)}>{job.jobTitle}</option>
+            ))}
           </select>
-          {/* <input
-            className="form"
-            type="text"
-            name="jobTitle"
-            placeholder="Job Title"
-            value={jobTitle}
-            onChange={handleChange}
-          /> */}
           <input
             className="form"
             type="text"
@@ -76,9 +68,9 @@ const UpdatePosition = ({jobs, user}) => {
           <button type="submit">Update</button>
           <button onClick={handleSubmit2}>Delete</button>
         </form>
-        </div>
       </div>
-    )
+    </div>
+  )
 }
 
 export default UpdatePosition

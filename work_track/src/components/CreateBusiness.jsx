@@ -33,7 +33,6 @@ const CreateBusiness = (props) => {
     )
     setDisable(false)
     setDisabled(true)
-    console.log('business', response.data.id)
     setBusinessId(response.data.id)
   }
 

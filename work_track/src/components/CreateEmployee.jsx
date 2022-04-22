@@ -7,7 +7,6 @@ const CreateEmployee = (props) => {
   let { businessId, userId } = useParams()
 
   const [jobs, setJobs] = useState([])
-
   const [formValue, setFormValue] = useState({
     employeeName: '',
     jobId: ''
@@ -32,7 +31,6 @@ const CreateEmployee = (props) => {
     navigate(`/users/${userId}/businesses/${businessId}`)
   }
 
-  
   useEffect(() => {
     const getJobs = async () => {
       const response = await axios.get(
@@ -48,33 +46,33 @@ const CreateEmployee = (props) => {
   return (
     <div className="forms-wrapper">
       <h1>Create Employee</h1>
-    <div className="forms">
-      <section className="input-section">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="form"
-            type="text"
-            name="employeeName"
-            placeholder="Name"
-            value={employeeName}
-            onChange={handleChange}
-          />
-          <select
-            className="create-form-select"
-            name="jobId"
-            onChange={handleChange}
-          >
-            <option value="" disabled selected hidden>
-              Select Job
-            </option>
-            {jobs.map((job) => (
-              <option value={job.id}>{job.jobTitle}</option>
-            ))}
-          </select>
-          <button type="submit">Create Employee</button>
-        </form>
-      </section>
-    </div>
+      <div className="forms">
+        <section className="input-section">
+          <form onSubmit={handleSubmit}>
+            <input
+              className="form"
+              type="text"
+              name="employeeName"
+              placeholder="Name"
+              value={employeeName}
+              onChange={handleChange}
+            />
+            <select
+              className="create-form-select"
+              name="jobId"
+              onChange={handleChange}
+            >
+              <option value="" disabled selected hidden>
+                Select Job
+              </option>
+              {jobs.map((job) => (
+                <option value={job.id}>{job.jobTitle}</option>
+              ))}
+            </select>
+            <button type="submit">Create Employee</button>
+          </form>
+        </section>
+      </div>
     </div>
   )
 }

@@ -322,13 +322,12 @@ form input {
 }
 select.new-entry-employee-select {
   
-  border: none;
   font-size: 1.1rem;
 }
 
 .entries-list {
   overflow-y: scroll;
-  height: 60vh;
+  height: 55vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -378,7 +377,7 @@ select.new-entry-employee-select {
   align-items: center;
 }
 
-.quick-view-buttons button {
+.quick-view-buttons button, button.create-entry-button {
   margin: 5px 0;
   font-size: 1.1rem;
   border-radius: 10px;
@@ -395,6 +394,13 @@ select.new-entry-employee-select {
   padding: 10px;
 }
 
+button.last-month, button.last-week, button.yesterday {
+  font-size: 16px;
+}
+
+button.search-entries-button, button.create-entry-button {
+  font-size: 14px;
+}
 
 .quick-view-buttons button, .create-new-entry-form button {
   background: transparent;
@@ -463,7 +469,9 @@ select.new-entry-employee-select {
 }
 
 /* Employee Info */
-
+.employee-list-headings {
+  margin-bottom: 15px;
+}
 .employee-wrapper {
   display: flex;
   flex-flow: column;
@@ -473,15 +481,132 @@ select.new-entry-employee-select {
 .employee {
   display: flex;
   justify-content: space-between;
-  /* width: 60%; */
   margin: 10px;
 }
+.employee-name {
+  border-bottom: 1px solid gray;
+}
 
+.employee-job {
+  font-size: 14px;
+}
 /* Update Entry Page Info */
 
 /* Media Queries */
 
 @media (max-width: 600px){
+
+  .home-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
+    align-items: normal;
+  }
+  .site-title-wrapper {
+    display: flex;
+    flex-flow: column;
+    margin-top: 5vh;
+    justify-content: space-around;
+  }
+  
+  .site-title {
+    font-family: 'Jaldi';
+    font-size: 3rem;
+    height: 50%;
+  }
+  
+  .site-slogan {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1rem;
+  }
+  
+  .fa-clock {
+    font-size: 1.8rem;
+  }
+  .left-side {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .login-form-wrapper {
+    width: 60%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 10px;
+    background-color: #8b8989;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,.5);
+  }
+  .login-form {
+    margin-top: 0;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    justify-content: center;
+    font-family: 'Fira Sans', sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  
+  }
+  
+  
+  .right-side {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    
+  }
+  
+  
+  .site-info-wrapper {
+    background-color: #f2f2f2;
+    color: black;
+    width: 60%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0;
+    padding-bottom: 20px;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,.5);
+    font-size: 14px;
+  }
+  
+  .email-input, .password-input {
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    
+  }
+  
+  
+  .sign-in-button {
+    display: flex;
+    justify-content: center;
+    padding: 0.2em 1em;
+    border: 0;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  
+  .register-link a{
+    margin: 0 8px;
+    text-decoration: none;
+    transition: .3s;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
+  }
 
   .business-page-wrapper {
     display: flex;
