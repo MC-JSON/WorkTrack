@@ -48,16 +48,6 @@ const EmployeeInfo = ({
           >
             <i className="fa-solid fa-pen-to-square"></i>
           </button>
-          <button
-            name="delete-employee-button"
-            onClick={() => {
-              window.confirm('Are you sure you want to delete this employee?')
-                ? handleSubmit2()
-                : console.log('cancel')
-            }}
-          >
-            <i className="fa-solid fa-trash-can"></i>
-          </button>
         </div>
       </div>
     )
@@ -65,3 +55,14 @@ const EmployeeInfo = ({
 }
 
 export default EmployeeInfo
+
+// <button
+//   name="delete-employee-button"
+//   onClick={() => {
+//     window.confirm('Are you sure you want to delete this employee?')
+//       ? handleSubmit2()
+//       : console.log('cancel')
+//   }}
+// >
+//   <i className="fa-solid fa-trash-can"></i>
+// </button>

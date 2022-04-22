@@ -69,13 +69,13 @@ const Entries = ({
       </div>
       <div className="quick-view-buttons">
         <div className="preset-searches">
-          <button name="last-month" onClick={() => showLastMonth()}>
+          <button className="last-month" onClick={() => showLastMonth()}>
             Last 30 Days
           </button>
-          <button name="last-week" onClick={() => showLastWeek()}>
+          <button className="last-week" onClick={() => showLastWeek()}>
             Last 7 Days
           </button>
-          <button name="yesterday" onClick={() => showYesterday()}>
+          <button className="yesterday" onClick={() => showYesterday()}>
             Yesterday
           </button>
         </div>
@@ -97,7 +97,9 @@ const Entries = ({
               value={searchEndDate}
               onChange={handleChange}
             />
-            <button type="submit">Search Entries</button>
+            <button className="search-entries-button" type="submit">
+              Search Entries
+            </button>
           </form>
         </div>
       </div>
@@ -133,24 +135,16 @@ const Entries = ({
         ) : (
           <div></div>
         )}
+        <p>You don't have any entries yet.</p>
         <p>
-          You don't have any entries yet. Please make sure you have created jobs
-          and employees before creating an entry.
-        </p>
-        <p>
-          If this is your first time here, click on create jobs over to the left
-          and enter in all of the different positions your business has. Dont
-          worry about adding descriptions right now.
+          If this is your first time here, get started by clicking "Create
+          Jobs".
         </p>
         <p>
           Once you have all of your positions set up, "Create Employees" is your
-          next stop. Enter your employees names and give them their
-          corresponding job.
+          next stop.
         </p>
-        <p>
-          Thats it. When you have at least one employee created, the create
-          entry form will be available for you to use.
-        </p>
+        <p>That's it! Start tracking those hours.</p>
       </div>
     </div>
   )

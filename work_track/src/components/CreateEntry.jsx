@@ -34,19 +34,20 @@ const CreateEntry = ({ createNewEntry, employees }) => {
             className="new-entry-employee-select"
             name="employeeId"
             type="number"
+            defaultValue={'Select Employee'}
             onChange={handleChange}
           >
-            <option value={0} disabled selected hidden>
+            <option disabled hidden>
               Select Employee
             </option>
             {employees.map((employee) => (
-              <option value={parseInt(employee.id)}>
+              <option value={parseInt(employee.id)} key={employee.id}>
                 {employee.employeeName}
               </option>
             ))}
           </select>
           <input
-            className="form"
+            className="new-entry-hours-worked"
             type="number"
             name="employeeHours"
             placeholder="Hours Worked"
@@ -54,7 +55,9 @@ const CreateEntry = ({ createNewEntry, employees }) => {
             value={employeeHours}
             onChange={handleChange}
           />
-          <button type="submit">Create Entry</button>
+          <button className="create-entry-button" type="submit">
+            Create Entry
+          </button>
         </form>
       </section>
     </div>

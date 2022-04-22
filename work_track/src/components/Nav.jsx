@@ -5,22 +5,19 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   //Navbar for Authenticated User
   if (user && authenticated) {
     authenticatedOptions = (
-      <nav className='navbar'>
+      <nav className="navbar">
         <h3>Welcome {user.ownerEmail}!</h3>
-        <Link className='click-login' to={`/portal/${user.id}`}>Home</Link>
-        <Link onClick={handleLogOut} to="/">Sign Out</Link>
+        <Link className="click-login" to={`/portal/${user.id}`}>
+          Home
+        </Link>
+        <Link onClick={handleLogOut} to="/">
+          Sign Out
+        </Link>
       </nav>
     )
   }
   //Navbar for Non-Authenticated User
-  const publicOptions = (
-    <nav className="navbar">
-      <div>
-        <Link to="/">Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
-    </nav>
-  )
+  const publicOptions = <nav className="navbar"></nav>
 
   return (
     <header>

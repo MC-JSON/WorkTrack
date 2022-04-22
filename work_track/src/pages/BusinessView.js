@@ -22,7 +22,7 @@ const BusinessView = ({
   let navigate = useNavigate()
   let { ownerId, businessId } = useParams()
   const [logId, setLogId] = useState()
-  const [thisBusinessName, setBusinessName] = useState(businessName)
+  const [thisBusinessName, setThisBusinessName] = useState(businessName)
   const [startDate, setStartDate] = useState(
     `${todayMonth}/${todayDay - 7}/${todayYear}`
   )
@@ -49,6 +49,13 @@ const BusinessView = ({
       )
       setJobs(response.data)
     }
+    const getBusinessName = async () => {
+      const response = await axios.get(
+        `http://localhost:3001/api/businesses/${businessId}`
+      )
+      setThisBusinessName(response.data[0].businessName)
+    }
+    getBusinessName()
     setBusinessId(businessId)
     getLog()
     getEmployees()
@@ -96,10 +103,27 @@ const BusinessView = ({
 
       <div className="crud-wrapper">
         <div className="crud-functions">
-          <Link to={`/create-job/${businessId}`}>Create Jobs</Link>
-          <Link to={`/update-position-page/${businessId}`}>Update Jobs</Link>
-          <Link to={`/create-employee/${businessId}`}>Create Employees</Link>
-          <Link to={`/update-businesses/${businessId}`}>Update Business</Link>
+          <Link className="create-jobs-button" to={`/create-job/${businessId}`}>
+            Create Jobs
+          </Link>
+          <Link
+            className="update-jobs-button"
+            to={`/update-position-page/${businessId}`}
+          >
+            Update Jobs
+          </Link>
+          <Link
+            className="create-employee-button"
+            to={`/create-employee/${businessId}`}
+          >
+            Create Employees
+          </Link>
+          <Link
+            className="update-business-button"
+            to={`/update-businesses/${businessId}`}
+          >
+            Update Business
+          </Link>
         </div>
       </div>
 
