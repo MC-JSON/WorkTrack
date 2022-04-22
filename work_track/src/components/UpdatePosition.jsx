@@ -46,7 +46,7 @@ const UpdatePosition = ({ jobs, user }) => {
     <div className="forms-wrapper">
       <h1>Update Position</h1>
       <div className="form-wrapper">
-        <form className="forms" onSubmit={handleSubmit}>
+        <form className="forms update-position-form" onSubmit={handleSubmit}>
           <select
             className="update-job-select"
             name="jobId"
