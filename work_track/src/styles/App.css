@@ -732,7 +732,7 @@ button.search-entries-button, button.create-entry-button {
     border: .5px solid gray;
     border-radius: 6px;
     font-size: 1.1rem;
-    margin-left: 5px;
+    margin-left: 10px;
     background-color: #f2e205;
     cursor: pointer;
   }
