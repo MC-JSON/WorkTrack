@@ -62,7 +62,7 @@ const BusinessPortal = ({
           />
         ))}
       </div>
-      <h3>Business & Log Creation Form</h3>
+      <h3>New Business & Log Creation Form:</h3>
       <div className="links">
         <CreateBusiness
           ownerId={ownerId}
