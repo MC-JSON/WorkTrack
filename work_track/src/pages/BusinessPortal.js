@@ -70,6 +70,10 @@ const BusinessPortal = ({
           user={user}
           getBusinesses={getBusinesses}
         />
+        <h4>
+          *If creating a business, please first create the business and then
+          create a log for your business.
+        </h4>
       </div>
     </div>
   ) : (

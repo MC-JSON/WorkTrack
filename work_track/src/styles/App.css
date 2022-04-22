@@ -24,7 +24,7 @@ body {
 .navbar {
   margin: 0px;
   padding: 10px;
-  font-family: 'MuseoModerno', cursive;  font-size: 20px;
+  font-family: 'Jaldi';  font-size: 20px;
   
   color: black;
   background-color: transparent;
@@ -181,7 +181,7 @@ button {
 
 /* Business Portal Page */
 
-.business-portal-wrapper {
+.business-portal-wrapper, h4 {
   display: flex;
   flex-flow: column;
   align-items: center;
