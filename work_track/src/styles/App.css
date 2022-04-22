@@ -229,6 +229,7 @@ form input {
     background-color: #f2e205;
     cursor: pointer;
     margin-right: 5px;
+    margin-left: 5px
   }
 
 .links button:hover, .update-positon-form button:hover{
@@ -239,6 +240,7 @@ form input {
 .links input {
     border: 0;
     width: 150px;
+    height: 25px;
     margin-right: 5px;
     margin-top: 1px
   }
@@ -709,8 +711,15 @@ button.search-entries-button, button.create-entry-button {
 
 
 }
-/* Create Employee & Position */
 
+/* Update Entry */
+.update-entry-wrapper{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+/* Create Employee & Position */
 .forms-wrapper {
   display: flex;
   flex-flow: column;
@@ -723,7 +732,7 @@ button.search-entries-button, button.create-entry-button {
     border: .5px solid gray;
     border-radius: 6px;
     font-size: 1.1rem;
-    margin-left: 5px;
+    margin-left: 10px;
     background-color: #f2e205;
     cursor: pointer;
   }
@@ -738,7 +747,8 @@ button.search-entries-button, button.create-entry-button {
   border: 0;
   border-radius: 6px;
   font-size: 1.1rem;
-  width: 150px
+  width: 150px;
+  height: 29px;
   }
 
 .forms input::placeholder{
@@ -748,7 +758,7 @@ button.search-entries-button, button.create-entry-button {
 .forms select{
   justify-content: center;
   background-color: whitesmoke;
-  padding: 0.1em .3em;
+  padding: 0.1em .05em;
   border-radius: 6px;
   font-size: 1.1rem;
   text-align: center;

@@ -45,8 +45,8 @@ const UpdatePosition = ({ jobs, user }) => {
   return (
     <div className="forms-wrapper">
       <h1>Update Position</h1>
-      <div className="update-position-form-wrapper">
-        <form className="update-position-form" onSubmit={handleSubmit}>
+      <div className="form-wrapper">
+        <form className="forms" onSubmit={handleSubmit}>
           <select
             className="update-job-select"
             name="jobId"
