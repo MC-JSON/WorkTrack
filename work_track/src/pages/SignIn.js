@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
-const SignIn = ({ setUser, toggleAuthenticated, user }) => {
+const SignIn = ({ setUser, toggleAuthenticated, setOwnerId }) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     ownerEmail: '',

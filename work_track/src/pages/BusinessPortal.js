@@ -5,7 +5,6 @@ import BusinessRend from '../components/BusinessRend'
 import axios from 'axios'
 
 const BusinessPortal = ({
-  props,
   user,
   authenticated,
   setBusinesses,
