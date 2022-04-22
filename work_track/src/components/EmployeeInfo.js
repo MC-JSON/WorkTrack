@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import UpdateEmployee from './UpdateEmployee'
-import axios from 'axios'
+
 // let navigate = useNavigate
 const EmployeeInfo = ({
   employeeId,
@@ -22,10 +20,6 @@ const EmployeeInfo = ({
     }
     getJobName()
   })
-
-  const handleSubmit2 = () => {
-    deleteEmployee(employeeId)
-  }
 
   return (
     jobTitle && (
@@ -55,14 +49,3 @@ const EmployeeInfo = ({
 }
 
 export default EmployeeInfo
-
-// <button
-//   name="delete-employee-button"
-//   onClick={() => {
-//     window.confirm('Are you sure you want to delete this employee?')
-//       ? handleSubmit2()
-//       : console.log('cancel')
-//   }}
-// >
-//   <i className="fa-solid fa-trash-can"></i>
-// </button>
