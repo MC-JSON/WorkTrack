@@ -280,11 +280,15 @@ margin:50px auto;
   margin: 5px;
   width: 60%;
   transition: .3s;
+  color: black;
 }
 
 .crud-functions a:hover, .quick-view-buttons button:hover, .create-new-entry-form button:hover {
   background-color: rgb(231, 218, 244);
   transform: scale(1.1)
+}
+.crud-functions a:visited {
+  color: black;
 }
 .click-login a:hover {
   box-shadow: 0 0 2px 2px blue;
@@ -469,9 +473,104 @@ select.new-entry-employee-select {
 .employee {
   display: flex;
   justify-content: space-between;
-  width: 60%;
+  /* width: 60%; */
   margin: 10px;
 }
 
 /* Update Entry Page Info */
 
+/* Media Queries */
+
+@media (max-width: 600px){
+
+  .business-page-wrapper {
+    display: flex;
+    flex-flow: column;
+    /* grid-template-columns: 1fr 3fr 1fr; */
+    /* width: 100vw; */
+  }
+  
+  .business-info-wrapper {
+    margin-top: 0;
+    font-size: 13px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  /* .crud-wrapper {
+    width: 80%;
+  } */
+  
+  .crud-functions {
+    display: flex;
+    flex-flow: row;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+  .crud-functions a {
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid gray;
+    margin: 5px;
+    width: 75%;
+    transition: .3s;
+    color: black;
+    font-size: 13px;
+  }
+  a.create-jobs-button, a.update-jobs-button {
+    padding: 13px 0;
+  }
+  .preset-searches {
+    display: none;
+  }
+  .log-wrapper{
+    display: flex;
+    flex-flow: column;
+  }
+
+  input.new-entry-date, select.new-entry-employee-select, input.new-entry-hours-worked, button.create-entry-button, form.date-range-search-form, input.start-date-range-search, input.end-date-range-search, button.last-month, button.last-week, button.yesterday, button.search-entries-button {
+    font-size: 14px;
+  }
+
+  form.create-new-entry-form, .custom-date-search {
+    text-align: center;
+  }
+  input.new-entry-hours-worked {
+    width: 24%;
+  }
+
+  .entries-list {
+    margin-top: 3vh;
+    height: 43vh;
+    font-size: 11px;
+  }
+
+  .entry-wrapper {
+    display: flex;
+    font-size: 13px;
+  }
+
+  .entry-employee-info {
+    display: flex;
+    flex-flow: column;
+    padding: 2px;
+    
+  }
+
+  .employee-wrapper {
+    display: none;
+  }
+
+  .navbar {
+    font-size: 13px;
+    justify-content: space-between;
+  }
+
+  header nav a {
+    font-size: 13px;
+    color: black;
+  }
+
+}

@@ -1,7 +1,13 @@
 import SignIn from './SignIn'
 import { Link } from 'react-router-dom'
 
-const Home = ({ setUser, toggleAuthenticated, user, authenticated }) => {
+const Home = ({
+  setUser,
+  toggleAuthenticated,
+  user,
+  authenticated,
+  setOwnerId
+}) => {
   return (
     <div className="home-wrapper">
       <div className="site-title-wrapper">
