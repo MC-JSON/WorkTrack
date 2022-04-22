@@ -31,7 +31,8 @@ const UpdateEntry = ({ entry, employees, user, businessId }) => {
   return (
     <div className="update-entry-wrapper" >
       <h1>Update Entry</h1>
-      <form className="update-entry-form" onSubmit={handleSubmit}>
+      <div className="forms">
+      <form onSubmit={handleSubmit}>
         <input
           className="form"
           type="date"
@@ -62,6 +63,7 @@ const UpdateEntry = ({ entry, employees, user, businessId }) => {
         <br />
         <button type="submit">Update</button>
       </form>
+    </div>
     </div>
   )
 }
