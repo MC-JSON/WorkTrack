@@ -32,17 +32,17 @@
 
 ##### To start your WorkTrack experience, you must first create an account by clicking on the register link on the login screen. After you have created your account, login to go to your business portal.
 
-![WorkTrack Login](/work_track/pictures/WorkTrack_login_picture.png)
+![WorkTrack Login](/pictures/WorkTrack_login_picture.png)
 
 #### Once on the business portal page, fill out the form and then click create business, followed by create log. You will then be able to click on the picture of your business that you uploaded to go to that businesses log page.
 
-![WorkTrack Portal](/work_track/pictures/WorkTrack_business_portal_pic.png)
+![WorkTrack Portal](/pictures/WorkTrack_business_portal_pic.png)
 
 #### On the log page, you will first want to look for the "Create Jobs" button to begin creating positions for your employees.
 
 #### Next, create your employees and assign them their positions.
 
-![WorkTrack Log Page](/work_track/pictures/WorkTrack_entry_page.png)
+![WorkTrack Log Page](/pictures/WorkTrack_entry_page.png)
 
 #### Thats it! Start tracking your employees hours!
 
